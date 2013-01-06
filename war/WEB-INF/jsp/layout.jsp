@@ -3,7 +3,12 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title><tiles:insertAttribute name="title" ignore="true" /></title>
+		<title>
+			<c:set var="titleKey">
+				<tiles:insertAttribute name="title" ignore="true" />
+			</c:set>
+			<spring:message code="${titleKey}" />
+		</title>
 		<style type="text/css">
 		body {
 			padding-top: 60px;

@@ -1,5 +1,8 @@
+<%@ include file="/WEB-INF/jspf/taglibs.jspf" %>
+<%@page contentType="text/html" pageEncoding="utf-8" %>
+
 <footer class="footer">
 	<div class="container">
-		<p>&copy; Fan Zhang 2012</p>
+		<p><spring:message code="footer.copyright"/></p>
 	</div>
 </footer>
