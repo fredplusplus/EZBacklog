@@ -1,24 +1,23 @@
-<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+<%@ include file="/WEB-INF/jspf/taglibs.jspf" %>
+<%@page contentType="text/html" pageEncoding="utf-8" %>
 <!DOCTYPE html>
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title><tiles:insertAttribute name="title" ignore="true" /></title>
-</head>
-<body>
-<table border="1" cellpadding="2" cellspacing="2" align="center">
-    <tr>
-        <td height="30" colspan="2"><tiles:insertAttribute name="header" />
-        </td>
-    </tr>
-    <tr>
-        <td height="250"><tiles:insertAttribute name="menu" /></td>
-        <td width="350"><tiles:insertAttribute name="body" /></td>
-    </tr>
-    <tr>
-        <td height="30" colspan="2"><tiles:insertAttribute name="footer" />
-        </td>
-    </tr>
-</table>
-</body>
+	<head>
+		<title><tiles:insertAttribute name="title" ignore="true" /></title>
+		<style type="text/css">
+		body {
+			padding-top: 60px;
+			padding-bottom: 40px;
+		}
+		</style>
+		<link href="/static/css/layout.css" rel="stylesheet">
+		<link href="/static/css/bootstrap.min.css" rel="stylesheet">
+		<script src="http://code.jquery.com/jquery-1.8.3.min.js"> </script>
+		<script src="/static/js/bootstrap.min.js"></script>
+	</head>
+	<body>
+		<tiles:insertAttribute name="header" />
+		<tiles:insertAttribute name="body" />
+		<tiles:insertAttribute name="footer" />
+	</body>
 </html>
