@@ -8,7 +8,8 @@
 			</div>
 			<div class="nav-collapse">
 				<ul class="nav">
-					<li class="active"><a href="#"><spring:message code="nav.btn.home" /></a></li>
+					<li class="active"><a href="#"><spring:message code="nav.btn.dashboard" /></a></li>
+					<li><a href="#about"><spring:message code="nav.btn.backlog" /></a></li>
 					<li><a href="#about"><spring:message code="nav.btn.about" /></a></li>
 				</ul>
 				<p class="navbar-text pull-right">
