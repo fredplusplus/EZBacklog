@@ -12,7 +12,7 @@
 					<li><a href="#about"><spring:message code="nav.btn.about" /></a></li>
 				</ul>
 				<p class="navbar-text pull-right">
-					<spring:message code="nav.login" arguments="usertest" />
+					<spring:message code="nav.login" arguments="${UserName}" />
 				</p>
 			</div>
 		</div>
