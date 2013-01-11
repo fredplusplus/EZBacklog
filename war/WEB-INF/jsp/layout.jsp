@@ -18,10 +18,13 @@
 		<link href="/static/css/layout.css" rel="stylesheet">
 		<link href="/static/css/bootstrap.min.css" rel="stylesheet">
 		<script src="http://code.jquery.com/jquery-1.8.3.min.js"> </script>
-		<script src="/static/js/bootstrap.min.js"></script>
+		<script src="/static/js/lib/json2.js"> </script>
+		<script src="/static/js/lib/underscore-min.js"> </script>
+		<script src="/static/js/lib/backbone.js"> </script>
+		<script src="/static/js/lib/bootstrap.min.js"></script>
 	</head>
 	<body>
-		<tiles:insertAttribute name="header" />
+		<tiles:insertAttribute name="sitenav" />
 		<tiles:insertAttribute name="body" />
 		<tiles:insertAttribute name="footer" />
 	</body>
