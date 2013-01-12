@@ -18,8 +18,6 @@ public class AboutController {
 	public String execute(Model model) {
 		SiteNav sitenav = new SiteNav();
 		sitenav.setAbout(true);
-		sitenav.setProject(false);
-		sitenav.setDashboard(false);
 		model.addAttribute(SiteNav.BEAN_NAME, gson.toJson(sitenav));
 		return "about";
 	}

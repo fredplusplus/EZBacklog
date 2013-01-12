@@ -10,17 +10,17 @@ import webplus.ezbacklog.model.SiteNav;
 import com.google.gson.Gson;
 
 @Controller
-public class DashboardController {
+public class ProjectController {
 
 	@Autowired private Gson gson;
 
 	
-	@RequestMapping({ "/f/dashboard", "/" })
+	@RequestMapping("/f/projects")
 	public String execute(Model model) {
 		SiteNav sitenav = new SiteNav();
-		sitenav.setDashboard(true);
+		sitenav.setProject(true);
 		model.addAttribute(SiteNav.BEAN_NAME, gson.toJson(sitenav));
 		
-		return "dashboard";
+		return "project";
 	}
 }

@@ -15,6 +15,11 @@
 		<put-attribute name="body" value="/WEB-INF/jsp/dashboard.jsp" />
 	</definition>
 
+	<definition name="project" extends="base.definition">
+		<put-attribute name="title" value="nav.appName" />
+		<put-attribute name="body" value="/WEB-INF/jsp/project.jsp" />
+	</definition>
+
 	<definition name="about" extends="base.definition">
 		<put-attribute name="title" value="nav.appName" />
 		<put-attribute name="body" value="/WEB-INF/jsp/about.jsp" />
