@@ -5,10 +5,16 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd  
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
-	<context:component-scan base-package="webplus.ezbacklog" />
-	<import resource="./tiles-beans.xml" />
-	<import resource="./strings-beans.xml" />
-	<import resource="./jdo-beans.xml" />
-	<import resource="./google-beans.xml" />
-	<import resource="./ezbacklog-beans.xml" />
+
+	<bean id="persistentManagerFactory" class="javax.jdo.JDOHelper"
+		factory-method="getPersistenceManagerFactory" lazy-init="true">
+		<constructor-arg>
+			<value>transactions-optional</value>
+		</constructor-arg>
+	</bean>
+
+	<bean id="persistenceManager" class="javax.jdo.PersistenceManager"
+		factory-bean="persistentManagerFactory" factory-method="getPersistenceManager"
+		lazy-init="true" />
+
 </beans>
