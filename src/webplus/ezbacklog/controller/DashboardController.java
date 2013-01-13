@@ -24,7 +24,7 @@ public class DashboardController {
 		SiteNav sitenav = sitenavModule.getSiteNav();
 		sitenav.setDashboard(true);
 		model.addAttribute(SiteNav.BEAN_NAME, gson.toJson(sitenav));
-		model.addAttribute(Dashboard.MODEL, dashboardModule.getDashboard());
+		model.addAttribute(Dashboard.MODEL, gson.toJson(dashboardModule.getDashboard()));
 		return "dashboard";
 	}
 }

@@ -21,7 +21,8 @@
 		<script src="/static/js/lib/backbone/json2.js"> </script>
 		<script src="/static/js/lib/underscore/underscore-min.js"> </script>
 		<script src="/static/js/lib/backbone/backbone.js"> </script>
-		<script src="/static/js/lib/boostrap/bootstrap.min.js"></script>
+		<script src="/static/js/lib/bootstrap/bootstrap.min.js"></script>
+		<script src="/static/js/sitewide.js"></script>
 	</head>
 	<body>
 		<tiles:insertAttribute name="sitenav" />

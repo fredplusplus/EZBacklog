@@ -8,15 +8,15 @@ import javax.jdo.annotations.PrimaryKey;
 
 /**
  * A user model of ezbacklog.
- *
+ * 
  */
 @PersistenceCapable(detachable = "true")
 public class Backlogger {
-
-	@PrimaryKey 
-	@Persistent private String email;
-	
-	@Persistent private Date joinDate;
+	@PrimaryKey
+	@Persistent
+	private String email;
+	@Persistent
+	private Date joinDate;
 
 	public String getEmail() {
 		return email;

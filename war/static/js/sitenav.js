@@ -1,9 +1,3 @@
-_.templateSettings = {
-	interpolate : /\<\@\=(.+?)\@\>/gim,
-	evaluate : /\<\@([\s\S]+?)\@\>/gim,
-	escape : /\<\@\-(.+?)\@\>/gim
-};
-
 SiteNav = Backbone.View.extend({
 	initialize : function() {
 		this.render();

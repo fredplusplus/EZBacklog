@@ -8,11 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import webplus.ezbacklog.module.BackloggerModule;
-import webplus.ezbacklog.values.RequestAttribute;
 
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;

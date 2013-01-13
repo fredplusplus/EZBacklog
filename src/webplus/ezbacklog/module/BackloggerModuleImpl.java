@@ -14,8 +14,9 @@ import com.google.appengine.api.users.UserService;
 
 public class BackloggerModuleImpl implements BackloggerModule {
 
-	@Autowired private UserService userService;
-	
+	@Autowired
+	private UserService userService;
+
 	private Backlogger backlogger;
 
 	@Override
