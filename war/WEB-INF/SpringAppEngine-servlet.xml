@@ -8,7 +8,6 @@
 	<context:component-scan base-package="webplus.ezbacklog" />
 
 	<import resource="./google-beans.xml" />
-	<import resource="./jdo-beans.xml" />
 	<import resource="./tiles-beans.xml" />
 	<import resource="./strings-beans.xml" />
 	<import resource="./ezbacklog-beans.xml" />

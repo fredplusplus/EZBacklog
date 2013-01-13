@@ -4,17 +4,16 @@ import java.util.Calendar;
 
 import javax.jdo.JDOObjectNotFoundException;
 import javax.jdo.PersistenceManager;
-import javax.jdo.PersistenceManagerFactory;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import webplus.ezbacklog.model.Backlogger;
+import webplus.ezbacklog.service.PMF;
 
 import com.google.appengine.api.users.UserService;
 
 public class BackloggerModuleImpl implements BackloggerModule {
 
-	@Autowired private PersistenceManagerFactory pmf;
 	@Autowired private UserService userService;
 	
 	private Backlogger backlogger;
@@ -27,7 +26,7 @@ public class BackloggerModuleImpl implements BackloggerModule {
 	@Override
 	public void registerBacklogger() {
 		String email = userService.getCurrentUser().getEmail();
-		PersistenceManager pm = pmf.getPersistenceManager();
+		PersistenceManager pm = PMF.get().getPersistenceManager();
 		try {
 			backlogger = pm.detachCopy(pm.getObjectById(Backlogger.class, email));
 		} catch (JDOObjectNotFoundException e) {
