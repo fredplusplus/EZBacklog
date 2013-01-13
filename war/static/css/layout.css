@@ -9,3 +9,11 @@
 .footer p {
 	color: #777;
 }
+
+#userContainer.row-fluid {
+	border-bottom: 1px solid #eee;
+}
+
+#projectContainer.row-fluid {
+	margin-top: 40px;
+}
