@@ -6,6 +6,14 @@ public class SiteNav {
 	private boolean isDashboard;
 	private boolean isProject;
 	private boolean isAbout;
+	private String userName;
+	
+	public void setUserName(String username) {
+		this.userName =username;
+	}
+	public String getUserName() {
+		return userName;
+	}
 
 	public boolean isDashboard() {
 		return isDashboard;

@@ -33,7 +33,6 @@ public class AuthenticationFilter extends OncePerRequestFilter {
 						.getRequestURI()));
 			} else {
 				backloggerModule.registerBacklogger();
-				request.setAttribute(RequestAttribute.USER_NAME, user.getNickname());
 			}
 		}
 		chain.doFilter(request, response);

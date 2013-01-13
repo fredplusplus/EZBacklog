@@ -5,22 +5,22 @@
 
 <div class="navbar navbar-fixed-top">
 	<div class="navbar-inner">
-		<div class="container-fluid">
+		<div class="container-fluid" id="sitenaveTemplateContainer">
+			<script id="sitenavTemplate" type="text/template">
 			<div class="brand">
 				<spring:message code="nav.appName" />
-			</div>
+			</div>			
 			<div class="nav-collapse" id="sitenav">
-				<ul class="nav" id="sitenaveTemplateContainer">
-				</ul>
-				<script id="sitenavTemplate" type="text/template">
+				<ul class="nav" >
 					<li <@ if (isDashboard) {@> class="active" <@}@>><a href="/f/dashboard"><spring:message code="nav.btn.dashboard" /></a></li>
 					<li <@ if (isProject) {@> class="active" <@}@>><a href="/f/projects"><spring:message code="nav.btn.projects" /></a></li>
-					<li <@ if (isAbout) {@> class="active" <@}@>><a href="/f/about"><spring:message code="nav.btn.about" /></a></li>
-				</script>
+					<li <@ if (isAbout) {@> class="active" <@}@>><a href="/f/about"><spring:message code="nav.btn.about" /></a></li>				
+				</ul>
 				<p class="navbar-text pull-right">
-					<spring:message code="nav.login" arguments="${UserName}" />
+					<@= userName @>
 				</p>
 			</div>
+			</script>
 		</div>
 	</div>
 </div>
