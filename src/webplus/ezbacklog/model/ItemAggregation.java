@@ -10,6 +10,7 @@ import webplus.ezbacklog.values.ItemStatus;
  * 
  */
 public class ItemAggregation {
+	public static final String MODEL = "ItemAggregation";
 	private long level;
 	private Map<ItemStatus, Long> statusMap;
 	private Map<ItemStatus, Long> pointMap;

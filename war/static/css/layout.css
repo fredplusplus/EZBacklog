@@ -10,7 +10,8 @@
 	color: #777;
 }
 
-#userContainer.row-fluid {
+#userContainer.row-fluid, 
+#itemAggregationContainer.row-fluid {
 	border-bottom: 1px solid #eee;
 }
 
