@@ -11,9 +11,18 @@
 }
 
 #userContainer.row-fluid, 
-#itemAggregationContainer.row-fluid {
+.itemAggregation {
 	border-bottom: 1px solid #eee;
 }
+
+.left-bordered {
+	border-left: 1px solid #eee;
+}
+
+.right-bordered {
+	border-right: 1px solid #eee;
+}
+
 
 #projectContainer.row-fluid {
 	margin-top: 40px;
