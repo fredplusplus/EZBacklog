@@ -26,6 +26,7 @@
 </div>
 
 <script type="text/javascript">
-	var siteNavData = ${SiteNav};
-	var bb_sitenav = new SiteNav({el : $("#sitenaveTemplateContainer")});
+	var siteNavModel = new SiteNavModel(${SiteNav});
+	
+	var siteNavView = new SiteNavView({el : $("#sitenaveTemplateContainer"), model: siteNavModel});
 </script>
