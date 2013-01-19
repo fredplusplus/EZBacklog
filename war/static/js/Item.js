@@ -19,5 +19,13 @@ ItemCollectionView = Backbone.View.extend({
 			items : this.collection.toJSON()
 		}));
 		return this;
+	},
+	events : {
+		"click .itemBox" : "displayItem"
+	},
+	displayItem : function(event) {
+		var id = $(event.currentTarget).data("id");
+		var level = $(event.currentTarget).data("level");
+		var model = this.collection.get(id);
 	}
 });

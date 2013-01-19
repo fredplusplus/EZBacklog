@@ -1,7 +1,7 @@
 <%@ include file="/WEB-INF/jspf/taglibs.jspf"%>
-<div class="span5 right-bordered">
+<div class="span5">
 	<@ _.each(items, function(item) { @> 
-		<div class="row-fluid itemBox" id="<@=item.id@>">
+		<div class="row-fluid itemBox" data-id="<@=item.id@>" data-level="<@=item.itemLevel@>">
 			<div class="span2 itemBoxRank">
 				<h6>
 					<spring:message code="itemBox.rank"/>
@@ -20,8 +20,6 @@
 					<@}@>
 				</div>
 			</div>
-			<input type="hidden" id="itemLevel" value="<@=item.itemLevel@>">
-			<input type="hidden" id="id" value="<@=item.id@>">
 		</div>
 	<@ }); @>
 </div>
