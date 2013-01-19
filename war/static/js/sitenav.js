@@ -12,6 +12,6 @@ SiteNavView = Backbone.View.extend({
 });
 
 SiteNavModel = Backbone.Model.extend({
-	initialize: function() {
+	initialize : function() {
 	}
 });

@@ -2,7 +2,7 @@
 	text-align: center;
 	padding: 30px 0;
 	margin-top: 70px;
-	border-top: 1px solid #e5e5e5;
+	border-top: 1px solid #ccc;
 	background-color: whiteSmoke;
 }
 
@@ -12,18 +12,44 @@
 
 #userContainer.row-fluid, 
 .itemAggregation {
-	border-bottom: 1px solid #eee;
+	border-bottom: 1px solid #ccc;
 }
 
 .left-bordered {
-	border-left: 1px solid #eee;
+	border-left: 1px solid #ccc;
 }
 
 .right-bordered {
-	border-right: 1px solid #eee;
+	border-right: 1px solid #ccc;
 }
 
 
 #projectContainer.row-fluid {
 	margin-top: 40px;
+}
+
+.itemBox {
+	min-height: 48px;
+	background: #fcfcfc;
+	cursor: pointer;
+	border: 1px solid #e5e5e5;
+	border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	margin: 4px;	
+}
+
+.itemBoxRank {
+	padding-top:4px;
+	padding-left: 4px;
+}
+
+.shortDesc {
+	font-size: 1.5em;
+	padding: 3px;
+}
+
+.notes {
+	font-size: 0.9em;
+	padding-left:10px;
 }
