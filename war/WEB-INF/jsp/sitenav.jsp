@@ -13,7 +13,7 @@
 			<div class="nav-collapse" id="sitenav">
 				<ul class="nav" >
 					<li <@ if (isDashboard) {@> class="active" <@}@>><a href="/f/dashboard"><spring:message code="nav.btn.dashboard" /></a></li>
-					<li <@ if (isProject) {@> class="active" <@}@>><a href="/f/projects"><spring:message code="nav.btn.projects" /></a></li>
+					<li <@ if (isProject) {@> class="active" <@}@>><a href="/f/items"><spring:message code="nav.btn.projects" /></a></li>
 					<li <@ if (isAbout) {@> class="active" <@}@>><a href="/f/about"><spring:message code="nav.btn.about" /></a></li>				
 				</ul>
 				<p class="navbar-text pull-right">

@@ -18,7 +18,7 @@ import webplus.ezbacklog.values.ItemLevel;
 import com.google.gson.Gson;
 
 @Controller
-public class ProjectController {
+public class ItemController {
 	@Autowired
 	private Gson gson;
 	@Autowired
@@ -28,7 +28,7 @@ public class ProjectController {
 	@Autowired
 	private DashboardModule dashboardModule;
 
-	@RequestMapping("/f/projects")
+	@RequestMapping("/f/items")
 	public String execute(Model model) {
 		SiteNav sitenav = sitenavModule.getSiteNav();
 		sitenav.setProject(true);
@@ -39,6 +39,6 @@ public class ProjectController {
 		List<Item> items = itemUpdateModule.getItemByLevel(ItemLevel.PROJECT, null);
 		model.addAttribute("Items", gson.toJson(items));
 
-		return "project";
+		return "item";
 	}
 }
