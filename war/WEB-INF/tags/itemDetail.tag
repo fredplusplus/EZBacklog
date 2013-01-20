@@ -2,6 +2,19 @@
 <script type="text/template" id="itemDetailTemplate">
 <div class="row-fluid">
 	<h3><@if (typeof(shortDescription) != 'undefined') { print(shortDescription); }@></h3>
+	<div class="btn-toolbar span5">
+		<div class="btn-group">
+			<a href="#" class="btn"><spring:message code="itemDetail.action.edit"/></a>
+			<a href="#" class="btn">Add a child</a>
+			<@if(status=='Open') { @>
+				<a href="/f/items/<@=id@>/resolve" class="btn"><spring:message code="itemDetail.action.resolve"/></a>
+			<@ } else { @>
+				<a href="/f/items/<@=id@>/reopen" class="btn"><spring:message code="itemDetail.action.reopen"/></a>
+			<@ } @>
+			
+			<a href="#" class="btn btn-danger">Delete</a>
+		</div>
+	</div>
 </div>
 <div class="row-fluid">
 	<div class="span4">
@@ -47,6 +60,15 @@
 			<dt><spring:message code="itemDetail.resolvedpoint"/></dt>
 			<dd><@ if (typeof(resolvedPoint) != 'undefined') {print(resolvedPoint);} @></dd>
 		</dl>
+	</div>
+</div>
+<div class="row-fluid">
+	<div class="span1"><strong><spring:message code="itemDetail.progress" /></strong></div>
+	<div class="span8 offset1">
+		<div class="progress">
+			<@if (typeof(resolvedPoint) == 'undefined') { resolvedPoint = 0 } @>
+			<div class="bar bar-success" style="width: <@=resolvedPoint/point@>%" />
+		</div>
 	</div>
 </div>
 <div class="row-fluid">
