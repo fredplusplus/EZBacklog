@@ -12,6 +12,7 @@
 		<style type="text/css">
 		body {
 			padding-top: 60px;
+			min-width: 1200px;
 		}
 		</style>
 		<link href="/static/css/layout.css" rel="stylesheet">
