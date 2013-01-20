@@ -10,19 +10,6 @@ ItemCollection = Backbone.Collection.extend({
 	model : ItemModel
 });
 
-BenderView = Backbone.View.extend({
-	initialize : function() {
-		this.$el = $("#itemDetailContainer");
-		this.template = _.template($("#benderTemplate").html());
-		this.render();
-	},
-	render : function() {
-		this.$el.html(this.template({
-			items : this.collection.toJSON()
-		}));
-	}
-});
-
 ItemDetailView = Backbone.View.extend({
 	initialize : function() {
 		this.$el = $("#itemDetailContainer");
@@ -58,18 +45,18 @@ ItemCollectionView = Backbone.View.extend({
 		var level = $(event.currentTarget).data("level");
 		var model = this.collection.get(id);
 		if (this.currentModel) {
-			console.log("not first click");
 			this.currentModel.set({
 				"selected" : false
 			});
-		} else {
-			console.log("first click");
 		}
 		this.currentModel = model;
 		model.set({
 			"selected" : true
 		});
 		var itemDetailView = new ItemDetailView({
+			model : model
+		});
+		var breadcrumbView = new BreadCrumbView({
 			model : model
 		});
 	}
