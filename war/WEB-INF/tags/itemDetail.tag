@@ -1,4 +1,5 @@
 <%@ include file="/WEB-INF/jspf/taglibs.jspf"%>
+<script type="text/template" id="itemDetailTemplate">
 <div class="row-fluid">
 	<h3><@if (typeof(shortDescription) != 'undefined') { print(shortDescription); }@></h3>
 </div>
@@ -54,3 +55,4 @@
 		<dd><@if(typeof(longDescription) != 'undefined') { print(longDescription);} @></dd>
 	</dl>
 </div>
+</script>

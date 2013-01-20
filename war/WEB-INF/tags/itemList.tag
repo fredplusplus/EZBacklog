@@ -1,4 +1,5 @@
 <%@ include file="/WEB-INF/jspf/taglibs.jspf"%>
+<script type="text/template" id="itemCollectionTemplate" >
 <@ _.each(items, function(item) { @> 
 	<div class="row-fluid itemBox <@if (item.selected) {print(' selected') }@>" data-id="<@=item.id@>" data-level="<@=item.itemLevel@>">
 		<div class="span2 itemBoxRank">
@@ -20,3 +21,4 @@
 		</div>
 	</div>
 <@ }); @>
+</script>
