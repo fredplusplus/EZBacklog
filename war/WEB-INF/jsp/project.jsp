@@ -3,13 +3,16 @@
 <ez:itemAggregation />
 <script type="text/javascript" src="/static/js/Item.js" ></script>
 <div class="container-fluid">
-	<div class="row-fluid" id="itemCollectionContainer">
+	<div class="row-fluid" >
+		<div class="span5" id="itemCollectionContainer"></div>
+		<div class="span6" id="itemDetailContainer"></div>
 	</div>
 </div>
-${Items}
 <script type="text/template" id="itemCollectionTemplate" >
-	<ez:itemList/>
-	<div class="span6">test</div>
+<ez:itemList/>
+</script>
+<script type="text/template" id="itemDetailTemplate">
+<ez:itemDetail/>
 </script>
 <script type="text/javascript">
 	var itemCollection = new ItemCollection(${Items});

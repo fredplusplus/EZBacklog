@@ -21,6 +21,7 @@ public class Item {
 	// fields
 	@Persistent private Long itemLevel;
 	@Persistent private Long point;
+	@Persistent private Long resolvedPoint;
 	@Persistent private Long rank;
 	@Persistent private Long parentId;
 	@Persistent private String ownerEmail;

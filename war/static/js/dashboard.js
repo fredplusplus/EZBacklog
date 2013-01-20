@@ -3,9 +3,7 @@ Dashboard = Backbone.View.extend({
 		this.render();
 	},
 	render : function() {
-		var time = new Date(dashboardData.backlogger.joinDate + " UTC");
-		dashboardData.backlogger.joinDate = (time.getMonth() + 1) + '/'
-				+ time.getDate() + '/' + time.getFullYear();
+		dashboardData.backlogger.joinDate = formatDate(dashboardData.backlogger.joinDate);
 		var dashboardTemplate = _.template($("#dashboardTemplate").html(),
 				dashboardData);
 		this.$el.html(dashboardTemplate);

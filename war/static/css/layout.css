@@ -10,8 +10,7 @@
 	color: #777;
 }
 
-#userContainer.row-fluid, 
-.itemAggregation {
+#userContainer.row-fluid,.itemAggregation {
 	border-bottom: 1px solid #ccc;
 }
 
@@ -22,7 +21,6 @@
 .right-bordered {
 	border-right: 1px solid #ccc;
 }
-
 
 #projectContainer.row-fluid {
 	margin-top: 40px;
@@ -36,11 +34,15 @@
 	border-radius: 4px;
 	-webkit-border-radius: 4px;
 	-moz-border-radius: 4px;
-	margin: 4px;	
+	margin: 4px;
+}
+
+.itemBox.selected {
+	background: #e3eff6;
 }
 
 .itemBoxRank {
-	padding-top:4px;
+	padding-top: 4px;
 	padding-left: 4px;
 }
 
@@ -51,5 +53,5 @@
 
 .notes {
 	font-size: 0.9em;
-	padding-left:10px;
+	padding-left: 10px;
 }
