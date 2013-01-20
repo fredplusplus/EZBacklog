@@ -1,12 +1,8 @@
 <%@ include file="/WEB-INF/jspf/taglibs.jspf"%>
 <%@tag pageEncoding="utf-8" description="Overview for a item type"%>
 <script type="text/javascript" src="/static/js/itemAggregation.js" ></script>
-<div class="itemAggregation">
-	<div class="container-fluid">
-		<div class="row-fluid" id="itemAggregationContainer">
-	
-		</div>
-	</div>
+<div class="container-fluid itemAggregation">
+	<div class="row-fluid" id="itemAggregationContainer"></div>
 </div>
 
 <script id="itemAggregationTemplate" type="text/template" >

@@ -12,7 +12,6 @@
 		<style type="text/css">
 		body {
 			padding-top: 60px;
-			padding-bottom: 40px;
 		}
 		</style>
 		<link href="/static/css/layout.css" rel="stylesheet">
@@ -24,7 +23,7 @@
 		<script src="/static/js/lib/bootstrap/bootstrap.min.js"></script>
 		<script src="/static/js/sitewide.js"></script>
 	</head>
-	<body>
+	<body style="background: #fbfbfb">
 		<tiles:insertAttribute name="sitenav" />
 		<tiles:insertAttribute name="body" />
 		<tiles:insertAttribute name="footer" />
