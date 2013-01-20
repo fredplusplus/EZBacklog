@@ -3,9 +3,9 @@
 
 <footer class="footer">
 	<div class="container">
-		<p><spring:message code="footer.copyright"/></p>
 		<p><spring:message code="footer.browser"/></p>
 		<p><spring:message code="footer.tools"/></p>
+		<p><spring:message code="footer.copyright"/></p>
 	</div>
 </footer>
 
