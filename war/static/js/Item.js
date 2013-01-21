@@ -7,6 +7,10 @@ ItemModel = Backbone.Model.extend({
 	}
 });
 
+/**
+ * Item Collection model, drives the item list display. Items are sorted by
+ * status, then rank.
+ */
 ItemCollection = Backbone.Collection.extend({
 	model : ItemModel,
 	comparator : function(item) {
@@ -30,7 +34,9 @@ ItemDetailView = Backbone.View.extend({
 		return this;
 	},
 	events : {
-		"click #deleteModal .btn-primary" : "deleteItem"
+		"click #deleteModal .btn-primary" : "deleteItem",
+		"click #resolveBtn" : "resolveItem",
+		"click #reopenModal" : "reopenItem",
 	},
 	deleteItem : function() {
 		$("#waitModal").modal();
@@ -43,7 +49,18 @@ ItemDetailView = Backbone.View.extend({
 				}
 			});
 		}
+	},
+	resolveItem : function() {
+		if (this.model.get("selected")) {
+			console.log("resolving item");
+		}
+	},
+	reopenItem : function() {
+		if (this.model.get("selected")) {
+			console.log("reopen item");
+		}
 	}
+
 });
 
 ItemCollectionView = Backbone.View.extend({
