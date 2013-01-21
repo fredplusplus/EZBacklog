@@ -4,3 +4,7 @@
 war/WEB-INF/appengine-generated/local_db.bin
 
 war/WEB-INF/appengine-generated/local_db.bin
+
+war/WEB-INF/lib/.DS_Store
+
+war/WEB-INF/.DS_Store

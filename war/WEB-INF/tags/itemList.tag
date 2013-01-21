@@ -16,6 +16,8 @@
 				<spring:message code="dashboard.openproject"/>
 				<@} else if (item.status =='Resolved'){ @>
 					<spring:message code="dashboard.resolvedproject"/>
+				<@} else if (item.status =='Deleted'){ @>
+					<spring:message code="dashboard.deletedproject"/>
 				<@}@>
 			</div>
 		</div>

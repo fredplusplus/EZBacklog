@@ -6,6 +6,8 @@ import webplus.ezbacklog.model.Item;
 
 public interface ItemUpdateModule {
 	List<Item> getItemByLevel(Long level, Long parentId);
-	
-	void updateItem(Item item);
+
+	Item getItemById(Long id);
+
+	void saveItem(Item item);
 }

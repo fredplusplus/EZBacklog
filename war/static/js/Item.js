@@ -1,4 +1,5 @@
 ItemModel = Backbone.Model.extend({
+	urlRoot : '/f/item',
 	defaults : {
 		"selected" : false,
 	},
@@ -7,7 +8,14 @@ ItemModel = Backbone.Model.extend({
 });
 
 ItemCollection = Backbone.Collection.extend({
-	model : ItemModel
+	model : ItemModel,
+	comparator : function(item) {
+		return [
+				String.fromCharCode.apply(String, _.map(item.get("status")
+						.split(""), function(c) {
+					return 0xffff - c.charCodeAt();
+				})), item.get("rank") ];
+	}
 });
 
 ItemDetailView = Backbone.View.extend({
@@ -20,6 +28,21 @@ ItemDetailView = Backbone.View.extend({
 	render : function() {
 		this.$el.html(this.template(this.model.toJSON()));
 		return this;
+	},
+	events : {
+		"click #deleteModal .btn-primary" : "deleteItem"
+	},
+	deleteItem : function() {
+		$("#waitModal").modal();
+		if (this.model.get("selected")) {
+			this.model.destroy({
+				success : function(model, response) {
+					location.reload();
+				},
+				error : function(model, response) {
+				}
+			});
+		}
 	}
 });
 
@@ -53,11 +76,20 @@ ItemCollectionView = Backbone.View.extend({
 		model.set({
 			"selected" : true
 		});
-		var itemDetailView = new ItemDetailView({
-			model : model
-		});
-		var breadcrumbView = new BreadCrumbView({
-			model : model
-		});
+		// create views and attach to model.
+		if (typeof (model.detailView) == 'undefined') {
+			model.detailView = new ItemDetailView({
+				model : model
+			});
+		} else {
+			model.detailView.render();
+		}
+		if (typeof (model.breadcrumbView) == 'undefined') {
+			model.breadcrumbView = new BreadCrumbView({
+				model : model
+			});
+		} else {
+			model.breadcrumbView.render();
+		}
 	}
 });

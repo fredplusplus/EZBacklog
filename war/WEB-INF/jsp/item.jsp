@@ -24,3 +24,9 @@
 	var itemCollectionView = new ItemCollectionView({el : $("#itemCollectionContainer"), collection: itemCollection});
 	var benderView = new BenderView({collection: itemCollection});
 </script>
+
+<div id="waitModal" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static">
+	<div class="modal-body">
+		<p><spring:message code="modal.text.pleaseWait" /></p>
+	</div>
+</div>
