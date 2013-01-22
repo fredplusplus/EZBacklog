@@ -54,7 +54,7 @@
 			<dt><spring:message code="itemDetail.modifieddate"/></dt>
 			<dd><@ if (typeof(modifyDate) != 'undefined') {print(formatDate(modifyDate));} @>&nbsp;</dd>
 			<dt><spring:message code="itemDetail.originalpoint"/></dt>
-			<dd><@ if (typeof(point) != 'undefined') {print(point);} @></dd>
+			<dd><@= point @></dd>
 		</dl>
 	</div>
 	<div class="span4">
@@ -72,16 +72,22 @@
 	<div class="span1"><strong><spring:message code="itemDetail.progress" /></strong></div>
 	<div class="span8 offset1">
 		<div class="progress">
-			<@if (typeof(resolvedPoint) == 'undefined') { resolvedPoint = 0 } @>
-			<div class="bar bar-success" style="width: <@= (resolvedPoint * 100) /point@>%" />
+			<@if (point == 0) { point = 1; } @>
+			<@if (resolvedPoint <= point) { @>
+				<div class="bar bar-success" style="width: <@= (resolvedPoint * 100) / point@>%" />
+			<@ } else { @>
+				<div class="bar bar-success" style="width: <@= (point * 100) / resolvedPoint@>%" />
+				<div class="bar bar-warning" style="width: <@= ((resolvedPoint - point) * 100) / resolvedPoint@>%" />
+			<@ } @>
 		</div>
 	</div>
 </div>
 <div class="row-fluid">
 	<dl>
 		<dt>Description</dt>
-		<dd><@if(typeof(longDescription) != 'undefined') { print(longDescription);} @></dd>
+		<dd><@= longDescription @></dd>
 	</dl>
 </div>
 <modal:simpleModal id="deleteModal" textKey="modal.text.deleteItem" labelKey="modal.title.confirm"/>
+<modal:updateProgressModal />
 </script>

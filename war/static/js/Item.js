@@ -2,6 +2,12 @@ ItemModel = Backbone.Model.extend({
 	urlRoot : '/f/itemUpdate',
 	defaults : {
 		"selected" : false,
+		"point" : 0,
+		"resolvedPoint" : 0,
+		"status" : 'Open',
+		"shortDescription" : "",
+		"longDescription" : "",
+		"ownerEmail" : ""
 	},
 	initialize : function() {
 	}
@@ -37,7 +43,9 @@ ItemDetailView = Backbone.View.extend({
 	events : {
 		"click #deleteModal .btn-primary" : "deleteItem",
 		"click #resolveBtn" : "resolveItem",
-		"click #updateProgressBtn" : "updateProgress",
+		"click #updateProgressBtn" : "displayUpdateProgress",
+		"keyup input[id=burndownPoint]" : "validateBurndownPoint",
+		"click #updateProgressModal .btn-primary" : "submitUpdateProgress",
 		"click #reopenBtn" : "reopenItem",
 	},
 	deleteItem : function() {
@@ -52,15 +60,43 @@ ItemDetailView = Backbone.View.extend({
 			});
 		}
 	},
-	updateProgress : function() {
-		console.log("update item");
+	validateBurndownPoint : function() {
+		var burndownPoint = this.$el.find("#burndownPoint").val();
+		burndownPoint = parseInt(burndownPoint);
+		var $controlGroup = this.$el.find("#burndownPointGroup");
+		var $helpText = this.$el.find("#burndownPointHelp");
+		if (isNaN(burndownPoint)) {
+			$controlGroup.addClass("error");
+			$helpText.show();
+		} else {
+			$controlGroup.removeClass("error");
+			$helpText.hide();
+		}
+	},
+	displayUpdateProgress : function() {
+		$("#updateProgressModal").modal();
+		return this;
+	},
+	submitUpdateProgress : function() {
+		if (this.model.get("selected")) {
+			var burndownPoint = this.$el.find("#burndownPoint").val();
+			burndownPoint = parseInt(burndownPoint);
+			if (isNaN(burndownPoint)) {
+				return this;
+			}
+			var resolvedPoint = this.model.get("resolvedPoint");
+			this.model.set({
+				"resolvedPoint" : resolvedPoint + burndownPoint
+			});
+			return this.saveItem(true);
+		}
 	},
 	resolveItem : function() {
 		if (this.model.get("selected")) {
 			this.model.set({
 				"status" : 'Resolved'
 			});
-			this.saveItem();
+			return this.saveItem();
 		}
 	},
 	reopenItem : function() {
@@ -68,13 +104,16 @@ ItemDetailView = Backbone.View.extend({
 			this.model.set({
 				"status" : 'Open'
 			});
-			this.saveItem();
+			return this.saveItem();
 		}
 	},
-	saveItem : function() {
+	saveItem : function(noRefresh) {
 		$("#waitModal").modal();
-		this.model.save(this.model.toJSON(), {
+		return this.model.save(this.model.toJSON(), {
 			success : function(model, response) {
+				if (noRefresh) {
+					return;
+				}
 				location.reload();
 			},
 			error : function(model, response) {
