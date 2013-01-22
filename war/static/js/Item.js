@@ -1,5 +1,5 @@
 ItemModel = Backbone.Model.extend({
-	urlRoot : '/f/item',
+	urlRoot : '/f/itemUpdate',
 	defaults : {
 		"selected" : false,
 	},
