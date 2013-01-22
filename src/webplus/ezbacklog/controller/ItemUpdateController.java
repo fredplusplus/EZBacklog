@@ -1,7 +1,5 @@
 package webplus.ezbacklog.controller;
 
-import java.util.Calendar;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -55,7 +53,7 @@ public class ItemUpdateController {
 	@RequestMapping(value = "/f/itemUpdate/{id}", method = RequestMethod.PUT)
 	public String updateItem(@PathVariable("id") String id, @RequestBody String itemString, Model model) {
 		Item item = gson.fromJson(itemString, Item.class);
-
+		itemUpdateModule.saveItem(item);
 		model.addAttribute(JSON_MODEL, gson.toJson(item));
 		return "json";
 	}
@@ -71,7 +69,7 @@ public class ItemUpdateController {
 	public String deleteItem(@PathVariable("id") Long id, Model model) {
 		Item item = itemUpdateModule.getItemById(id);
 		item.setStatus(ItemStatus.Deleted);
-		// itemUpdateModule.saveItem(item);
+		itemUpdateModule.saveItem(item);
 		model.addAttribute(JSON_MODEL, gson.toJson(item));
 		return "json";
 	}

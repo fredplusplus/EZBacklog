@@ -10,8 +10,8 @@
 				<a href="#" class="btn"><spring:message code="itemDetail.action.edit"/></a>
 				<a href="#" class="btn">Add a child</a>
 				<@if(status=='Open') { @>
-					<a href="#" class="btn" id="resolveBtn"><spring:message code="itemDetail.action.updateProgress"/></a>					
-					<a href="#" class="btn" id="updateProgressBtn"><spring:message code="itemDetail.action.resolve"/></a>
+					<a href="#" class="btn" id="updateProgressBtn"><spring:message code="itemDetail.action.updateProgress"/></a>					
+					<a href="#" class="btn" id="resolveBtn"><spring:message code="itemDetail.action.resolve"/></a>
 				<@ } else if (status=='Resolved'){ @>
 					<a href="#" class="btn" id="reopenBtn"><spring:message code="itemDetail.action.reopen"/></a>
 				<@ } @>

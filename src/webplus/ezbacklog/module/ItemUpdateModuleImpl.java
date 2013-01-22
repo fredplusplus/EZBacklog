@@ -59,6 +59,14 @@ public class ItemUpdateModuleImpl implements ItemUpdateModule {
 	public void saveItem(Item item) {
 		validate(item);
 		item.setModifyDate(Calendar.getInstance().getTime());
+		switch (item.getStatus()) {
+		case Resolved:
+			item.setResolveDate(Calendar.getInstance().getTime());
+			break;
+		default:
+			item.setResolveDate(null);
+			break;
+		}
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		try {
 			pm.makePersistent(item);

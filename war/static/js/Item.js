@@ -26,6 +26,7 @@ ItemDetailView = Backbone.View.extend({
 	initialize : function() {
 		this.$el = $("#itemDetailContainer");
 		this.template = _.template($("#itemDetailTemplate").html());
+		this.model.bind('change', this.render, this);
 		_.bindAll(this, "render");
 		this.render();
 	},
@@ -37,7 +38,7 @@ ItemDetailView = Backbone.View.extend({
 		"click #deleteModal .btn-primary" : "deleteItem",
 		"click #resolveBtn" : "resolveItem",
 		"click #updateProgressBtn" : "updateProgress",
-		"click #reopenModal" : "reopenItem",
+		"click #reopenBtn" : "reopenItem",
 	},
 	deleteItem : function() {
 		$("#waitModal").modal();
@@ -52,19 +53,34 @@ ItemDetailView = Backbone.View.extend({
 		}
 	},
 	updateProgress : function() {
-
+		console.log("update item");
 	},
 	resolveItem : function() {
 		if (this.model.get("selected")) {
-			console.log("resolving item");
+			this.model.set({
+				"status" : 'Resolved'
+			});
+			this.saveItem();
 		}
 	},
 	reopenItem : function() {
 		if (this.model.get("selected")) {
-			console.log("reopen item");
+			this.model.set({
+				"status" : 'Open'
+			});
+			this.saveItem();
 		}
+	},
+	saveItem : function() {
+		$("#waitModal").modal();
+		this.model.save(this.model.toJSON(), {
+			success : function(model, response) {
+				location.reload();
+			},
+			error : function(model, response) {
+			}
+		});
 	}
-
 });
 
 ItemCollectionView = Backbone.View.extend({
