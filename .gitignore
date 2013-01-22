@@ -1,6 +1,6 @@
-
 *.class
 
 war/WEB-INF/appengine-generated/local_db.bin
 
 .DS_Store
+
