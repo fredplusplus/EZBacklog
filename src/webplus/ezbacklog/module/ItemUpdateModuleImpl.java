@@ -3,6 +3,7 @@ package webplus.ezbacklog.module;
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import java.util.Calendar;
 import java.util.List;
 
 import javax.jdo.JDOObjectNotFoundException;
@@ -57,7 +58,7 @@ public class ItemUpdateModuleImpl implements ItemUpdateModule {
 	@Override
 	public void saveItem(Item item) {
 		validate(item);
-
+		item.setModifyDate(Calendar.getInstance().getTime());
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		try {
 			pm.makePersistent(item);

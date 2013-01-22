@@ -5,10 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import webplus.ezbacklog.model.Item;
 import webplus.ezbacklog.model.ItemAggregation;
@@ -17,10 +14,12 @@ import webplus.ezbacklog.module.DashboardModule;
 import webplus.ezbacklog.module.ItemUpdateModule;
 import webplus.ezbacklog.module.SiteNavModule;
 import webplus.ezbacklog.values.ItemLevel;
-import webplus.ezbacklog.values.ItemStatus;
 
 import com.google.gson.Gson;
 
+/**
+ * This controller handles all full page load request for getting item.
+ */
 @Controller
 public class ItemDisplayController {
 	@Autowired
