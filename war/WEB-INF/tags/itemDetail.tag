@@ -83,5 +83,5 @@
 		<dd><@if(typeof(longDescription) != 'undefined') { print(longDescription);} @></dd>
 	</dl>
 </div>
-<ez:simpleModal id="deleteModal" textKey="modal.text.deleteItem" labelKey="modal.title.confirm"/>
+<modal:simpleModal id="deleteModal" textKey="modal.text.deleteItem" labelKey="modal.title.confirm"/>
 </script>
