@@ -36,6 +36,7 @@ ItemDetailView = Backbone.View.extend({
 	events : {
 		"click #deleteModal .btn-primary" : "deleteItem",
 		"click #resolveBtn" : "resolveItem",
+		"click #updateProgressBtn" : "updateProgress",
 		"click #reopenModal" : "reopenItem",
 	},
 	deleteItem : function() {
@@ -49,6 +50,9 @@ ItemDetailView = Backbone.View.extend({
 				}
 			});
 		}
+	},
+	updateProgress : function() {
+
 	},
 	resolveItem : function() {
 		if (this.model.get("selected")) {
