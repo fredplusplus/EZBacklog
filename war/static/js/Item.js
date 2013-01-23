@@ -67,13 +67,21 @@ ItemDetailView = Backbone.View.extend({
 	},
 	displayCreateChild : function() {
 		if (this.model.get("selected")) {
-			this.model.set("updateIntention", "create");
+			if (typeof(this.model.createView)=="undefined") {
+				this.model.createView = new UpdateItemModalView({model: this.model});
+			} else {
+				this.model.createView.render();
+			}
 			$("#updateItemModal").modal();
 		}
 	},
 	displayEdit : function() {
 		if (this.model.get("selected")) {
-			this.model.set("updateIntention", "edit");
+			if (typeof(this.model.editView)=="undefined") {
+				this.model.editView = new UpdateItemModalView({model: this.model});
+			} else {
+				this.model.editView.render();
+			}
 			$("#updateItemModal").modal();
 		}
 	},

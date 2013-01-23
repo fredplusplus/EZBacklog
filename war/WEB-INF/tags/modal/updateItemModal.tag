@@ -1,11 +1,13 @@
 <%@ include file="/WEB-INF/jspf/taglibs.jspf"%>
 <%@tag pageEncoding="utf-8"%>
-<%@attribute name="id" required="true"%>
 
-<div id="${id}" class="modal hide fade" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="${id}Label" aria-hidden="true">
+<script src="/static/js/updateItemModal.js" type="text/javascript"></script>
+<div id="updateItemModalContainer" ></div>
+<script type="text/template" id="updateItemModalTemplate">
+<div id="updateItemModal" class="modal hide fade" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="$updateItemModalLabel" aria-hidden="true">
 	<div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-		<h3 id="${id}Label"><spring:message code="modal.title.createItem" /></h3>
+		<h3 id="updateItemModalLabel"><spring:message code="modal.title.createItem" /></h3>
 	</div>
 	<div class="modal-body">
 		<h4>blah </h4>
@@ -30,3 +32,4 @@
 		<button class="btn btn-primary" data-dismiss="modal" aria-hidden="true"><spring:message code="modal.btn.ok" /></button>
 	</div>
 </div>
+</script>

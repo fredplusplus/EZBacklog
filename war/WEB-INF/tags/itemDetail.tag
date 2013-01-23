@@ -1,7 +1,6 @@
 <%@include file="/WEB-INF/jspf/taglibs.jspf"%>
 <%@tag  pageEncoding="utf-8"%>
 <c:set var="deleteModalId" value="deleteModal" />
-<c:set var="updateItemModalId" value="updateItemModal" />
 <script type="text/template" id="itemDetailTemplate">
 <div class="row-fluid">
 	<h3><@if (typeof(shortDescription) != 'undefined') { print(shortDescription); }@></h3>
@@ -91,5 +90,4 @@
 </div>
 <modal:simpleModal id="${deleteModalId}" textKey="modal.text.deleteItem" labelKey="modal.title.confirm"/>
 <modal:updateProgressModal />
-<modal:updateItemModal id="${updateItemModalId}"  />
 </script>
