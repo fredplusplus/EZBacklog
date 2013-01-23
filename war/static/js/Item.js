@@ -66,8 +66,13 @@ ItemDetailView = Backbone.View.extend({
 	displayCreateChild : function() {
 		if (this.model.get("selected")) {
 			if (typeof (this.model.createView) == "undefined") {
+				var child = new ItemModel({
+					ownerEmail : this.model.get("ownerEmail"),
+					parentId : this.model.get("id"),
+					itemLevel : this.model.get("itemLevel") + 1
+				});
 				this.model.createView = new UpdateItemModalView({
-					model : this.model
+					model : child
 				});
 			} else {
 				this.model.createView.render();

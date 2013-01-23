@@ -27,7 +27,7 @@ public class DashboardModuleImpl implements DashboardModule {
 	public ItemAggregation getItemAggregation(long itemLevel) {
 		List<Item> items = itemUpdateModule.getItemByLevel(itemLevel, -1l);
 		ItemAggregation aggregation = new ItemAggregation();
-		aggregation.setLevel(itemLevel);
+		aggregation.setItemLevel(itemLevel);
 		if (items != null) {
 			for (Item item : items) {
 				aggregation.addStatus(item.getStatus());

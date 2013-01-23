@@ -7,7 +7,15 @@
 <div id="updateItemModal" class="modal hide fade" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="$updateItemModalLabel" aria-hidden="true">
 	<div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-		<h3 id="updateItemModalLabel"><spring:message code="modal.title.createItem" /></h3>
+		<h3 id="updateItemModalLabel">
+			<@ if (typeof(id) =='undefined') { @>
+				<@ if (itemLevel==1) {@> <spring:message code="itemAggregation.create.1" /> <@} @>
+				<@ if (itemLevel==2) {@> <spring:message code="itemAggregation.create.2" /> <@} @>
+				<@ if (itemLevel==3) {@> <spring:message code="itemAggregation.create.3" /> <@} @>
+			<@ } else { @>
+				<spring:message code="modal.title.edit" />
+			<@} @>
+		</h3>
 	</div>
 	<div class="modal-body">
 		<h4>blah </h4>

@@ -12,9 +12,9 @@
 	<div class="span5">
 		<h5>
 			<spring:message code="itemAggregation.itemCount"/>
-			<@ if (level==1) {@> <spring:message code="itemAggregation.itemType.1" /> <@} @>
-			<@ if (level==2) {@> <spring:message code="itemAggregation.itemType.2" /> <@} @>
-			<@ if (level==3) {@> <spring:message code="itemAggregation.itemType.3" /> <@} @>
+			<@ if (itemLevel==1) {@> <spring:message code="itemAggregation.itemType.1" /> <@} @>
+			<@ if (itemLevel==2) {@> <spring:message code="itemAggregation.itemType.2" /> <@} @>
+			<@ if (itemLevel==3) {@> <spring:message code="itemAggregation.itemType.3" /> <@} @>
 		</h5>
 		<small>
 			<ul class="inline">
@@ -25,9 +25,9 @@
 	</div>
 	<div class="span5 offset1">
 		<a href="#" data-toggle="modal" data-target="#updateItemModal" class="btn btn-info">
-			<@ if (level==1) {@> <spring:message code="itemAggregation.create.1" /> <@} @>
-			<@ if (level==2) {@> <spring:message code="itemAggregation.create.2" /> <@} @>
-			<@ if (level==3) {@> <spring:message code="itemAggregation.create.3" /> <@} @>
+			<@ if (itemLevel==1) {@> <spring:message code="itemAggregation.create.1" /> <@} @>
+			<@ if (itemLevel==2) {@> <spring:message code="itemAggregation.create.2" /> <@} @>
+			<@ if (itemLevel==3) {@> <spring:message code="itemAggregation.create.3" /> <@} @>
 		</a>
 	</div>
 </script>
