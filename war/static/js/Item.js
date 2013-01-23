@@ -1,3 +1,6 @@
+/**
+ * The basic item model.
+ */
 ItemModel = Backbone.Model.extend({
 	urlRoot : '/f/itemUpdate',
 	defaults : {
@@ -47,6 +50,8 @@ ItemDetailView = Backbone.View.extend({
 		"keyup input[id=burndownPoint]" : "validateBurndownPoint",
 		"click #updateProgressModal .btn-primary" : "submitUpdateProgress",
 		"click #reopenBtn" : "reopenItem",
+		"click #edit" : "displayEdit",
+		"click #createChild" : "displayCreateChild",
 	},
 	deleteItem : function() {
 		$("#waitModal").modal();
@@ -58,6 +63,18 @@ ItemDetailView = Backbone.View.extend({
 				error : function(model, response) {
 				}
 			});
+		}
+	},
+	displayCreateChild : function() {
+		if (this.model.get("selected")) {
+			this.model.set("updateIntention", "create");
+			$("#updateItemModal").modal();
+		}
+	},
+	displayEdit : function() {
+		if (this.model.get("selected")) {
+			this.model.set("updateIntention", "edit");
+			$("#updateItemModal").modal();
 		}
 	},
 	validateBurndownPoint : function() {
@@ -74,8 +91,10 @@ ItemDetailView = Backbone.View.extend({
 		}
 	},
 	displayUpdateProgress : function() {
-		$("#updateProgressModal").modal();
-		return this;
+		if (this.model.get("selected")) {
+			$("#updateProgressModal").modal();
+			return this;
+		}
 	},
 	submitUpdateProgress : function() {
 		if (this.model.get("selected")) {

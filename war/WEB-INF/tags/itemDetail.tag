@@ -1,14 +1,15 @@
-<%@ include file="/WEB-INF/jspf/taglibs.jspf"%>
+<%@include file="/WEB-INF/jspf/taglibs.jspf"%>
 <%@tag  pageEncoding="utf-8"%>
 <c:set var="deleteModalId" value="deleteModal" />
+<c:set var="updateItemModalId" value="updateItemModal" />
 <script type="text/template" id="itemDetailTemplate">
 <div class="row-fluid">
 	<h3><@if (typeof(shortDescription) != 'undefined') { print(shortDescription); }@></h3>
 	<div class="btn-toolbar span5">
 		<div class="btn-group">
 			<@ if (status != 'Deleted') { @>
-				<a href="#" class="btn"><spring:message code="itemDetail.action.edit"/></a>
-				<a href="#" class="btn">Add a child</a>
+				<a href="#" class="btn" id="edit"><spring:message code="itemDetail.action.edit"/></a>
+				<a href="#" class="btn" id="createChild"><spring:message code="itemDetail.action.addChild" /></a>
 				<@if(status=='Open') { @>
 					<a href="#" class="btn" id="updateProgressBtn"><spring:message code="itemDetail.action.updateProgress"/></a>					
 					<a href="#" class="btn" id="resolveBtn"><spring:message code="itemDetail.action.resolve"/></a>
@@ -88,6 +89,7 @@
 		<dd><@= longDescription @></dd>
 	</dl>
 </div>
-<modal:simpleModal id="deleteModal" textKey="modal.text.deleteItem" labelKey="modal.title.confirm"/>
+<modal:simpleModal id="${deleteModalId}" textKey="modal.text.deleteItem" labelKey="modal.title.confirm"/>
 <modal:updateProgressModal />
+<modal:updateItemModal id="${updateItemModalId}"  />
 </script>

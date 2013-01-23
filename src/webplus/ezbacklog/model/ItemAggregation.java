@@ -12,6 +12,7 @@ import webplus.ezbacklog.values.ItemStatus;
 public class ItemAggregation {
 	public static final String MODEL = "ItemAggregation";
 	private long level;
+	private long parentId;
 	private Map<ItemStatus, Long> statusMap;
 	private Map<ItemStatus, Long> pointMap;
 
@@ -25,6 +26,14 @@ public class ItemAggregation {
 		}
 	}
 
+	public void setParentId(long parentId) {
+		this.parentId = parentId;
+	}
+	
+	public long getParentId() {
+		return parentId;
+	}
+	
 	public long getLevel() {
 		return level;
 	}

@@ -5,7 +5,11 @@
 	<div class="row-fluid" id="itemAggregationContainer"></div>
 </div>
 
+<c:set var="createItemModalId" value="createSiblingModal"/>
+
+<div id="${createItemModalId}Container" ></div>
 <script id="itemAggregationTemplate" type="text/template" >
+	<modal:updateItemModal id="${createItemModalId}"/>
 	<div class="span5">
 		<h5>
 			<spring:message code="itemAggregation.itemCount"/>
@@ -21,7 +25,11 @@
 		</small>
 	</div>
 	<div class="span5 offset1">
-		<a href="#myModal" class="btn btn-info">Create a project</a>
+		<a href="#" data-toggle="modal" data-target="#${createItemModalId}" class="btn btn-info">
+			<@ if (level==1) {@> <spring:message code="itemAggregation.create.1" /> <@} @>
+			<@ if (level==2) {@> <spring:message code="itemAggregation.create.2" /> <@} @>
+			<@ if (level==3) {@> <spring:message code="itemAggregation.create.3" /> <@} @>
+		</a>
 	</div>
 </script>
 
