@@ -1,9 +1,9 @@
 <%@ include file="/WEB-INF/jspf/taglibs.jspf"%>
 <%@page contentType="text/html" pageEncoding="utf-8"%>
-<ez:itemAggregation />
+
 <script type="text/javascript" src="/static/js/Item.js" ></script>
-<script type="text/javascript" src="/static/js/breadcrumb.js" ></script>
-<script type="text/javascript" src="/static/js/bender.js" ></script>
+<ez:itemAggregation />
+	
 <div class="container-fluid">
 	<div class="row-fluid" >
 		<div class="span5" id="itemCollectionContainer"></div>

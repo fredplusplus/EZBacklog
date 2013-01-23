@@ -1,4 +1,5 @@
 <%@ include file="/WEB-INF/jspf/taglibs.jspf"%>
+<script type="text/javascript" src="/static/js/breadcrumb.js" ></script>
 <script type="text/template" id="breadCrumbTemplate">
 <div class="row-fluid">
 	<strong class="ez-breadcrumb">

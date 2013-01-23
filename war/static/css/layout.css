@@ -60,6 +60,6 @@ img.bender {
 	padding-left: 10px;
 }
 
-.updateProgressModal dt,.updateProgressModal dd {
+.updateProgressModal dt,.updateProgressModal dd,.updateItemModal dt,.updateItemModal dd {
 	line-height: 30px;
 }

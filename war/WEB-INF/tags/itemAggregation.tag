@@ -24,7 +24,7 @@
 		</small>
 	</div>
 	<div class="span5 offset1">
-		<a href="#" data-toggle="modal" data-target="#updateItemModal" class="btn btn-info">
+		<a href="javascript:void(0);" onclick="displayCreateItemModal();" class="btn btn-info">
 			<@ if (itemLevel==1) {@> <spring:message code="itemAggregation.create.1" /> <@} @>
 			<@ if (itemLevel==2) {@> <spring:message code="itemAggregation.create.2" /> <@} @>
 			<@ if (itemLevel==3) {@> <spring:message code="itemAggregation.create.3" /> <@} @>
@@ -35,5 +35,11 @@
 <script type="text/javascript">
   var itemAggregationModel = new ItemAggregationModel(${ItemAggregation});
   var itemAggregationView = new ItemAggregationView({el: $('#itemAggregationContainer'), model: itemAggregationModel});
-  var createItemView = new UpdateItemModalView({model:itemAggregationModel});
+  var createItemView = new UpdateItemModalView({model:new ItemModel(${ItemAggregation})});
+  createItemView.deactivate();
+  function displayCreateItemModal() {
+	  createItemView.render();
+	  $("#updateItemModal").modal();
+	  return false;
+  }
 </script>
