@@ -5,3 +5,4 @@
 <%@taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@taglib tagdir="/WEB-INF/tags" prefix="ez"%>
 <%@taglib tagdir="/WEB-INF/tags/modal" prefix="modal"%>
+<%@taglib tagdir="/WEB-INF/tags/formControl" prefix="fc"%>

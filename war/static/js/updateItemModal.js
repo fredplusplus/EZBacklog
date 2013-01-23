@@ -16,7 +16,7 @@ UpdateItemModalView = Backbone.View.extend({
 	},
 	validateShortDescription : function() {
 		if (this.model.get("selected")) {
-			var $controlGroup = this.$el.find("#shortDescrptionGroup");
+			var $controlGroup = this.$el.find("#shortDescriptionGroup");
 			var $helpText = $controlGroup.find(".help-block");
 			var value=this.$el.find("#shortDescription").val();
 			if (value.length > 40) {
@@ -34,7 +34,6 @@ UpdateItemModalView = Backbone.View.extend({
 	deactivate : function() {
 		var state = this.model.get("selected");
 		if (this.model.get("selected")) {
-			console.log("deactivating");
 			this.model.set("selected", false);
 		}
 		return state;

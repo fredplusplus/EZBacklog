@@ -2,7 +2,7 @@
 <%@tag pageEncoding="utf-8"%>
 
 <script src="/static/js/updateItemModal.js" type="text/javascript"></script>
-<div id="updateItemModalContainer" ></div>
+<div id="updateItemModalContainer"></div>
 <script type="text/template" id="updateItemModalTemplate">
 <div id="updateItemModal" class=" updateItemModal modal hide fade" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="$updateItemModalLabel" aria-hidden="true">
 	<div class="modal-header">
@@ -33,13 +33,7 @@
 			</dd>
 		</dl>
 		<form class="form-horizontal">
-			<div class="control-group" id="shortDescrptionGroup">
-				<label class="control-label"><spring:message code="modal.input.label.title" /></label>
-				<div class="controls">
-					<input id="shortDescription" type="text" value="<@ print(typeof(shortDescription)=='undefined'? '' : shortDescription) @>">
-					<div class="help-block hide"><spring:message code="modal.validation.maxLength.40" /></div>
-				</div>
-			</div>
+			<fc:textfieldControl labelKey="modal.input.label.title" id="shortDescription" validationKey="modal.validation.maxLength.40" />
 		</form>
 	</div>
 	<div class="modal-footer">
