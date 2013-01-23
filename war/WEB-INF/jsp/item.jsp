@@ -22,6 +22,7 @@
 	<ez:itemList status="Resolved"/>
 	<ez:itemList status="Deleted"/>
 </script>
+<modal:updateProgressModal />
 <ez:itemDetail/>
 <script type="text/javascript">
 	var itemCollection = new ItemCollection(${Items});

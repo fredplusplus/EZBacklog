@@ -89,5 +89,4 @@
 	</dl>
 </div>
 <modal:simpleModal id="${deleteModalId}" textKey="modal.text.deleteItem" labelKey="modal.title.confirm"/>
-<modal:updateProgressModal />
 </script>

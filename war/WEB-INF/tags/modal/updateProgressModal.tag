@@ -1,6 +1,8 @@
 <%@ include file="/WEB-INF/jspf/taglibs.jspf"%>
 <%@tag pageEncoding="utf-8"%>
-
+<script src="/static/js/updateProgressModal.js" type="text/javascript"></script>
+<div id="updateProgressModalContainer"></div>
+<script id="updateProgressModalTemplate" type="text/template">
 <div id="updateProgressModal" class="updateProgressModal modal hide fade" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="updateProgressModalLabel" aria-hidden="true">
 	<div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -29,3 +31,4 @@
 		<button class="btn btn-primary" data-dismiss="modal" aria-hidden="true"><spring:message code="modal.btn.ok" /></button>
 	</div>
 </div>
+</script>

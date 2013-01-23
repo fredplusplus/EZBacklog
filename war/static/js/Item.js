@@ -47,8 +47,6 @@ ItemDetailView = Backbone.View.extend({
 		"click #deleteModal .btn-primary" : "deleteItem",
 		"click #resolveBtn" : "resolveItem",
 		"click #updateProgressBtn" : "displayUpdateProgress",
-		"keyup input[id=burndownPoint]" : "validateBurndownPoint",
-		"click #updateProgressModal .btn-primary" : "submitUpdateProgress",
 		"click #reopenBtn" : "reopenItem",
 		"click #edit" : "displayEdit",
 		"click #createChild" : "displayCreateChild",
@@ -83,39 +81,18 @@ ItemDetailView = Backbone.View.extend({
 				this.model.editView.render();
 			}
 			$("#updateItemModal").modal();
-		}
-	},
-	validateBurndownPoint : function() {
-		var burndownPoint = this.$el.find("#burndownPoint").val();
-		burndownPoint = parseInt(burndownPoint);
-		var $controlGroup = this.$el.find("#burndownPointGroup");
-		var $helpText = this.$el.find("#burndownPointHelp");
-		if (isNaN(burndownPoint)) {
-			$controlGroup.addClass("error");
-			$helpText.show();
-		} else {
-			$controlGroup.removeClass("error");
-			$helpText.hide();
+			return this;
 		}
 	},
 	displayUpdateProgress : function() {
 		if (this.model.get("selected")) {
+			if (typeof(this.model.updateProgressView)=="undefined") {
+				this.model.updateProgressView = new UpdateProgressModalView({model : this.model});
+			} else {
+				this.model.updateProgressView.render();
+			}
 			$("#updateProgressModal").modal();
 			return this;
-		}
-	},
-	submitUpdateProgress : function() {
-		if (this.model.get("selected")) {
-			var burndownPoint = this.$el.find("#burndownPoint").val();
-			burndownPoint = parseInt(burndownPoint);
-			if (isNaN(burndownPoint)) {
-				return this;
-			}
-			var resolvedPoint = this.model.get("resolvedPoint");
-			this.model.set({
-				"resolvedPoint" : resolvedPoint + burndownPoint
-			});
-			return this.saveItem(true);
 		}
 	},
 	resolveItem : function() {
