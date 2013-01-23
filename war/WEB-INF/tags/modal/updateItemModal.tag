@@ -27,8 +27,10 @@
 			</dd>
 			<dt><spring:message code="modal.input.label.parent" /></dt>
 			<dd>
-				<@ if (typeof(parentId)!='undefined') { @>
-				<@= parentId @>
+				<@ if (typeof(parentId)!='undefined' && parentId != 0) { @>
+					<@= parentId @>
+				<@ } else {@>
+					<spring:message code="modal.input.field.none" />
 				<@ } @>
 			</dd>
 		</dl>
