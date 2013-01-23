@@ -52,8 +52,8 @@ ItemDetailView = Backbone.View.extend({
 		"click #createChild" : "displayCreateChild",
 	},
 	deleteItem : function() {
-		$("#waitModal").modal();
 		if (this.model.get("selected")) {
+			$("#waitModal").modal();
 			this.model.destroy({
 				success : function(model, response) {
 					location.reload();
@@ -65,8 +65,10 @@ ItemDetailView = Backbone.View.extend({
 	},
 	displayCreateChild : function() {
 		if (this.model.get("selected")) {
-			if (typeof(this.model.createView)=="undefined") {
-				this.model.createView = new UpdateItemModalView({model: this.model});
+			if (typeof (this.model.createView) == "undefined") {
+				this.model.createView = new UpdateItemModalView({
+					model : this.model
+				});
 			} else {
 				this.model.createView.render();
 			}
@@ -75,8 +77,10 @@ ItemDetailView = Backbone.View.extend({
 	},
 	displayEdit : function() {
 		if (this.model.get("selected")) {
-			if (typeof(this.model.editView)=="undefined") {
-				this.model.editView = new UpdateItemModalView({model: this.model});
+			if (typeof (this.model.editView) == "undefined") {
+				this.model.editView = new UpdateItemModalView({
+					model : this.model
+				});
 			} else {
 				this.model.editView.render();
 			}
@@ -86,8 +90,10 @@ ItemDetailView = Backbone.View.extend({
 	},
 	displayUpdateProgress : function() {
 		if (this.model.get("selected")) {
-			if (typeof(this.model.updateProgressView)=="undefined") {
-				this.model.updateProgressView = new UpdateProgressModalView({model : this.model});
+			if (typeof (this.model.updateProgressView) == "undefined") {
+				this.model.updateProgressView = new UpdateProgressModalView({
+					model : this.model
+				});
 			} else {
 				this.model.updateProgressView.render();
 			}
@@ -111,13 +117,10 @@ ItemDetailView = Backbone.View.extend({
 			return this.saveItem();
 		}
 	},
-	saveItem : function(noRefresh) {
+	saveItem : function() {
 		$("#waitModal").modal();
 		return this.model.save(this.model.toJSON(), {
 			success : function(model, response) {
-				if (noRefresh) {
-					return;
-				}
 				location.reload();
 			},
 			error : function(model, response) {
