@@ -7,6 +7,7 @@ ItemModel = Backbone.Model.extend({
 		"selected" : false,
 		"point" : 0,
 		"resolvedPoint" : 0,
+		"rank" : 0,
 		"status" : 'Open',
 		"shortDescription" : "",
 		"longDescription" : "",

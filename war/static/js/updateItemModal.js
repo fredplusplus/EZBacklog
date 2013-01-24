@@ -6,6 +6,8 @@ UpdateItemModalView = Backbone.View.extend({
 	},
 	events : {
 		"keyup input[id=shortDescription]" : "validateShortDescription",
+		"keyup input[id=rank]" : "validateRank",
+		"keyup input[id=point]" : "validatePoint",
 		"click #updateItemModal #cancelUpdate" : "deactivate",
 		"click #updateItemModal #submitUpdate" : "submitUpdate",
 	},
@@ -18,8 +20,28 @@ UpdateItemModalView = Backbone.View.extend({
 		if (this.model.get("selected")) {
 			var $controlGroup = this.$el.find("#shortDescriptionGroup");
 			var $helpText = $controlGroup.find(".help-block");
-			var value=this.$el.find("#shortDescription").val();
+			var value = this.$el.find("#shortDescription").val();
 			if (value.length > 40) {
+				$controlGroup.addClass("error");
+				$helpText.show();
+			} else {
+				$controlGroup.removeClass("error");
+				$helpText.hide();
+			}
+		}
+	},
+	validateRank : function() {
+		this.validateNonNegative('rank');
+	},
+	validatePoint : function() {
+		this.validateNonNegative('point');
+	},
+	validateNonNegative : function(id) {
+		if (this.model.get("selected")) {
+			var $controlGroup = this.$el.find("#" +id +"Group");
+			var $helpText = $controlGroup.find(".help-block");
+			var value = $controlGroup.find("#" + id).val();
+			if (isNaN(parseInt(value)) || parseInt(value) < 0) {
 				$controlGroup.addClass("error");
 				$helpText.show();
 			} else {

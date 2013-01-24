@@ -78,7 +78,7 @@
 </div>
 <div class="row-fluid">
 	<dl>
-		<dt>Description</dt>
+		<dt><spring:message code="itemDetail.description" /></dt>
 		<dd><@= longDescription @></dd>
 	</dl>
 </div>
