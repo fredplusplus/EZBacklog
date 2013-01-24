@@ -13,7 +13,7 @@ public class DashboardModuleImpl implements DashboardModule {
 	@Autowired
 	private BackloggerModule backloggerModule;
 	@Autowired
-	private ItemUpdateModule itemUpdateModule;
+	private ItemDisplayModule itemDisplayModule;
 
 	@Override
 	public Dashboard getDashboard() {
@@ -25,7 +25,7 @@ public class DashboardModuleImpl implements DashboardModule {
 
 	@Override
 	public ItemAggregation getItemAggregationByParentId(long itemLevel, long parentId) {
-		List<Item> items = itemUpdateModule.getItemByParentId(parentId);
+		List<Item> items = itemDisplayModule.getItemByParentId(parentId);
 		ItemAggregation aggregation = new ItemAggregation();
 		aggregation.setItemLevel(itemLevel);
 		if (items != null) {

@@ -9,9 +9,12 @@
 	<bean id="authenticationFilterBean" class="webplus.ezbacklog.filter.AuthenticationFilter" />
 
 	<bean id="dashboardModule" class="webplus.ezbacklog.module.DashboardModuleImpl" />
-	<bean id="itemUpdateModule" class="webplus.ezbacklog.module.ItemUpdateModuleImpl"
+	<bean id="itemDisplayModule" class="webplus.ezbacklog.module.ItemDisplayModuleImpl"
 		scope="request">
 		<aop:scoped-proxy />
+	</bean>
+	
+	<bean id="itemUpdateModule" class="webplus.ezbacklog.module.ItemUpdateModuleImpl">
 	</bean>
 
 	<bean id="backloggerModule" class="webplus.ezbacklog.module.BackloggerModuleImpl"

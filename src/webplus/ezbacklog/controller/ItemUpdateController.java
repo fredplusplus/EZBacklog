@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import webplus.ezbacklog.model.Item;
+import webplus.ezbacklog.module.ItemDisplayModule;
 import webplus.ezbacklog.module.ItemUpdateModule;
 import webplus.ezbacklog.values.ItemStatus;
 
@@ -25,6 +26,8 @@ public class ItemUpdateController {
 	@Autowired
 	private Gson gson;
 	@Autowired
+	private ItemDisplayModule itemDisplayModule;
+	@Autowired
 	private ItemUpdateModule itemUpdateModule;
 
 	/**
@@ -37,7 +40,6 @@ public class ItemUpdateController {
 	@RequestMapping(value = "/f/itemUpdate", method = RequestMethod.POST)
 	public String createItem(@RequestBody String itemString, Model model) {
 		Item item = gson.fromJson(itemString, Item.class);
-
 		model.addAttribute(JSON_MODEL, gson.toJson(item));
 		return "json";
 	}
@@ -67,7 +69,7 @@ public class ItemUpdateController {
 	 */
 	@RequestMapping(value = "/f/itemUpdate/{id}", method = RequestMethod.DELETE)
 	public String deleteItem(@PathVariable("id") Long id, Model model) {
-		Item item = itemUpdateModule.getItemById(id);
+		Item item = itemDisplayModule.getItemById(id);
 		item.setStatus(ItemStatus.Deleted);
 		itemUpdateModule.saveItem(item);
 		model.addAttribute(JSON_MODEL, gson.toJson(item));

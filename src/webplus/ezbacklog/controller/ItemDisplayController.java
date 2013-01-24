@@ -11,7 +11,7 @@ import webplus.ezbacklog.model.Item;
 import webplus.ezbacklog.model.ItemAggregation;
 import webplus.ezbacklog.model.SiteNav;
 import webplus.ezbacklog.module.DashboardModule;
-import webplus.ezbacklog.module.ItemUpdateModule;
+import webplus.ezbacklog.module.ItemDisplayModule;
 import webplus.ezbacklog.module.SiteNavModule;
 import webplus.ezbacklog.values.ItemLevel;
 
@@ -27,7 +27,7 @@ public class ItemDisplayController {
 	@Autowired
 	private SiteNavModule sitenavModule;
 	@Autowired
-	private ItemUpdateModule itemUpdateModule;
+	private ItemDisplayModule itemDisplayModule;
 	@Autowired
 	private DashboardModule dashboardModule;
 
@@ -39,7 +39,7 @@ public class ItemDisplayController {
 		ItemAggregation itemAggregation = dashboardModule.getItemAggregationByParentId(ItemLevel.PROJECT, -1);
 		model.addAttribute(ItemAggregation.MODEL, gson.toJson(itemAggregation));
 
-		List<Item> items = itemUpdateModule.getItemByParentId(-1);
+		List<Item> items = itemDisplayModule.getItemByParentId(-1);
 		model.addAttribute("Items", gson.toJson(items));
 
 		return "item";
