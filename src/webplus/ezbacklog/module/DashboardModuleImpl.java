@@ -19,13 +19,13 @@ public class DashboardModuleImpl implements DashboardModule {
 	public Dashboard getDashboard() {
 		Dashboard dashboard = new Dashboard();
 		dashboard.setBacklogger(backloggerModule.getCurrencyBacklogger());
-		dashboard.setItemAggregation(getItemAggregation(ItemLevel.PROJECT));
+		dashboard.setItemAggregation(getItemAggregationByParentId(ItemLevel.PROJECT, -1));
 		return dashboard;
 	}
 
 	@Override
-	public ItemAggregation getItemAggregation(long itemLevel) {
-		List<Item> items = itemUpdateModule.getItemByLevel(itemLevel, -1l);
+	public ItemAggregation getItemAggregationByParentId(long itemLevel, long parentId) {
+		List<Item> items = itemUpdateModule.getItemByParentId(parentId);
 		ItemAggregation aggregation = new ItemAggregation();
 		aggregation.setItemLevel(itemLevel);
 		if (items != null) {

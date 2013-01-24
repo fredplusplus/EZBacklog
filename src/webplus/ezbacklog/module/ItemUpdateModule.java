@@ -3,7 +3,6 @@ package webplus.ezbacklog.module;
 import java.util.List;
 
 import webplus.ezbacklog.model.Item;
-import webplus.ezbacklog.values.ItemLevel;
 
 /**
  * Item update logic.
@@ -14,13 +13,11 @@ public interface ItemUpdateModule {
 	 * Returns a list of item on a certain leve. All items are owned by the
 	 * current user.
 	 * 
-	 * @param level
-	 *            {@link ItemLevel}
 	 * @param parentId
 	 *            optional parent id.
 	 * @return
 	 */
-	List<Item> getItemByLevel(Long level, Long parentId);
+	List<Item> getItemByParentId(long parentId);
 
 	/**
 	 * Gets an item with specific Id. It must be owned by the current user.

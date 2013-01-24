@@ -36,13 +36,12 @@ public class ItemDisplayController {
 		SiteNav sitenav = sitenavModule.getSiteNav();
 		sitenav.setProject(true);
 		model.addAttribute(SiteNav.BEAN_NAME, gson.toJson(sitenav));
-		ItemAggregation itemAggregation = dashboardModule.getItemAggregation(ItemLevel.PROJECT);
+		ItemAggregation itemAggregation = dashboardModule.getItemAggregationByParentId(ItemLevel.PROJECT, -1);
 		model.addAttribute(ItemAggregation.MODEL, gson.toJson(itemAggregation));
 
-		List<Item> items = itemUpdateModule.getItemByLevel(ItemLevel.PROJECT, null);
+		List<Item> items = itemUpdateModule.getItemByParentId(-1);
 		model.addAttribute("Items", gson.toJson(items));
 
 		return "item";
 	}
-
 }

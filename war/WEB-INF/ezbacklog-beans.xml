@@ -5,12 +5,15 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd  
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
-	
+
 	<bean id="authenticationFilterBean" class="webplus.ezbacklog.filter.AuthenticationFilter" />
-	
+
 	<bean id="dashboardModule" class="webplus.ezbacklog.module.DashboardModuleImpl" />
-	<bean id="itemUpdateModule" class="webplus.ezbacklog.module.ItemUpdateModuleImpl" />
-	
+	<bean id="itemUpdateModule" class="webplus.ezbacklog.module.ItemUpdateModuleImpl"
+		scope="request">
+		<aop:scoped-proxy />
+	</bean>
+
 	<bean id="backloggerModule" class="webplus.ezbacklog.module.BackloggerModuleImpl"
 		scope="request">
 		<aop:scoped-proxy />
@@ -20,5 +23,5 @@
 		scope="request" init-method="init">
 		<aop:scoped-proxy />
 	</bean>
-	
+
 </beans>

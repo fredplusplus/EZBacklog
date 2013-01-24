@@ -4,7 +4,9 @@ import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.jdo.JDOObjectNotFoundException;
 import javax.jdo.PersistenceManager;
@@ -16,12 +18,17 @@ import webplus.ezbacklog.exceptions.DBException;
 import webplus.ezbacklog.exceptions.ValidationException;
 import webplus.ezbacklog.model.Item;
 import webplus.ezbacklog.service.PMF;
-import webplus.ezbacklog.values.ItemLevel;
 
 public class ItemUpdateModuleImpl implements ItemUpdateModule {
 
 	@Autowired
 	private BackloggerModule backloggerModule;
+
+	private Map<Long, List<Item>> getItemByParentIdResultCache;
+
+	public ItemUpdateModuleImpl() {
+		getItemByParentIdResultCache = new HashMap<Long, List<Item>>();
+	}
 
 	@Override
 	public Item getItemById(Long id) {
@@ -36,15 +43,21 @@ public class ItemUpdateModuleImpl implements ItemUpdateModule {
 	}
 
 	@Override
-	public List<Item> getItemByLevel(Long level, Long parentId) {
-		String filter = null;
-		if (level == ItemLevel.PROJECT) {
-			filter = "ownerEmail == '%s'";
+	public List<Item> getItemByParentId(long parentId) {
+		if (getItemByParentIdResultCache.get(parentId) != null) {
+			return getItemByParentIdResultCache.get(parentId);
 		} else {
-			filter = "ownerEmail == '%s' && parentId == %ld";
+			String filter = null;
+			if (parentId <= 0) {
+				filter = "ownerEmail == '%s'";
+			} else {
+				filter = "ownerEmail == '%s' && parentId == %ld";
+			}
+			filter = String.format(filter, backloggerModule.getCurrencyBacklogger().getEmail(), parentId);
+			List<Item> items = query(filter);
+			getItemByParentIdResultCache.put(parentId, items);
+			return items;
 		}
-		filter = String.format(filter, backloggerModule.getCurrencyBacklogger().getEmail(), parentId);
-		return query(filter);
 	}
 
 	@SuppressWarnings("unchecked")
