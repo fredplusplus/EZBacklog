@@ -26,15 +26,7 @@
 	<div class="span4">
 		<dl class="dl-horizontal">
 			<dt><spring:message code="itemDetail.level"/></dt>
-			<dd>
-				<@if (itemLevel == 1) { @>
-					<spring:message code="itemLevel.1" />
-				<@} else if (itemLevel == 2) { @>
-					<spring:message code="itemLevel.2" />
-				<@} else if (itemLevel == 3) { @>
-					<spring:message code="itemLevel.3" />
-				<@} @>
-			</dd>
+			<dd><item:itemType key="itemLevel" displayPrefix="itemLevel" /></dd>
 			<dt><spring:message code="itemDetail.createdate"/></dt>
 			<dd><@ if (typeof(creationDate) != 'undefined') {print(formatDate(creationDate));} @></dd>
 			<dt><spring:message code="itemDetail.status"/></dt>

@@ -8,13 +8,10 @@
 <modal:updateItemModal/>
 
 <script id="itemAggregationTemplate" type="text/template" >
-	
 	<div class="span5">
 		<h5>
 			<spring:message code="itemAggregation.itemCount"/>
-			<@ if (itemLevel==1) {@> <spring:message code="itemAggregation.itemType.1" /> <@} @>
-			<@ if (itemLevel==2) {@> <spring:message code="itemAggregation.itemType.2" /> <@} @>
-			<@ if (itemLevel==3) {@> <spring:message code="itemAggregation.itemType.3" /> <@} @>
+			<item:itemType key="itemLevel" displayPrefix="itemAggregation.itemType" />
 		</h5>
 		<small>
 			<ul class="inline">
@@ -25,9 +22,7 @@
 	</div>
 	<div class="span5 offset1">
 		<a href="javascript:void(0);" onclick="displayCreateItemModal();" class="btn btn-info">
-			<@ if (itemLevel==1) {@> <spring:message code="itemAggregation.create.1" /> <@} @>
-			<@ if (itemLevel==2) {@> <spring:message code="itemAggregation.create.2" /> <@} @>
-			<@ if (itemLevel==3) {@> <spring:message code="itemAggregation.create.3" /> <@} @>
+			<item:itemType key="itemLevel" displayPrefix="itemAggregation.create" />
 		</a>
 	</div>
 </script>

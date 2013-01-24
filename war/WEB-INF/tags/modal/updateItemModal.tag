@@ -9,9 +9,7 @@
 		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 		<h3 id="updateItemModalLabel">
 			<@ if (typeof(id) =='undefined') { @>
-				<@ if (itemLevel==1) {@> <spring:message code="itemAggregation.create.1" /> <@} @>
-				<@ if (itemLevel==2) {@> <spring:message code="itemAggregation.create.2" /> <@} @>
-				<@ if (itemLevel==3) {@> <spring:message code="itemAggregation.create.3" /> <@} @>
+				<item:itemType key="itemLevel" displayPrefix="itemAggregation.create" />
 			<@ } else { @>
 				<spring:message code="modal.title.edit" />
 			<@} @>
@@ -21,9 +19,7 @@
 		<dl class="dl-horizontal">
 			<dt><spring:message code="itemDetail.level" /></dt>
 			<dd>
-				<@ if (itemLevel==1) {@> <spring:message code="itemLevel.1" /> <@} @>
-				<@ if (itemLevel==2) {@> <spring:message code="itemLevel.2" /> <@} @>
-				<@ if (itemLevel==3) {@> <spring:message code="itemLevel.3" /> <@} @>
+				<item:itemType key="itemLevel" displayPrefix="itemLevel" />
 			</dd>
 			<dt><spring:message code="modal.input.label.parent" /></dt>
 			<dd>
