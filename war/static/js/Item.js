@@ -78,9 +78,7 @@ ItemDetailView = Backbone.View.extend({
 			} else {
 				this.model.createView.render();
 			}
-			$("#updateItemModal").modal({
-				keyboard : false
-			});
+			$("#updateItemModal").modal();
 		}
 	},
 	displayEdit : function() {
@@ -92,9 +90,7 @@ ItemDetailView = Backbone.View.extend({
 			} else {
 				this.model.editView.render();
 			}
-			$("#updateItemModal").modal({
-				keyboard : false
-			});
+			$("#updateItemModal").modal();
 			return this;
 		}
 	},

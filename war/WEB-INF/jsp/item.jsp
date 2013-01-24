@@ -2,7 +2,7 @@
 <%@page contentType="text/html" pageEncoding="utf-8"%>
 
 <script type="text/javascript" src="/static/js/Item.js" ></script>
-<ez:itemAggregation />
+<item:itemAggregation />
 	
 <div class="container-fluid">
 	<div class="row-fluid" >
@@ -15,15 +15,16 @@
 		</div>
 	</div>
 </div>
-<ez:breadcrumb />
+<item:breadcrumb />
 <ez:bender />
 <script type="text/template" id="itemCollectionTemplate" >
-	<ez:itemList status="Open"/>
-	<ez:itemList status="Resolved"/>
-	<ez:itemList status="Deleted"/>
+	<item:itemList status="Open"/>
+	<item:itemList status="Resolved"/>
+	<item:itemList status="Deleted"/>
 </script>
 <modal:updateProgressModal />
-<ez:itemDetail/>
+<modal:pleaseWaitModal />
+<item:itemDetail/>
 <script type="text/javascript">
 	var itemCollection = new ItemCollection(${Items});
 	var itemCollectionView = new ItemCollectionView({el : $("#itemCollectionContainer"), collection: itemCollection});

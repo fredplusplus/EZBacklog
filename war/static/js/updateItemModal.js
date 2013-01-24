@@ -56,7 +56,7 @@ UpdateItemModalView = Backbone.View.extend({
 			this.model.set("longDescription",this.$el.find("textarea#longDescription").val());
 			this.model.set("rank",this.$el.find("input#rank").val());
 			this.model.set("point",this.$el.find("input#point").val());
-			console.log(this.model.toJSON());
+			this.syncSaveItem();
 		}
 		this.deactivate();
 	},
@@ -66,5 +66,15 @@ UpdateItemModalView = Backbone.View.extend({
 			this.model.set("selected", false);
 		}
 		return state;
+	},
+	syncSaveItem : function() {
+		$("#waitModal").modal();
+		return this.model.save(this.model.toJSON(), {
+			success : function(model, response) {
+				//location.reload();
+			},
+			error : function(model, response) {
+			}
+		});
 	}
 });

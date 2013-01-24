@@ -4,7 +4,7 @@
 <script src="/static/js/updateItemModal.js" type="text/javascript"></script>
 <div id="updateItemModalContainer"></div>
 <script type="text/template" id="updateItemModalTemplate">
-<div id="updateItemModal" class=" updateItemModal modal hide fade" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="$updateItemModalLabel" aria-hidden="true">
+<div id="updateItemModal" data-keyboard="false" class="updateItemModal modal hide fade" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="$updateItemModalLabel" aria-hidden="true">
 	<div class="modal-header">
 		<h3 id="updateItemModalLabel">
 			<@ if (typeof(id) =='undefined') { @>
