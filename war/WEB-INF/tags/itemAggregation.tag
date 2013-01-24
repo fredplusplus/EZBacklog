@@ -34,7 +34,7 @@
   createItemView.deactivate();
   function displayCreateItemModal() {
 	  createItemView.render();
-	  $("#updateItemModal").modal();
+	  $("#updateItemModal").modal({keyboard:false});
 	  return false;
   }
 </script>

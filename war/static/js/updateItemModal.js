@@ -20,7 +20,7 @@ UpdateItemModalView = Backbone.View.extend({
 		if (this.model.get("selected")) {
 			var $controlGroup = this.$el.find("#shortDescriptionGroup");
 			var $helpText = $controlGroup.find(".help-block");
-			var value = this.$el.find("#shortDescription").val();
+			var value = this.$el.find("input#shortDescription").val();
 			if (value.length > 40) {
 				$controlGroup.addClass("error");
 				$helpText.show();
@@ -38,7 +38,7 @@ UpdateItemModalView = Backbone.View.extend({
 	},
 	validateNonNegative : function(id) {
 		if (this.model.get("selected")) {
-			var $controlGroup = this.$el.find("#" +id +"Group");
+			var $controlGroup = this.$el.find("#" + id + "Group");
 			var $helpText = $controlGroup.find(".help-block");
 			var value = $controlGroup.find("#" + id).val();
 			if (isNaN(parseInt(value)) || parseInt(value) < 0) {
@@ -51,6 +51,13 @@ UpdateItemModalView = Backbone.View.extend({
 		}
 	},
 	submitUpdate : function() {
+		if (this.model.get("selected")) {
+			this.model.set("shortDescription",this.$el.find("input#shortDescription").val());
+			this.model.set("longDescription",this.$el.find("textarea#longDescription").val());
+			this.model.set("rank",this.$el.find("input#rank").val());
+			this.model.set("point",this.$el.find("input#point").val());
+			console.log(this.model.toJSON());
+		}
 		this.deactivate();
 	},
 	deactivate : function() {
