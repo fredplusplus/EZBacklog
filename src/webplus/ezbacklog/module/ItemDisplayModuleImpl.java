@@ -14,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import webplus.ezbacklog.model.Item;
 import webplus.ezbacklog.service.PMF;
-import webplus.ezbacklog.values.ItemLevel;
 
 public class ItemDisplayModuleImpl implements ItemDisplayModule {
 
