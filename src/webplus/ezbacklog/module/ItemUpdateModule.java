@@ -1,7 +1,6 @@
 package webplus.ezbacklog.module;
 
 import webplus.ezbacklog.model.Item;
-import webplus.ezbacklog.values.ActivityType;
 
 /**
  * Item update logic.

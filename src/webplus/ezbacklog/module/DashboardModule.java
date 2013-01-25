@@ -7,5 +7,5 @@ public interface DashboardModule {
 
 	Dashboard getDashboard();
 
-	ItemAggregation getItemAggregationByParentId(long itemLevel, long parentId);
+	ItemAggregation getItemAggregationByParentId(long parentId);
 }

@@ -6,12 +6,15 @@
 	<h3><@if (typeof(shortDescription) != 'undefined') { print(shortDescription); }@></h3>
 	<div class="btn-toolbar span5">
 		<div class="btn-group">
+			<@if (itemLevel < 3) { @>
+				<@if (status == 'Open') {@>
+					<a href="#" class="btn" id="createChild"><spring:message code="itemDetail.action.addChild" /></a>
+				<@ } @>
+				<a href="/f/item/<@=id@>" class="btn" id="seeChildren"><spring:message code="itemDetail.action.seeChildren" /></a>
+			<@ } @>
 			<@ if (status != 'Deleted') { @>
 				<a href="#" class="btn" id="edit"><spring:message code="itemDetail.action.edit"/></a>
 				<@if(status=='Open') { @>
-					<@if(itemLevel < 3) {@>
-						<a href="#" class="btn" id="createChild"><spring:message code="itemDetail.action.addChild" /></a>
-					<@ } @>
 					<a href="#" class="btn" id="updateProgressBtn"><spring:message code="itemDetail.action.updateProgress"/></a>					
 					<a href="#" class="btn" id="resolveBtn"><spring:message code="itemDetail.action.resolve"/></a>
 				<@ } else if (status=='Resolved'){ @>

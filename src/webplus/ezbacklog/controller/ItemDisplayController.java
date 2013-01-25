@@ -13,7 +13,6 @@ import webplus.ezbacklog.model.SiteNav;
 import webplus.ezbacklog.module.DashboardModule;
 import webplus.ezbacklog.module.ItemDisplayModule;
 import webplus.ezbacklog.module.SiteNavModule;
-import webplus.ezbacklog.values.ItemLevel;
 
 import com.google.gson.Gson;
 
@@ -36,7 +35,7 @@ public class ItemDisplayController {
 		SiteNav sitenav = sitenavModule.getSiteNav();
 		sitenav.setProject(true);
 		model.addAttribute(SiteNav.BEAN_NAME, gson.toJson(sitenav));
-		ItemAggregation itemAggregation = dashboardModule.getItemAggregationByParentId(ItemLevel.PROJECT, -1);
+		ItemAggregation itemAggregation = dashboardModule.getItemAggregationByParentId(-1);
 		model.addAttribute(ItemAggregation.MODEL, gson.toJson(itemAggregation));
 
 		List<Item> items = itemDisplayModule.getItemByParentId(-1);
