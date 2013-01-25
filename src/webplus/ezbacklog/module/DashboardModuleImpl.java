@@ -25,12 +25,17 @@ public class DashboardModuleImpl implements DashboardModule {
 
 	@Override
 	public ItemAggregation getItemAggregationByParentId(long parentId) {
-		List<Item> items = itemDisplayModule.getItemByParentId(parentId);
+		Item parent = null;
 		ItemAggregation aggregation = new ItemAggregation();
-		if (items == null || items.isEmpty()) {
+		if (parentId > 0) {
+			parent = itemDisplayModule.getItemById(parentId);
+		}
+		List<Item> items = itemDisplayModule.getItemByParentId(parentId);
+		if (parent == null) {
 			aggregation.setItemLevel(ItemLevel.PROJECT);
 		} else {
-			aggregation.setItemLevel(items.get(0).getItemLevel());
+			aggregation.setItemLevel(parent.getItemLevel() + 1L);
+			aggregation.setParentId(parentId);
 		}
 		if (items != null) {
 			for (Item item : items) {

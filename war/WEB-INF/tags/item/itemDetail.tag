@@ -7,10 +7,10 @@
 	<div class="btn-toolbar span5">
 		<div class="btn-group">
 			<@if (itemLevel < 3) { @>
+				<a href="/f/items/<@=id@>" class="btn" id="seeChildren"><spring:message code="itemDetail.action.seeChildren" /></a>
 				<@if (status == 'Open') {@>
 					<a href="#" class="btn" id="createChild"><spring:message code="itemDetail.action.addChild" /></a>
 				<@ } @>
-				<a href="/f/items/<@=id@>" class="btn" id="seeChildren"><spring:message code="itemDetail.action.seeChildren" /></a>
 			<@ } @>
 			<@ if (status != 'Deleted') { @>
 				<a href="#" class="btn" id="edit"><spring:message code="itemDetail.action.edit"/></a>
