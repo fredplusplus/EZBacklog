@@ -71,7 +71,7 @@ UpdateItemModalView = Backbone.View.extend({
 		$("#waitModal").modal();
 		return this.model.save(this.model.toJSON(), {
 			success : function(model, response) {
-				//location.reload();
+				location.reload();
 			},
 			error : function(model, response) {
 			}

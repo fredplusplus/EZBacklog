@@ -1,5 +1,7 @@
 package webplus.ezbacklog.module;
 
+import static webplus.ezbacklog.values.ItemLevel.PROJECT;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import webplus.ezbacklog.model.Item;
 import webplus.ezbacklog.service.PMF;
+import webplus.ezbacklog.values.ItemLevel;
 
 public class ItemDisplayModuleImpl implements ItemDisplayModule {
 
@@ -42,7 +45,7 @@ public class ItemDisplayModuleImpl implements ItemDisplayModule {
 		} else {
 			String filter = null;
 			if (parentId <= 0) {
-				filter = "ownerEmail == '%s'";
+				filter = "ownerEmail == '%s' && itemLevel == " + PROJECT;
 			} else {
 				filter = "ownerEmail == '%s' && parentId == %ld";
 			}

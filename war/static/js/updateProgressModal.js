@@ -45,6 +45,7 @@ UpdateProgressModalView = Backbone.View.extend({
 		$("#waitModal").modal();
 		return this.model.save(this.model.toJSON(), {
 			success : function(model, response) {
+				$("#waitModal").modal('hide');
 			},
 			error : function(model, response) {
 			}

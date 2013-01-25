@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import webplus.ezbacklog.model.Item;
+import webplus.ezbacklog.module.ActivityUpdateModule;
 import webplus.ezbacklog.module.ItemDisplayModule;
 import webplus.ezbacklog.module.ItemUpdateModule;
 import webplus.ezbacklog.values.ItemStatus;
@@ -29,6 +30,8 @@ public class ItemUpdateController {
 	private ItemDisplayModule itemDisplayModule;
 	@Autowired
 	private ItemUpdateModule itemUpdateModule;
+	@Autowired
+	private ActivityUpdateModule activityUpdateModule;
 
 	/**
 	 * Handler for item creation.
@@ -40,6 +43,8 @@ public class ItemUpdateController {
 	@RequestMapping(value = "/f/itemUpdate", method = RequestMethod.POST)
 	public String createItem(@RequestBody String itemString, Model model) {
 		Item item = gson.fromJson(itemString, Item.class);
+		itemUpdateModule.createItem(item);
+		activityUpdateModule.addCreationAcitivity(item);
 		model.addAttribute(JSON_MODEL, gson.toJson(item));
 		return "json";
 	}
@@ -56,6 +61,7 @@ public class ItemUpdateController {
 	public String updateItem(@PathVariable("id") String id, @RequestBody String itemString, Model model) {
 		Item item = gson.fromJson(itemString, Item.class);
 		itemUpdateModule.saveItem(item);
+		activityUpdateModule.addUpdateActivity(item);
 		model.addAttribute(JSON_MODEL, gson.toJson(item));
 		return "json";
 	}

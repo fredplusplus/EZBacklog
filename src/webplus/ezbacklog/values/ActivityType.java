@@ -1,11 +1,7 @@
 package webplus.ezbacklog.values;
 
 public enum ActivityType {
-	UpdateProgress, // burndown
-	Edit, // edit item
+	Update, // edit item or change status
 	Create, // create item
 	Comment, // comment item
-	Resolve, // resolve item
-	Reopen, // reopen item
-	Delete, // delete item
 }

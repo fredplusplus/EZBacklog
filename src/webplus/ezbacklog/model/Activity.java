@@ -21,7 +21,7 @@ public class Activity {
 	@Persistent
 	private long itemId;
 	@Persistent
-	private long point;
+	private long resolvedPoint;
 	@Persistent
 	private String description;
 	@Persistent
@@ -59,12 +59,12 @@ public class Activity {
 		this.itemId = itemId;
 	}
 
-	public long getPoint() {
-		return point;
+	public long getResolvedPoint() {
+		return resolvedPoint;
 	}
 
-	public void setPoint(long point) {
-		this.point = point;
+	public void setResolvedPoint(long point) {
+		this.resolvedPoint = point;
 	}
 
 	public String getDescription() {

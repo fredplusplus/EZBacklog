@@ -77,10 +77,10 @@
 	</div>
 </div>
 <div class="row-fluid">
-	<dl>
-		<dt><spring:message code="itemDetail.description" /></dt>
-		<dd><@= longDescription @></dd>
-	</dl>
+	<strong><spring:message code="itemDetail.description" /></strong>
+</div>
+<div class="row-fluid">
+	<pre class="offset1 span11"><@= longDescription @></pre>
 </div>
 <modal:simpleModal id="${deleteModalId}" textKey="modal.text.deleteItem" labelKey="modal.title.confirm"/>
 </script>

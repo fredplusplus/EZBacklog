@@ -77,6 +77,14 @@ public class Item {
 		return point;
 	}
 
+	public Long getResolvedPoint() {
+		return resolvedPoint;
+	}
+
+	public void setResolvedPoint(Long resolvedPoint) {
+		this.resolvedPoint = resolvedPoint;
+	}
+
 	public void setPoint(Long point) {
 		this.point = point;
 	}

@@ -18,6 +18,8 @@ public class ItemUpdateModuleImpl implements ItemUpdateModule {
 
 	@Autowired
 	private BackloggerModule backloggerModule;
+	@Autowired
+	private ItemDisplayModule itemDisplayModule;
 
 	@Override
 	public void saveItem(Item item) {
@@ -41,6 +43,31 @@ public class ItemUpdateModuleImpl implements ItemUpdateModule {
 		}
 	}
 
+	@Override
+	public void createItem(Item item) {
+		item.setCreationDate(Calendar.getInstance().getTime());
+		item.setId(null);
+		item.setOwnerEmail(backloggerModule.getCurrencyBacklogger().getEmail());
+		validateCreation(item);
+		saveItem(item);
+	}
+
+	private void validateCreation(Item item) {
+		Long parentId = item.getParentId();
+		try {
+			if (parentId != null) {
+				if (parentId <= 0) {
+					item.setParentId(null);
+				} else {
+					Item parentItem = itemDisplayModule.getItemById(parentId);
+					checkNotNull(parentItem, "There is no valid parent item to attach to.");
+				}
+			}
+		} catch (Exception e) {
+			throw new ValidationException(e);
+		}
+	}
+
 	private void validate(Item item) {
 		try {
 			String ownerEmail = backloggerModule.getCurrencyBacklogger().getEmail();
@@ -53,4 +80,5 @@ public class ItemUpdateModuleImpl implements ItemUpdateModule {
 			throw new ValidationException(e);
 		}
 	}
+
 }
