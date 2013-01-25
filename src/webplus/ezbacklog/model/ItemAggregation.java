@@ -13,6 +13,7 @@ public class ItemAggregation {
 	public static final String MODEL = "ItemAggregation";
 	private Long itemLevel;
 	private Long parentId;
+	private String parentShortDescription;
 	private Long grandParentId;
 	private Map<ItemStatus, Long> statusMap;
 	private Map<ItemStatus, Long> pointMap;
@@ -25,16 +26,17 @@ public class ItemAggregation {
 			statusMap.put(s, 0l);
 			pointMap.put(s, 0l);
 		}
+		parentShortDescription = "";
 	}
 
 	public void setParentId(Long parentId) {
 		this.parentId = parentId;
 	}
-	
+
 	public Long getParentId() {
 		return parentId;
 	}
-	
+
 	public Long getItemLevel() {
 		return itemLevel;
 	}
@@ -65,5 +67,13 @@ public class ItemAggregation {
 
 	public void setGrandParentId(Long grandParentId) {
 		this.grandParentId = grandParentId;
+	}
+
+	public String getParentShortDescription() {
+		return parentShortDescription;
+	}
+
+	public void setParentShortDescription(String parentShortDescription) {
+		this.parentShortDescription = parentShortDescription;
 	}
 }

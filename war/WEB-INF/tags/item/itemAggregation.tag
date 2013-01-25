@@ -21,9 +21,14 @@
 		</small>
 	</div>
 	<div class="span5 offset1" style="text-align: right">
+		<div class="row-fluid">
 		<a href="javascript:void(0);" onclick="displayCreateItemModal();" class="btn btn-info">
 			<item:itemType key="itemLevel" displayPrefix="itemAggregation.create" />
 		</a>
+		</div>
+		<div class="row-fluid">
+			<h4><@if (typeof(parentShortDescription) !='undefined') {print(parentShortDescription);}@></h4>
+		</div>
 	</div>
 </script>
 

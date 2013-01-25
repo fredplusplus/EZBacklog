@@ -37,6 +37,7 @@ public class DashboardModuleImpl implements DashboardModule {
 			aggregation.setItemLevel(parent.getItemLevel() + 1L);
 			aggregation.setParentId(parentId);
 			aggregation.setGrandParentId(parent.getParentId());
+			aggregation.setParentShortDescription(parent.getShortDescription());
 		}
 		if (items != null) {
 			for (Item item : items) {
