@@ -46,7 +46,7 @@ public class ItemDisplayModuleImpl implements ItemDisplayModule {
 			if (parentId <= 0) {
 				filter = "ownerEmail == '%s' && itemLevel == " + PROJECT;
 			} else {
-				filter = "ownerEmail == '%s' && parentId == %ld";
+				filter = "ownerEmail == '%s' && parentId == %d";
 			}
 			filter = String.format(filter, backloggerModule.getCurrencyBacklogger().getEmail(), parentId);
 			List<Item> items = query(filter);

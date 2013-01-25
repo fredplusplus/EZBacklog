@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import webplus.ezbacklog.model.Item;
@@ -31,14 +32,19 @@ public class ItemDisplayController {
 	private DashboardModule dashboardModule;
 
 	@RequestMapping("/f/items")
-	public String loadPage(Model model) {
+	public String loadPrject(Model model) {
+		return load(-1L, model);
+	}
+
+	@RequestMapping("/f/items/{id}")
+	public String load(@PathVariable("id") Long id, Model model) {
 		SiteNav sitenav = sitenavModule.getSiteNav();
 		sitenav.setProject(true);
 		model.addAttribute(SiteNav.BEAN_NAME, gson.toJson(sitenav));
-		ItemAggregation itemAggregation = dashboardModule.getItemAggregationByParentId(-1);
+		ItemAggregation itemAggregation = dashboardModule.getItemAggregationByParentId(id);
 		model.addAttribute(ItemAggregation.MODEL, gson.toJson(itemAggregation));
 
-		List<Item> items = itemDisplayModule.getItemByParentId(-1);
+		List<Item> items = itemDisplayModule.getItemByParentId(id);
 		model.addAttribute("Items", gson.toJson(items));
 
 		return "item";

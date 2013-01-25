@@ -58,7 +58,7 @@ public class ItemUpdateController {
 	 * @return
 	 */
 	@RequestMapping(value = "/f/itemUpdate/{id}", method = RequestMethod.PUT)
-	public String updateItem(@PathVariable("id") String id, @RequestBody String itemString, Model model) {
+	public String updateItem(@RequestBody String itemString, Model model) {
 		Item item = gson.fromJson(itemString, Item.class);
 		itemUpdateModule.saveItem(item);
 		activityUpdateModule.addUpdateActivity(item);
