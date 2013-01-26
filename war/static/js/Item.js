@@ -24,7 +24,7 @@ ItemModel = Backbone.Model.extend({
 ItemCollection = Backbone.Collection.extend({
 	model : ItemModel,
 	comparator : function(item) {
-		return item.get("rank");
+		return -item.get("rank");
 	}
 });
 
