@@ -24,11 +24,7 @@ ItemModel = Backbone.Model.extend({
 ItemCollection = Backbone.Collection.extend({
 	model : ItemModel,
 	comparator : function(item) {
-		return [
-				String.fromCharCode.apply(String, _.map(item.get("status")
-						.split(""), function(c) {
-					return 0xffff - c.charCodeAt();
-				})), item.get("rank") ];
+		return item.get("rank");
 	}
 });
 

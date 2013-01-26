@@ -15,6 +15,7 @@ public class ItemAggregation {
 	private Long parentId;
 	private String parentShortDescription;
 	private Long grandParentId;
+	private ItemStatus parentStatus;
 	private Map<ItemStatus, Long> statusMap;
 	private Map<ItemStatus, Long> pointMap;
 
@@ -75,5 +76,13 @@ public class ItemAggregation {
 
 	public void setParentShortDescription(String parentShortDescription) {
 		this.parentShortDescription = parentShortDescription;
+	}
+
+	public ItemStatus getParentStatus() {
+		return parentStatus;
+	}
+
+	public void setParentStatus(ItemStatus parentStatus) {
+		this.parentStatus = parentStatus;
 	}
 }
