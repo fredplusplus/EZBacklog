@@ -12,7 +12,7 @@
 	<label class="control-label"><spring:message code="${labelKey}" /></label>
 	<div class="controls">
 		<input id="${id}" type="text" class="span${width}"
-			value="<@ print(typeof(${id})=='undefined'?'':${id}) @> ">
+			value="<@ print(typeof(${id})=='undefined'?'':${id}) @>">
 		<c:if test="${!empty validationKey}">
 			<div class="help-block hide">
 				<spring:message code="${validationKey}" />
