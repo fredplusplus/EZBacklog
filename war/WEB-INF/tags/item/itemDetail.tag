@@ -25,6 +25,14 @@
 		</div>
 	</div>
 </div>
+<div class="row-fluid notes">
+	<strong class="span2 offset1"><spring:message code="itemDetail.linkToMe"/></strong>
+	<@ if (typeof(parentId) =='undefined') { @>
+		<a href="/f/items/-1/<@=id@>" class="span7 "><spring:message code="rootUrl"/>/f/items/-1/<@=id@></a>
+	<@} else { @>
+		<a href="/f/items/<@=parentId@>/<@=id@>" class="span7 "><spring:message code="rootUrl"/>/f/items/<@=parentId@>/<@=id@></a>
+	<@} @>
+</div>
 <div class="row-fluid">
 	<div class="span4">
 		<dl class="dl-horizontal">
