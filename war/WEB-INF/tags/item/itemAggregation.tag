@@ -15,8 +15,15 @@
 		</h5>
 		<small>
 			<ul class="inline">
-				<li><spring:message code="itemAggregation.openOverview"/></li>
-				<li><spring:message code="itemAggregation.resolvedOverview"/></li>
+				<c:if test="${Backlogger.showActive}">
+					<li><spring:message code="itemAggregation.openOverview"/></li>
+				</c:if>
+				<c:if test="${Backlogger.showResolved}">
+					<li><spring:message code="itemAggregation.resolvedOverview"/></li>
+				</c:if>
+				<c:if test="${Backlogger.showDeleted}">
+					<li><spring:message code="itemAggregation.deletedOverview"/></li>
+				</c:if>
 			</ul>
 		</small>
 	</div>

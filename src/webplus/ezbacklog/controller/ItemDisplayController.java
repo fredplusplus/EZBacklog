@@ -8,9 +8,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import webplus.ezbacklog.model.Backlogger;
 import webplus.ezbacklog.model.Item;
 import webplus.ezbacklog.model.ItemAggregation;
 import webplus.ezbacklog.model.SiteNav;
+import webplus.ezbacklog.module.BackloggerModule;
 import webplus.ezbacklog.module.DashboardModule;
 import webplus.ezbacklog.module.ItemDisplayModule;
 import webplus.ezbacklog.module.SiteNavModule;
@@ -30,6 +32,8 @@ public class ItemDisplayController {
 	private ItemDisplayModule itemDisplayModule;
 	@Autowired
 	private DashboardModule dashboardModule;
+	@Autowired
+	private BackloggerModule backloggerModule;
 
 	@RequestMapping("/f/items")
 	public String loadPrject(Model model) {
@@ -43,10 +47,9 @@ public class ItemDisplayController {
 		model.addAttribute(SiteNav.BEAN_NAME, gson.toJson(sitenav));
 		ItemAggregation itemAggregation = dashboardModule.getItemAggregationByParentId(id);
 		model.addAttribute(ItemAggregation.MODEL, gson.toJson(itemAggregation));
-
+		model.addAttribute(Backlogger.MODEL, backloggerModule.getCurrencyBacklogger());
 		List<Item> items = itemDisplayModule.getItemByParentId(id);
 		model.addAttribute("Items", gson.toJson(items));
-
 		return "item";
 	}
 }

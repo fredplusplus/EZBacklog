@@ -45,17 +45,21 @@ public class ItemDisplayModuleImpl implements ItemDisplayModule {
 			return getItemByParentIdResultCache.get(parentId);
 		} else {
 			String filter = null;
+			List<Item> items = null;
 			if (parentId <= 0) {
 				filter = "ownerEmail == '%s' && itemLevel == " + ItemLevel.PROJECT;
 			} else {
 				filter = "ownerEmail == '%s' && parentId == %d";
 			}
 			String statusFilter = constructStatusFilter();
-			if (statusFilter.length() > 0) {
+			if (statusFilter == null) {
+				return items;
+			}
+			else if (statusFilter.length() > 0) {
 				filter += " && " + statusFilter;
 			}
 			filter = String.format(filter, backloggerModule.getCurrencyBacklogger().getEmail(), parentId);
-			List<Item> items = query(filter);
+			items = query(filter);
 			getItemByParentIdResultCache.put(parentId, items);
 			return items;
 		}
@@ -84,6 +88,8 @@ public class ItemDisplayModuleImpl implements ItemDisplayModule {
 				}
 			}
 			statusFilter = "(" + statusFilter + ")";
+		} else {
+			statusFilter = null;
 		}
 
 		return statusFilter;
