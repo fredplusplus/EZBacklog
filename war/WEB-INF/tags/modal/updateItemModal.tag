@@ -32,12 +32,12 @@
 				<@ } @>
 			</dd>
 		</dl>
-		<form class="form-horizontal">
+		<div class="form-horizontal">
 			<fc:textfieldControl labelKey="modal.input.label.title" id="shortDescription" validationKey="modal.validation.maxLength.40" />
 			<fc:textfieldControl labelKey="modal.input.label.point" id="point" validationKey="modal.validation.non.negative.number" width="3"/>			
 			<fc:textfieldControl labelKey="itemDetail.rank" id="rank" validationKey="modal.validation.non.negative.number" width="3" />
 			<fc:textareaControl labelKey="itemDetail.description" id="longDescription" rows="5"/>
-		</form>
+		</div>
 	</div>
 	<div class="modal-footer">
 		<button id="cancelUpdate" class="btn" data-dismiss="modal" aria-hidden="true"><spring:message code="modal.btn.close" /></button>

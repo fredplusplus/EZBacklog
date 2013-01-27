@@ -16,15 +16,15 @@
 			<dt><spring:message code="itemDetail.resolvedpoint" /></dt>
 			<dd><@= resolvedPoint @></dd>
 		</dl>
-		<form class="form-horizontal">
-		<div class="control-group" id="burndownPointGroup">
-			<label class="control-label"><spring:message code="itemDetail.burndownpoint" /></label>
-			<div class="controls">
-				<input type="text" id="burndownPoint" class="input-mini">
-				<div class="help-block hide" id="burndownPointHelp"><spring:message code="modal.validation.integer" /></div>
+		<div class="form-horizontal">
+			<div class="control-group" id="burndownPointGroup">
+				<label class="control-label"><spring:message code="itemDetail.burndownpoint" /></label>
+				<div class="controls">
+					<input type="text" id="burndownPoint" class="input-mini">
+					<div class="help-block hide" id="burndownPointHelp"><spring:message code="modal.validation.integer" /></div>
+				</div>
 			</div>
 		</div>
-		</form>
 	</div>
 	<div class="modal-footer">
 		<button class="btn" data-dismiss="modal" aria-hidden="true"><spring:message code="modal.btn.close" /></button>

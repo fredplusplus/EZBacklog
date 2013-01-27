@@ -1,8 +1,3 @@
-DescriptionModel = Backbone.Model.extend({
-	initialize : function() {
-	}
-});
-
 DescriptionView = Backbone.View.extend({
 	initialize : function() {
 		this.$el = $("#descriptionContainer");

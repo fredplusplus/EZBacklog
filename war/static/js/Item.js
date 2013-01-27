@@ -32,8 +32,6 @@ ItemDetailView = Backbone.View.extend({
 	initialize : function() {
 		this.$el = $("#itemDetailContainer");
 		this.template = _.template($("#itemDetailTemplate").html());
-		this.model.bind('change', this.render, this);
-		_.bindAll(this, "render");
 		this.render();
 	},
 	render : function() {
@@ -48,7 +46,8 @@ ItemDetailView = Backbone.View.extend({
 		"click #edit" : "displayEdit",
 		"click #createChild" : "displayCreateChild",
 	},
-	deleteItem : function() {
+	deleteItem : function(event) {
+		event.preventDefault();
 		if (this.model.get("selected")) {
 			$("#waitModal").modal();
 			this.model.destroy({
@@ -60,7 +59,8 @@ ItemDetailView = Backbone.View.extend({
 			});
 		}
 	},
-	displayCreateChild : function() {
+	displayCreateChild : function(event) {
+		event.preventDefault();
 		if (this.model.get("selected")) {
 			if (typeof (this.model.createView) == "undefined") {
 				var child = new ItemModel({
@@ -77,7 +77,8 @@ ItemDetailView = Backbone.View.extend({
 			$("#updateItemModal").modal();
 		}
 	},
-	displayEdit : function() {
+	displayEdit : function(event) {
+		event.preventDefault();
 		if (this.model.get("selected")) {
 			if (typeof (this.model.editView) == "undefined") {
 				this.model.editView = new UpdateItemModalView({
@@ -90,7 +91,8 @@ ItemDetailView = Backbone.View.extend({
 			return this;
 		}
 	},
-	displayUpdateProgress : function() {
+	displayUpdateProgress : function(event) {
+		event.preventDefault();
 		if (this.model.get("selected")) {
 			if (typeof (this.model.updateProgressView) == "undefined") {
 				this.model.updateProgressView = new UpdateProgressModalView({
@@ -162,6 +164,7 @@ ItemCollectionView = Backbone.View.extend({
 			"selected" : true
 		});
 		// create views and attach to model.
+		// detail view
 		if (typeof (model.detailView) == 'undefined') {
 			model.detailView = new ItemDetailView({
 				model : model
@@ -169,14 +172,23 @@ ItemCollectionView = Backbone.View.extend({
 		} else {
 			model.detailView.render();
 		}
+		//dscription view
 		if (typeof (model.descriptionView) == 'undefined') {
-			console.log(model.get("longDescription"))
 			model.descriptionView = new DescriptionView({
 				model : model
 			});
 		} else {
 			model.descriptionView.render();
 		}
+		//progress view
+		if (typeof (model.progressView) == 'undefined') {
+			model.progressView = new ProgressView({
+				model : model
+			});
+		} else {
+			model.progressView.render();
+		}
+		// breadcrumb view
 		if (typeof (model.breadcrumbView) == 'undefined') {
 			model.breadcrumbView = new BreadCrumbView({
 				model : model

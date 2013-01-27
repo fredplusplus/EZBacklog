@@ -65,19 +65,5 @@
 		</dl>
 	</div>
 </div>
-<div class="row-fluid">
-	<div class="span1"><strong><spring:message code="itemDetail.progress" /></strong></div>
-	<div class="span8 offset1">
-		<div class="progress">
-			<@if (point == 0) { point = 1; } @>
-			<@if (resolvedPoint <= point) { @>
-				<div class="bar bar-success" style="width: <@= (resolvedPoint * 100) / point@>%" />
-			<@ } else { @>
-				<div class="bar bar-success" style="width: <@= (point * 100) / resolvedPoint@>%" />
-				<div class="bar bar-warning" style="width: <@= ((resolvedPoint - point) * 100) / resolvedPoint@>%" />
-			<@ } @>
-		</div>
-	</div>
-</div>
 <modal:simpleModal id="${deleteModalId}" textKey="modal.text.deleteItem" labelKey="modal.title.confirm"/>
 </script>

@@ -38,14 +38,15 @@ UpdateProgressModalView = Backbone.View.extend({
 			this.model.set({
 				"resolvedPoint" : resolvedPoint + burndownPoint
 			});
-			return this.asyncSaveItem();
+			return this.saveItem();
 		}
 	},
-	asyncSaveItem : function() {
+	saveItem : function() {
 		$("#waitModal").modal();
 		return this.model.save(this.model.toJSON(), {
 			success : function(model, response) {
 				$("#waitModal").modal('hide');
+				location.reload();
 			},
 			error : function(model, response) {
 			}

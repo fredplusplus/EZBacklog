@@ -74,3 +74,8 @@ img.bender {
 .settingContainer .setting-group {
 	margin-left: 25px;
 }
+
+.itemTabsContainer .nav-tabs .active a,
+.itemTabsContainer .nav-tabs .active a:hover {
+	background: #fbfbfb;
+}
