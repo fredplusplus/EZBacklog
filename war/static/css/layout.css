@@ -45,9 +45,13 @@ img.bender {
 	background: #e3eff6;
 }
 
-.itemBoxRank {
+.itemBox .topPadding {
 	padding-top: 4px;
-	padding-left: 4px;
+}
+
+.itemBoxId {
+	padding-top: 6px;
+	padding-left: 8px;
 }
 
 .shortDesc {
