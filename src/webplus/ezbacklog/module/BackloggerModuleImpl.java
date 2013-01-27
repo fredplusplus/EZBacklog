@@ -34,10 +34,19 @@ public class BackloggerModuleImpl implements BackloggerModule {
 			backlogger = new Backlogger();
 			backlogger.setEmail(email);
 			backlogger.setJoinDate(Calendar.getInstance().getTime());
+			backlogger.setShowActive(true);
+			backlogger.setShowDeleted(false);
+			backlogger.setShowResolved(true);
 			pm.makePersistent(backlogger);
 		} finally {
 			pm.close();
 		}
+	}
+
+	@Override
+	public void updatePreference() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
