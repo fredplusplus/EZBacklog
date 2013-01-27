@@ -8,7 +8,7 @@
 		 data-id="<@=item.id@>" data-level="<@=item.itemLevel@>"
 		 id="itemBox_<@=item.id@>">
 		<div class="span2 itemBoxId">
-				<h5><@=item.id@></h5>
+			<h5><@=item.id@></h5>
 		</div>
 		<div class="span9">
 			<div class="shortDesc row-fluid">
