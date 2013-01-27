@@ -10,19 +10,20 @@ import javax.jdo.annotations.PrimaryKey;
  * A user model of ezbacklog.
  * 
  */
-@PersistenceCapable(detachable = "true")
+@PersistenceCapable
 public class Backlogger {
+	public static final String MODEL = "Backlogger";
 	@PrimaryKey
 	@Persistent
 	private String email;
 	@Persistent
 	private Date joinDate;
 	@Persistent
-	private Boolean showActive;
+	private boolean showActive;
 	@Persistent
-	private Boolean showResolved;
+	private boolean showResolved;
 	@Persistent
-	private Boolean showDeleted;
+	private boolean showDeleted;
 
 	public String getEmail() {
 		return email;
@@ -40,27 +41,27 @@ public class Backlogger {
 		this.joinDate = joinDate;
 	}
 
-	public Boolean getShowActive() {
+	public boolean getShowActive() {
 		return showActive;
 	}
 
-	public void setShowActive(Boolean showActive) {
+	public void setShowActive(boolean showActive) {
 		this.showActive = showActive;
 	}
 
-	public Boolean getShowResolved() {
+	public boolean getShowResolved() {
 		return showResolved;
 	}
 
-	public void setShowResolved(Boolean showResolved) {
+	public void setShowResolved(boolean showResolved) {
 		this.showResolved = showResolved;
 	}
 
-	public Boolean getShowDeleted() {
+	public boolean getShowDeleted() {
 		return showDeleted;
 	}
 
-	public void setShowDeleted(Boolean showDeleted) {
+	public void setShowDeleted(boolean showDeleted) {
 		this.showDeleted = showDeleted;
 	}
 

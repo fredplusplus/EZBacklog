@@ -7,5 +7,5 @@ public interface BackloggerModule {
 
 	void registerBacklogger();
 
-	void updatePreference();
+	void updatePreference(Backlogger prefs);
 }

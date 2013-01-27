@@ -63,3 +63,10 @@ img.bender {
 .updateProgressModal dt,.updateProgressModal dd,.updateItemModal dt,.updateItemModal dd {
 	line-height: 30px;
 }
+
+.settingContainer .setting-content {
+	min-height: 400px;
+}
+.settingContainer .setting-group {
+	margin-left: 25px;
+}

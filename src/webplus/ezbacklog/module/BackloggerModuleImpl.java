@@ -1,5 +1,7 @@
 package webplus.ezbacklog.module;
 
+import static com.google.common.base.Preconditions.checkArgument;
+
 import java.util.Calendar;
 
 import javax.jdo.JDOObjectNotFoundException;
@@ -28,25 +30,43 @@ public class BackloggerModuleImpl implements BackloggerModule {
 	public void registerBacklogger() {
 		String email = userService.getCurrentUser().getEmail();
 		PersistenceManager pm = PMF.get().getPersistenceManager();
+		boolean needCreateNewUser = false;
 		try {
 			backlogger = pm.detachCopy(pm.getObjectById(Backlogger.class, email));
 		} catch (JDOObjectNotFoundException e) {
+			needCreateNewUser = true;
+		}
+		if (needCreateNewUser) {
 			backlogger = new Backlogger();
 			backlogger.setEmail(email);
 			backlogger.setJoinDate(Calendar.getInstance().getTime());
 			backlogger.setShowActive(true);
-			backlogger.setShowDeleted(false);
 			backlogger.setShowResolved(true);
-			pm.makePersistent(backlogger);
-		} finally {
-			pm.close();
+			backlogger.setShowDeleted(false);
+			saveBacklogger(backlogger);
 		}
 	}
 
 	@Override
-	public void updatePreference() {
-		// TODO Auto-generated method stub
-		
+	public void updatePreference(Backlogger prefs) {
+		validatePrefs(prefs);
+		backlogger.setShowActive(prefs.getShowActive());
+		backlogger.setShowResolved(prefs.getShowResolved());
+		backlogger.setShowDeleted(prefs.getShowDeleted());
+		saveBacklogger(backlogger);
+	}
+
+	private void validatePrefs(Backlogger prefs) {
+		checkArgument(backlogger.getEmail().equalsIgnoreCase(prefs.getEmail()));
+	}
+
+	private void saveBacklogger(Backlogger backlogger) {
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+		try {
+			pm.makePersistent(backlogger);
+		} finally {
+			pm.close();
+		}
 	}
 
 }

@@ -23,7 +23,6 @@
 	<item:itemList status="Deleted"/>
 </script>
 <modal:updateProgressModal />
-<modal:pleaseWaitModal />
 <item:itemDetail/>
 <script type="text/javascript">
 	var itemCollection = new ItemCollection(${Items});

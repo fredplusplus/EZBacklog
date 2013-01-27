@@ -8,16 +8,16 @@
 	<c:set var="width" value="12"/>
 </c:if>
 <div class="row-fluid">
-<div class="control-group" id="${id}Group">
-	<label class="control-label"><spring:message code="${labelKey}" /></label>
-	<div class="controls">
-		<input id="${id}" type="text" class="span${width}"
-			value="<@ print(typeof(${id})=='undefined'?'':${id}) @>">
-		<c:if test="${!empty validationKey}">
-			<div class="help-block hide">
-				<spring:message code="${validationKey}" />
-			</div>
-		</c:if>
+	<div class="control-group" id="${id}Group">
+		<label class="control-label"><spring:message code="${labelKey}" /></label>
+		<div class="controls">
+			<input id="${id}" type="text" class="span${width}"
+				value="<@ print(typeof(${id})=='undefined'?'':${id}) @>">
+			<c:if test="${!empty validationKey}">
+				<div class="help-block hide">
+					<spring:message code="${validationKey}" />
+				</div>
+			</c:if>
+		</div>
 	</div>
-</div>
 </div>

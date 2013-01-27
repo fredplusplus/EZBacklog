@@ -28,6 +28,7 @@
 		<script src="/static/js/sitewide.js"></script>
 	</head>
 	<body style="background: #fbfbfb">
+		<modal:pleaseWaitModal />
 		<tiles:insertAttribute name="sitenav" />
 		<tiles:insertAttribute name="body" />
 		<tiles:insertAttribute name="footer" />

@@ -12,6 +12,7 @@ import webplus.ezbacklog.model.Item;
 import webplus.ezbacklog.module.ActivityUpdateModule;
 import webplus.ezbacklog.module.ItemDisplayModule;
 import webplus.ezbacklog.module.ItemUpdateModule;
+import webplus.ezbacklog.values.Constants;
 import webplus.ezbacklog.values.ItemStatus;
 
 import com.google.gson.Gson;
@@ -23,7 +24,6 @@ import com.google.gson.Gson;
  */
 @Controller
 public class ItemUpdateController {
-	private static final String JSON_MODEL = "ez_json";
 	@Autowired
 	private Gson gson;
 	@Autowired
@@ -45,7 +45,7 @@ public class ItemUpdateController {
 		Item item = gson.fromJson(itemString, Item.class);
 		itemUpdateModule.createItem(item);
 		activityUpdateModule.addCreationAcitivity(item);
-		model.addAttribute(JSON_MODEL, gson.toJson(item));
+		model.addAttribute(Constants.JSON_MODEL, gson.toJson(item));
 		return "json";
 	}
 
@@ -62,7 +62,7 @@ public class ItemUpdateController {
 		Item item = gson.fromJson(itemString, Item.class);
 		itemUpdateModule.saveItem(item);
 		activityUpdateModule.addUpdateActivity(item);
-		model.addAttribute(JSON_MODEL, gson.toJson(item));
+		model.addAttribute(Constants.JSON_MODEL, gson.toJson(item));
 		return "json";
 	}
 
@@ -78,7 +78,7 @@ public class ItemUpdateController {
 		Item item = itemDisplayModule.getItemById(id);
 		item.setStatus(ItemStatus.Deleted);
 		itemUpdateModule.saveItem(item);
-		model.addAttribute(JSON_MODEL, gson.toJson(item));
+		model.addAttribute(Constants.JSON_MODEL, gson.toJson(item));
 		return "json";
 	}
 }
