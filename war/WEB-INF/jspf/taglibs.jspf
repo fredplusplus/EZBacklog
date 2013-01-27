@@ -7,3 +7,4 @@
 <%@taglib tagdir="/WEB-INF/tags/modal" prefix="modal"%>
 <%@taglib tagdir="/WEB-INF/tags/formControl" prefix="fc"%>
 <%@taglib tagdir="/WEB-INF/tags/item" prefix="item"%>
+<%@taglib tagdir="/WEB-INF/tags/tabs" prefix="tab"%>

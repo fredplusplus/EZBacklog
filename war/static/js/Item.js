@@ -169,6 +169,14 @@ ItemCollectionView = Backbone.View.extend({
 		} else {
 			model.detailView.render();
 		}
+		if (typeof (model.descriptionView) == 'undefined') {
+			console.log(model.get("longDescription"))
+			model.descriptionView = new DescriptionView({
+				model : model
+			});
+		} else {
+			model.descriptionView.render();
+		}
 		if (typeof (model.breadcrumbView) == 'undefined') {
 			model.breadcrumbView = new BreadCrumbView({
 				model : model
@@ -176,5 +184,6 @@ ItemCollectionView = Backbone.View.extend({
 		} else {
 			model.breadcrumbView.render();
 		}
+		$("#itemTabsContainer").show();
 	}
 });
