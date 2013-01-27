@@ -4,7 +4,9 @@
 <@ _.each(items, function(item) { @>
 	<@ if (item.status == '${status}') { @>
 	<@ ${status}displayed = true @>
-	<div class="row-fluid itemBox <@if (item.selected) {print(' selected') }@>" data-id="<@=item.id@>" data-level="<@=item.itemLevel@>">
+	<div class="row-fluid itemBox <@if (item.selected) {print(' selected') }@>" 
+		 data-id="<@=item.id@>" data-level="<@=item.itemLevel@>"
+		 id="itemBox_<@=item.id@>">
 		<div class="span2 itemBoxId">
 				<h5><@=item.id@></h5>
 		</div>

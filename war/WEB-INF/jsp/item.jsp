@@ -35,4 +35,7 @@
 	var itemCollection = new ItemCollection(${Items});
 	var itemCollectionView = new ItemCollectionView({el : $("#itemCollectionContainer"), collection: itemCollection});
 	var benderView = new BenderView({collection: itemCollection});
+	<c:if test="${!empty DefaultSelectId}">
+		$("#itemBox_"+'${DefaultSelectId}').click();
+	</c:if>
 </script>

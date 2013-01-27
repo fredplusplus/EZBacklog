@@ -40,8 +40,8 @@ public class ItemDisplayController {
 		return load(-1L, model);
 	}
 
-	@RequestMapping("/f/items/{id}")
-	public String load(@PathVariable("id") Long id, Model model) {
+	@RequestMapping("/f/items/{id}/{defaultSelectId}")
+	public String load(@PathVariable("id") Long id, @PathVariable("defaultSelectId") Long defaultSelectId, Model model) {
 		SiteNav sitenav = sitenavModule.getSiteNav();
 		sitenav.setProject(true);
 		model.addAttribute(SiteNav.BEAN_NAME, gson.toJson(sitenav));
@@ -50,6 +50,12 @@ public class ItemDisplayController {
 		model.addAttribute(Backlogger.MODEL, backloggerModule.getCurrencyBacklogger());
 		List<Item> items = itemDisplayModule.getItemByParentId(id);
 		model.addAttribute("Items", gson.toJson(items));
+		model.addAttribute("DefaultSelectId", defaultSelectId);
 		return "item";
+	}
+
+	@RequestMapping("/f/items/{id}")
+	public String load(@PathVariable("id") Long id, Model model) {
+		return load(id, null, model);
 	}
 }
