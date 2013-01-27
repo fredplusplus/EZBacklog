@@ -1,7 +1,6 @@
 package webplus.ezbacklog.module;
 
-import static webplus.ezbacklog.values.ItemLevel.PROJECT;
-
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,8 +11,11 @@ import javax.jdo.Query;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import webplus.ezbacklog.model.Backlogger;
 import webplus.ezbacklog.model.Item;
 import webplus.ezbacklog.service.PMF;
+import webplus.ezbacklog.values.ItemLevel;
+import webplus.ezbacklog.values.ItemStatus;
 
 public class ItemDisplayModuleImpl implements ItemDisplayModule {
 
@@ -44,15 +46,47 @@ public class ItemDisplayModuleImpl implements ItemDisplayModule {
 		} else {
 			String filter = null;
 			if (parentId <= 0) {
-				filter = "ownerEmail == '%s' && itemLevel == " + PROJECT;
+				filter = "ownerEmail == '%s' && itemLevel == " + ItemLevel.PROJECT;
 			} else {
 				filter = "ownerEmail == '%s' && parentId == %d";
+			}
+			String statusFilter = constructStatusFilter();
+			if (statusFilter.length() > 0) {
+				filter += " && " + statusFilter;
 			}
 			filter = String.format(filter, backloggerModule.getCurrencyBacklogger().getEmail(), parentId);
 			List<Item> items = query(filter);
 			getItemByParentIdResultCache.put(parentId, items);
 			return items;
 		}
+	}
+
+	private String constructStatusFilter() {
+		Backlogger backlogger = backloggerModule.getCurrencyBacklogger();
+		String statusFilter = "";
+		List<String> status = new ArrayList<String>();
+		String format = "status == '%s'";
+		if (backlogger.getShowActive()) {
+			status.add(String.format(format, ItemStatus.Open.name()));
+		}
+		if (backlogger.getShowResolved()) {
+			status.add(String.format(format, ItemStatus.Resolved.name()));
+		}
+		if (backlogger.getShowDeleted()) {
+			status.add(String.format(format, ItemStatus.Deleted.name()));
+		}
+		if (status.size() > 0) {
+			for (int i = 0; i < status.size(); i++) {
+				if (i == 0) {
+					statusFilter += status.get(i);
+				} else {
+					statusFilter += " || " + status.get(i);
+				}
+			}
+			statusFilter = "(" + statusFilter + ")";
+		}
+
+		return statusFilter;
 	}
 
 	@SuppressWarnings("unchecked")
