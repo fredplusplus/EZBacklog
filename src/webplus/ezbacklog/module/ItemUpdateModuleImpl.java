@@ -8,6 +8,7 @@ import java.util.Calendar;
 import javax.jdo.PersistenceManager;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.util.HtmlUtils;
 
 import webplus.ezbacklog.exceptions.DBException;
 import webplus.ezbacklog.exceptions.ValidationException;
@@ -33,6 +34,8 @@ public class ItemUpdateModuleImpl implements ItemUpdateModule {
 			item.setResolveDate(null);
 			break;
 		}
+		item.setLongDescription(HtmlUtils.htmlEscape(item.getLongDescription()));
+		item.setShortDescription(HtmlUtils.htmlEscape(item.getShortDescription()));
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		try {
 			pm.makePersistent(item);
