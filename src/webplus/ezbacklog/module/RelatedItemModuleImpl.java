@@ -11,6 +11,7 @@ import javax.jdo.Query;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import webplus.ezbacklog.exceptions.DBException;
 import webplus.ezbacklog.exceptions.ValidationException;
 import webplus.ezbacklog.model.RelatedItem;
 import webplus.ezbacklog.module.interfaces.BackloggerModule;
@@ -37,6 +38,15 @@ public class RelatedItemModuleImpl implements RelatedItemModule {
 		relatedItem.setId(null);
 		relatedItem.setCreateDate(Calendar.getInstance().getTime());
 		relatedItem.setCreatorEmail(backloggerModule.getCurrencyBacklogger().getEmail());
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+		try {
+			pm.makePersistent(relatedItem);
+		} catch (Exception e) {
+			throw new DBException(e);
+		} finally {
+			pm.close();
+		}
+
 	}
 
 	private void validate(RelatedItem relatedItem) {

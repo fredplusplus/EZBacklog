@@ -1,4 +1,5 @@
 RelatedItemModel = Backbone.Model.extend({
+	urlRoot : '/f/relatedItems',
 	initialize : function() {
 	}
 });
@@ -11,18 +12,27 @@ RelatedItemCollection = Backbone.Collection.extend({
 });
 
 /**
- * the view. contains an Item and a RelatedItemCollection.
- * Maintains relationship between the 2.
+ * the view. contains an Item and a RelatedItemCollection. Maintains
+ * relationship between the 2.
  */
 RelatedItemView = Backbone.View.extend({
+	events : {
+		"click button#addALink" : "addALink",
+	},
 	initialize : function() {
 		this.$el = $("#relatedItemContainer");
+		_.bindAll(this, "renderContent");
+		this.collection = new RelatedItemCollection();
+		this.collection.url = "/f/relatedItems/" + this.model.get("id");
+		this.collection.bind('add', this.renderContent, this);
+		this.initialized = false;
 		this.render();
 	},
 	render : function() {
-		if (typeof (this.collection) == 'undefined') {
+		if (!this.initialized) {
 			this.renderLoading();
 			this.refreshRelated();
+			this.initialized = true;
 		} else {
 			this.renderContent();
 		}
@@ -32,22 +42,30 @@ RelatedItemView = Backbone.View.extend({
 		this.$el.html(this.template(this.model.toJSON()));
 	},
 	renderContent : function() {
-		this.template = _.template($("#relatedItemTemplate").html());
-		this.$el.html(this.template({
-			relatedItems : this.collection.toJSON()
-		}));
+		if (this.model.get("selected")) {
+			this.template = _.template($("#relatedItemTemplate").html());
+			if (typeof (this.collection) != 'undefined') {
+				this.$el.html(this.template({
+					relatedItems : this.collection.toJSON()
+				}));
+			}
+		}
 	},
 	refreshRelated : function() {
-		console.log("refresh");
-		this.collection = new RelatedItemCollection();
-		this.collection.url = "/f/relatedItems/" + this.model.get("id");
 		this.collection.fetch({
-			success : function(collection, response) {
-				console.log("ok");
-			},
-			error : function(collection, response) {
-				console.log("error");
-			}
+			success : this.renderContent
 		});
+	},
+	addALink : function() {
+		if (this.model.get("selected")) {
+			var link = $('input#addALinkInput').val();
+			// TODO: validate
+			var relatedItem = new RelatedItemModel({
+				"relatedItem" : link,
+				"itemId" : this.model.get("id")
+			});
+			this.collection.add(relatedItem);
+			relatedItem.save(relatedItem.toJSON());
+		}
 	}
 });

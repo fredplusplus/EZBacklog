@@ -2,6 +2,7 @@ package webplus.ezbacklog.model;
 
 import java.util.Date;
 
+import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
@@ -13,7 +14,7 @@ import javax.jdo.annotations.PrimaryKey;
 @PersistenceCapable
 public class RelatedItem {
 	@PrimaryKey
-	@Persistent
+	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
 	private Long id;
 	@Persistent
 	private Long itemId;

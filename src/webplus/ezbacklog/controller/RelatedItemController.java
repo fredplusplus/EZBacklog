@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -26,10 +27,31 @@ public class RelatedItemController {
 	@Autowired
 	private RelatedItemModule relatedItemModule;
 
+	/**
+	 * Fetch all related items for itemId.
+	 * 
+	 * @param itemId
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = "/f/relatedItems/{itemId}", method = RequestMethod.GET)
 	public String loadAllItems(@PathVariable("itemId") Long itemId, Model model) {
 		List<RelatedItem> relatedItems = relatedItemModule.fecthRelatedItems(itemId);
 		model.addAttribute(Constants.JSON_MODEL, gson.toJson(relatedItems));
+		return "json";
+	}
+
+	/**
+	 * Create a related item.
+	 * 
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value = "/f/relatedItems", method = RequestMethod.POST)
+	public String createaRelatedItem(@RequestBody String relatedItemJson, Model model) {
+		RelatedItem relatedItem = gson.fromJson(relatedItemJson, RelatedItem.class);
+		relatedItemModule.addRelatedItem(relatedItem);
+		model.addAttribute(Constants.JSON_MODEL, gson.toJson(relatedItem));
 		return "json";
 	}
 }
