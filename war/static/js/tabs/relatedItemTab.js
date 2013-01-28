@@ -43,10 +43,10 @@ RelatedItemView = Backbone.View.extend({
 		this.collection.url = "/f/relatedItems/" + this.model.get("id");
 		this.collection.fetch({
 			success : function(collection, response) {
-
+				console.log("ok");
 			},
 			error : function(collection, response) {
-
+				console.log("error");
 			}
 		});
 	}

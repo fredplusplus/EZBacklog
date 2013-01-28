@@ -15,8 +15,10 @@
 		scope="request">
 		<aop:scoped-proxy />
 	</bean>
-	
+
 	<bean id="itemUpdateModule" class="webplus.ezbacklog.module.ItemUpdateModuleImpl" />
+
+	<bean id="relatedItemModule" class="webplus.ezbacklog.module.RelatedItemModuleImpl" />
 
 	<bean id="backloggerModule" class="webplus.ezbacklog.module.BackloggerModuleImpl"
 		scope="request">
