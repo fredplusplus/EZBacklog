@@ -9,6 +9,13 @@
 		<div id="settingContainer" class="span6 offset1 settingContainer"></div>
 		<script type="text/template" id="settingTemplate">
 			<div class="setting-content"> 
+				<h4><spring:message code="setting.label.page.display" /></h4>
+				<div class="btn-toolbar setting-group">
+					<div class="btn-group" data-toggle="buttons-radio">
+  						<button id="en" type="button" class="btn" data-value="<@print('en'==displayLocale)@>"><spring:message code="setting.radio.language.english" /></button>
+	  					<button id="zh" type="button" class="btn" data-value="<@print('zh'==displayLocale)@>"><spring:message code="setting.radio.language.chinese" /></button>
+					</div>
+				</div>
 				<h4><spring:message code="setting.label.item.display" /></h4>
 				<div class="btn-toolbar setting-group">
 					<div class="btn-group" data-toggle="buttons-checkbox">

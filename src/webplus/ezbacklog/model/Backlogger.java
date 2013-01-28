@@ -1,6 +1,7 @@
 package webplus.ezbacklog.model;
 
 import java.util.Date;
+import java.util.Locale;
 
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
@@ -24,6 +25,8 @@ public class Backlogger {
 	private boolean showResolved;
 	@Persistent
 	private boolean showDeleted;
+	@Persistent
+	private String displayLocale;
 
 	public String getEmail() {
 		return email;
@@ -63,6 +66,14 @@ public class Backlogger {
 
 	public void setShowDeleted(boolean showDeleted) {
 		this.showDeleted = showDeleted;
+	}
+
+	public void setDisplayLocale(Locale displayLocale) {
+		this.displayLocale = displayLocale.getLanguage();
+	}
+
+	public Locale getDisplayLocale() {
+		return new Locale(displayLocale);
 	}
 
 }

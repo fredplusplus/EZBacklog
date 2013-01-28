@@ -3,6 +3,7 @@ package webplus.ezbacklog.module;
 import static com.google.common.base.Preconditions.checkArgument;
 
 import java.util.Calendar;
+import java.util.Locale;
 
 import javax.jdo.JDOObjectNotFoundException;
 import javax.jdo.PersistenceManager;
@@ -34,6 +35,9 @@ public class BackloggerModuleImpl implements BackloggerModule {
 		boolean needCreateNewUser = false;
 		try {
 			backlogger = pm.detachCopy(pm.getObjectById(Backlogger.class, email));
+			if (backlogger.getDisplayLocale() == null) {
+				backlogger.setDisplayLocale(Locale.ENGLISH);
+			}
 		} catch (JDOObjectNotFoundException e) {
 			needCreateNewUser = true;
 		}
@@ -44,6 +48,7 @@ public class BackloggerModuleImpl implements BackloggerModule {
 			backlogger.setShowActive(true);
 			backlogger.setShowResolved(true);
 			backlogger.setShowDeleted(false);
+			backlogger.setDisplayLocale(Locale.ENGLISH);
 			saveBacklogger(backlogger);
 		}
 	}
@@ -54,6 +59,7 @@ public class BackloggerModuleImpl implements BackloggerModule {
 		backlogger.setShowActive(prefs.getShowActive());
 		backlogger.setShowResolved(prefs.getShowResolved());
 		backlogger.setShowDeleted(prefs.getShowDeleted());
+		backlogger.setDisplayLocale(prefs.getDisplayLocale());
 		saveBacklogger(backlogger);
 	}
 
