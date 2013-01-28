@@ -37,6 +37,8 @@ public class ItemUpdateModuleImpl implements ItemUpdateModule {
 			item.setResolveDate(null);
 			break;
 		}
+		item.setLongDescription(HtmlUtils.htmlUnescape(item.getLongDescription()));
+		item.setShortDescription(HtmlUtils.htmlUnescape(item.getShortDescription()));
 		item.setLongDescription(HtmlUtils.htmlEscape(item.getLongDescription()));
 		item.setShortDescription(HtmlUtils.htmlEscape(item.getShortDescription()));
 		PersistenceManager pm = PMF.get().getPersistenceManager();
