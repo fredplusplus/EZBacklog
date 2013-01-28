@@ -8,7 +8,7 @@
 				code="tab.label.progress" /></a></li>
 	<li><a href="#commentContainer" data-toggle="tab"><spring:message
 				code="tab.label.comment" /></a></li>
-	<li><a href="#relatedContainer" data-toggle="tab"><spring:message
+	<li><a href="#relatedItemContainer" data-toggle="tab"> <spring:message
 				code="tab.label.relatedItem" /></a></li>
 	<li><a href="#auditContainer" data-toggle="tab"><spring:message
 				code="tab.label.audit" /></a></li>
@@ -17,6 +17,6 @@
 	<div class="tab-pane fade in active" id="descriptionContainer"></div>
 	<div class="tab-pane fade" id="progressContainer"></div>
 	<div class="tab-pane fade" id="commentContainer"></div>
-	<div class="tab-pane fade" id="relatedContainer"></div>
+	<div class="tab-pane fade" id="relatedItemContainer"></div>
 	<div class="tab-pane fade" id="auditContainer"></div>
 </div>

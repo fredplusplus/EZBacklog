@@ -29,6 +29,7 @@
 	</head>
 	<body style="background: #fbfbfb">
 		<modal:pleaseWaitModal />
+		<ez:loading />
 		<tiles:insertAttribute name="sitenav" />
 		<tiles:insertAttribute name="body" />
 		<tiles:insertAttribute name="footer" />

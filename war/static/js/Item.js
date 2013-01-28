@@ -172,7 +172,7 @@ ItemCollectionView = Backbone.View.extend({
 		} else {
 			model.detailView.render();
 		}
-		//dscription view
+		// dscription view
 		if (typeof (model.descriptionView) == 'undefined') {
 			model.descriptionView = new DescriptionView({
 				model : model
@@ -180,13 +180,21 @@ ItemCollectionView = Backbone.View.extend({
 		} else {
 			model.descriptionView.render();
 		}
-		//progress view
+		// progress view
 		if (typeof (model.progressView) == 'undefined') {
 			model.progressView = new ProgressView({
 				model : model
 			});
 		} else {
 			model.progressView.render();
+		}
+		// related item view
+		if (typeof (model.relatedItemView) == 'undefined') {
+			model.relatedItemView = new RelatedItemView({
+				model : model
+			});
+		} else {
+			model.relatedItemView.render();
 		}
 		// breadcrumb view
 		if (typeof (model.breadcrumbView) == 'undefined') {
