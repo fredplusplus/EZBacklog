@@ -9,9 +9,7 @@
 		<div class="span5" id="itemCollectionContainer"></div>
 		<div class="span6">
 			<div class="row-fluid" id="breadCrumbContainer"></div>
-			<div class="row-fluid">
-				<div class="span12" id="itemDetailContainer"></div>
-			</div>
+			<div class="row-fluid" id="itemDetailContainer"></div>
 			<div class="row-fluid itemTabsContainer hide" id="itemTabsContainer">
 				<tab:itemTabs />
 			</div>
