@@ -1,11 +1,3 @@
-RelatedItemParentModel = Backbone.Model.extend({
-	defaults : {
-		"selected" : false,
-	},
-	initialize : function() {
-
-	}
-});
 RelatedItemModel = Backbone.Model.extend({
 	initialize : function() {
 	}
@@ -19,7 +11,7 @@ RelatedItemCollection = Backbone.Collection.extend({
 });
 
 /**
- * the view. contains a RelatedItemParentModel and a RelatedItemCollection.
+ * the view. contains an Item and a RelatedItemCollection.
  * Maintains relationship between the 2.
  */
 RelatedItemView = Backbone.View.extend({

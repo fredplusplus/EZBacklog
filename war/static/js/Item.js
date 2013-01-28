@@ -158,9 +158,6 @@ ItemCollectionView = Backbone.View.extend({
 			this.currentModel.set({
 				"selected" : false
 			});
-			this.currentModel.relatedItemView.model.set({
-				"selected" : false
-			});
 		}
 		this.currentModel = model;
 		model.set({
@@ -194,12 +191,9 @@ ItemCollectionView = Backbone.View.extend({
 		// related item view
 		if (typeof (model.relatedItemView) == 'undefined') {
 			model.relatedItemView = new RelatedItemView({
-				model : new RelatedItemParentModel(model.toJSON())
+				model : model
 			});
 		} else {
-			model.relatedItemView.model.set({
-				"selected" : true
-			});
 			model.relatedItemView.render();
 		}
 		// breadcrumb view
