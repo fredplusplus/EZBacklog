@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import webplus.ezbacklog.module.BackloggerModule;
+import webplus.ezbacklog.module.interfaces.BackloggerModule;
 
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;

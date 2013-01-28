@@ -6,7 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import webplus.ezbacklog.model.SiteNav;
-import webplus.ezbacklog.module.SiteNavModule;
+import webplus.ezbacklog.module.interfaces.SiteNavModule;
 
 import com.google.gson.Gson;
 

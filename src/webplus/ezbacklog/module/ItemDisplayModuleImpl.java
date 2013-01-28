@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import webplus.ezbacklog.model.Backlogger;
 import webplus.ezbacklog.model.Item;
+import webplus.ezbacklog.module.interfaces.BackloggerModule;
+import webplus.ezbacklog.module.interfaces.ItemDisplayModule;
 import webplus.ezbacklog.service.PMF;
 import webplus.ezbacklog.values.ItemLevel;
 import webplus.ezbacklog.values.ItemStatus;

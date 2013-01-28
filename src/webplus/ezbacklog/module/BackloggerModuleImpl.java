@@ -10,6 +10,7 @@ import javax.jdo.PersistenceManager;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import webplus.ezbacklog.model.Backlogger;
+import webplus.ezbacklog.module.interfaces.BackloggerModule;
 import webplus.ezbacklog.service.PMF;
 
 import com.google.appengine.api.users.UserService;

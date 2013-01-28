@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import webplus.ezbacklog.model.Dashboard;
 import webplus.ezbacklog.model.Item;
 import webplus.ezbacklog.model.ItemAggregation;
+import webplus.ezbacklog.module.interfaces.BackloggerModule;
+import webplus.ezbacklog.module.interfaces.DashboardModule;
+import webplus.ezbacklog.module.interfaces.ItemDisplayModule;
 import webplus.ezbacklog.values.ItemLevel;
 
 public class DashboardModuleImpl implements DashboardModule {

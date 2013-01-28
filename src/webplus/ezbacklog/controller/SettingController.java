@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import webplus.ezbacklog.model.Backlogger;
 import webplus.ezbacklog.model.SiteNav;
-import webplus.ezbacklog.module.BackloggerModule;
-import webplus.ezbacklog.module.SiteNavModule;
+import webplus.ezbacklog.module.interfaces.BackloggerModule;
+import webplus.ezbacklog.module.interfaces.SiteNavModule;
 import webplus.ezbacklog.values.Constants;
 
 import com.google.gson.Gson;

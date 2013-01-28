@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import webplus.ezbacklog.model.Item;
-import webplus.ezbacklog.module.ActivityUpdateModule;
-import webplus.ezbacklog.module.ItemDisplayModule;
-import webplus.ezbacklog.module.ItemUpdateModule;
+import webplus.ezbacklog.module.interfaces.ActivityUpdateModule;
+import webplus.ezbacklog.module.interfaces.ItemDisplayModule;
+import webplus.ezbacklog.module.interfaces.ItemUpdateModule;
 import webplus.ezbacklog.values.Constants;
 import webplus.ezbacklog.values.ItemStatus;
 

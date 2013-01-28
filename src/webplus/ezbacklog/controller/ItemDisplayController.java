@@ -12,10 +12,10 @@ import webplus.ezbacklog.model.Backlogger;
 import webplus.ezbacklog.model.Item;
 import webplus.ezbacklog.model.ItemAggregation;
 import webplus.ezbacklog.model.SiteNav;
-import webplus.ezbacklog.module.BackloggerModule;
-import webplus.ezbacklog.module.DashboardModule;
-import webplus.ezbacklog.module.ItemDisplayModule;
-import webplus.ezbacklog.module.SiteNavModule;
+import webplus.ezbacklog.module.interfaces.BackloggerModule;
+import webplus.ezbacklog.module.interfaces.DashboardModule;
+import webplus.ezbacklog.module.interfaces.ItemDisplayModule;
+import webplus.ezbacklog.module.interfaces.SiteNavModule;
 
 import com.google.gson.Gson;
 

@@ -3,6 +3,7 @@ package webplus.ezbacklog.module;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import webplus.ezbacklog.model.SiteNav;
+import webplus.ezbacklog.module.interfaces.SiteNavModule;
 
 import com.google.appengine.api.users.UserService;
 

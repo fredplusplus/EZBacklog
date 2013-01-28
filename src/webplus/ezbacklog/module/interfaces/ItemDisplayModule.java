@@ -1,4 +1,4 @@
-package webplus.ezbacklog.module;
+package webplus.ezbacklog.module.interfaces;
 
 import java.util.List;
 

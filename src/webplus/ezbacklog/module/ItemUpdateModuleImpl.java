@@ -13,6 +13,9 @@ import org.springframework.web.util.HtmlUtils;
 import webplus.ezbacklog.exceptions.DBException;
 import webplus.ezbacklog.exceptions.ValidationException;
 import webplus.ezbacklog.model.Item;
+import webplus.ezbacklog.module.interfaces.BackloggerModule;
+import webplus.ezbacklog.module.interfaces.ItemDisplayModule;
+import webplus.ezbacklog.module.interfaces.ItemUpdateModule;
 import webplus.ezbacklog.service.PMF;
 
 public class ItemUpdateModuleImpl implements ItemUpdateModule {

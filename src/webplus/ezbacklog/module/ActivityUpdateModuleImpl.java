@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import webplus.ezbacklog.exceptions.DBException;
 import webplus.ezbacklog.model.Activity;
 import webplus.ezbacklog.model.Item;
+import webplus.ezbacklog.module.interfaces.ActivityUpdateModule;
+import webplus.ezbacklog.module.interfaces.BackloggerModule;
 import webplus.ezbacklog.service.PMF;
 import webplus.ezbacklog.values.ActivityType;
 
