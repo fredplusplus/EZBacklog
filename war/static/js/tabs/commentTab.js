@@ -1,5 +1,6 @@
 CommentModel = Backbone.Model.extend({
 	defaults : {
+		userEmail : "",
 		description : "",
 		itemId : "",
 	},
@@ -60,12 +61,21 @@ CommentView = Backbone.View.extend({
 	addAComment : function() {
 		if (this.model.get("selected")) {
 			var description = $('#commentInput').val();
-			var comment = new CommentModel({
+			var localComment = new CommentModel({
+				"userEmail" : siteNavModel.get("userName"),
+				"description" : description.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"),
+				"itemId" : this.model.get("id")
+			});
+			
+			var remoteComment = new CommentModel({
+				"userEmail" : siteNavModel.get("userName"),
 				"description" : description,
 				"itemId" : this.model.get("id")
 			});
-			this.collection.add(comment);
-			comment.save(comment.toJSON());
+			remoteComment.save(remoteComment.toJSON());
+			
+			this.collection.add(localComment);
+			
 		}
 	}
 });
