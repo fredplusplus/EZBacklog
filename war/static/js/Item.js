@@ -188,6 +188,14 @@ ItemCollectionView = Backbone.View.extend({
 		} else {
 			model.progressView.render();
 		}
+		// comment view
+		if (typeof (model.commentView) == 'undefined') {
+			model.commentView = new CommentView({
+				model : model
+			});
+		} else {
+			model.commentView.render();
+		}
 		// related item view
 		if (typeof (model.relatedItemView) == 'undefined') {
 			model.relatedItemView = new RelatedItemView({

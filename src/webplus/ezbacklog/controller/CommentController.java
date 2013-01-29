@@ -30,7 +30,7 @@ public class CommentController {
 		return "json";
 	}
 
-	@RequestMapping(value = "/f/comments/", method = RequestMethod.POST)
+	@RequestMapping(value = "/f/comments", method = RequestMethod.POST)
 	public String addComment(@RequestBody String commentJson, Model model) {
 		Activity comment = gson.fromJson(commentJson, Activity.class);
 		commentModule.addComment(comment);

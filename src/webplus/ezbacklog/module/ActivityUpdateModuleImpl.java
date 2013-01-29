@@ -8,6 +8,7 @@ import java.util.Calendar;
 import javax.jdo.PersistenceManager;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.util.HtmlUtils;
 
 import webplus.ezbacklog.exceptions.DBException;
 import webplus.ezbacklog.model.Activity;
@@ -40,9 +41,17 @@ public class ActivityUpdateModuleImpl implements ActivityUpdateModule {
 		saveActivity(act);
 	}
 
-	private void saveActivity(Activity act) {
+	public void saveActivity(Activity act) {
 		act.setUserEmail(backloggerModule.getCurrencyBacklogger().getEmail());
 		act.setTime(Calendar.getInstance().getTime());
+		if (act.getDescription() == null) {
+			act.setDescription("");
+		}
+		act.setDescription(HtmlUtils.htmlUnescape(act.getDescription()));
+		if (act.getDescription().length() > 2000) {
+			act.setDescription(act.getDescription().substring(0, 1996) + "\n...");
+		}
+		act.setDescription(HtmlUtils.htmlEscape(act.getDescription()));
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		try {
 			pm.makePersistent(act);

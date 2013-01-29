@@ -22,4 +22,11 @@ public interface ActivityUpdateModule {
 	 * @param item
 	 */
 	void addUpdateActivity(Item item);
+
+	/**
+	 * Save an activity.
+	 * 
+	 * @param act
+	 */
+	void saveActivity(Activity act);
 }

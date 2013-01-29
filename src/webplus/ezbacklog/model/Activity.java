@@ -2,6 +2,7 @@ package webplus.ezbacklog.model;
 
 import java.util.Date;
 
+import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
@@ -12,8 +13,8 @@ import webplus.ezbacklog.values.ActivityType;
 public class Activity {
 
 	@PrimaryKey
-	@Persistent
-	private long id;
+	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
+	private Long id;
 	@Persistent
 	private String userEmail;
 	@Persistent
@@ -25,13 +26,13 @@ public class Activity {
 	@Persistent
 	private String description;
 	@Persistent
-	private ActivityType activityType;
+	private String activityType;
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -76,11 +77,11 @@ public class Activity {
 	}
 
 	public ActivityType getActivityType() {
-		return activityType;
+		return ActivityType.fromString(activityType);
 	}
 
 	public void setActivityType(ActivityType activityType) {
-		this.activityType = activityType;
+		this.activityType = activityType.name();
 	}
 
 }
