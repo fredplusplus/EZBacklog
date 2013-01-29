@@ -5,9 +5,6 @@ RelatedItemModel = Backbone.Model.extend({
 });
 
 RelatedItemCollection = Backbone.Collection.extend({
-	url : function() {
-		return '/f/relatedItems/' + this.itemId;
-	},
 	model : RelatedItemModel
 });
 

@@ -7,7 +7,7 @@
 </div>
 <div class="input-append">
 	<input class="span7 offset1" id="addALinkInput" type="text" >
-	<button class="btn" type="button" id="addALink"><spring:message code="tab.relatedItem.addALink" /></button>
+	<button class="btn" type="button" id="addALink"><spring:message code="tab.relatedItem.btn.add" /></button>
 </div>
 <ul class="offset2">
 <@ _.each(relatedItems, function(relatedItem) { @>
