@@ -13,34 +13,39 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import webplus.ezbacklog.exceptions.DBException;
 import webplus.ezbacklog.exceptions.ValidationException;
-import webplus.ezbacklog.model.RelatedItem;
+import webplus.ezbacklog.model.Activity;
 import webplus.ezbacklog.module.interfaces.BackloggerModule;
-import webplus.ezbacklog.module.interfaces.RelatedItemModule;
+import webplus.ezbacklog.module.interfaces.CommentModule;
 import webplus.ezbacklog.service.PMF;
 
-public class RelatedItemModuleImpl implements RelatedItemModule {
+public class CommentModuleImpl implements CommentModule {
 
 	@Autowired
 	private BackloggerModule backloggerModule;
 
 	@Override
-	public List<RelatedItem> fecthRelatedItems(Long itemId) {
+	public List<Activity> loadComments(Long itemId) {
 		if (itemId == null || itemId <= 0) {
 			return null;
 		}
-		String filter = "itemId == " + itemId;
+		String filter = String.format("itemId == %d && activityType == Comment", itemId);
 		return query(filter);
 	}
 
 	@Override
-	public void addRelatedItem(RelatedItem relatedItem) {
-		validate(relatedItem);
-		relatedItem.setId(null);
-		relatedItem.setCreateDate(Calendar.getInstance().getTime());
-		relatedItem.setCreatorEmail(backloggerModule.getCurrencyBacklogger().getEmail());
+	public void addComment(Activity comment) {
+		validate(comment);
+		comment.setUserEmail(backloggerModule.getCurrencyBacklogger().getEmail());
+		comment.setTime(Calendar.getInstance().getTime());
+		if (comment.getDescription() == null) {
+			comment.setDescription("");
+		}
+		if (comment.getDescription().length() > 2000) {
+			comment.setDescription(comment.getDescription().substring(0, 1996) + "\n...");
+		}
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		try {
-			pm.makePersistent(relatedItem);
+			pm.makePersistent(comment);
 		} catch (Exception e) {
 			throw new DBException(e);
 		} finally {
@@ -48,21 +53,20 @@ public class RelatedItemModuleImpl implements RelatedItemModule {
 		}
 	}
 
-	private void validate(RelatedItem relatedItem) {
+	private void validate(Activity comment) {
 		try {
-			checkNotNull(relatedItem.getRelatedItem());
-			checkNotNull(relatedItem.getItemId());
-			checkArgument(relatedItem.getItemId() > 0, "The item id is invalid");
+			checkNotNull(comment.getItemId());
+			checkArgument(comment.getItemId() > 0, "The item id is invalid");
 		} catch (Exception e) {
 			throw new ValidationException(e);
 		}
 	}
 
 	@SuppressWarnings("unchecked")
-	private List<RelatedItem> query(String filter) {
+	private List<Activity> query(String filter) {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
-		Query query = pm.newQuery(RelatedItem.class);
+		Query query = pm.newQuery(Activity.class);
 		query.setFilter(filter);
-		return (List<RelatedItem>) query.execute();
+		return (List<Activity>) query.execute();
 	}
 }

@@ -27,6 +27,7 @@
 <item:itemDetail/>
 <tab:descriptionTab />
 <tab:progressTab />
+<tab:commentTab />
 <tab:relatedItemTab />
 <script type="text/javascript">
 	var itemCollection = new ItemCollection(${Items});
