@@ -6,10 +6,10 @@
 		<a href="#descriptionContainer" data-toggle="tab"><spring:message code="itemDetail.description" /></a>
 	</li>
 	<li>
-		<a href="#progressContainer" data-toggle="tab"><spring:message code="tab.label.progress" /></a>
+		<a href="#commentContainer" data-toggle="tab"><spring:message code="tab.label.comment" /></a>
 	</li>
 	<li>
-		<a href="#commentContainer" data-toggle="tab"><spring:message code="tab.label.comment" /></a>
+		<a href="#progressContainer" data-toggle="tab"><spring:message code="tab.label.progress" /></a>
 	</li>
 	<li>
 		<a href="#relatedItemContainer" data-toggle="tab"> <spring:message code="tab.label.relatedItem" /></a>

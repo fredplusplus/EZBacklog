@@ -48,8 +48,8 @@ public class ActivityUpdateModuleImpl implements ActivityUpdateModule {
 			act.setDescription("");
 		}
 		act.setDescription(HtmlUtils.htmlUnescape(act.getDescription()));
-		if (act.getDescription().length() > 2000) {
-			act.setDescription(act.getDescription().substring(0, 1996) + "\n...");
+		if (act.getDescription().length() >= 500) {
+			act.setDescription(act.getDescription().substring(0, 494) + "\n...");
 		}
 		act.setDescription(HtmlUtils.htmlEscape(act.getDescription()));
 		PersistenceManager pm = PMF.get().getPersistenceManager();

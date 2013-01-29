@@ -4,8 +4,8 @@
 
 <script type="text/template" id="descriptionTemplate" >
 <@ if (longDescription) { @>
-<div class="row-fluid">
-	<pre class="span11 offset1"><@= longDescription @></pre>
+<div class="row-fluid comment">
+	<pre class="span12"><@= longDescription @></pre>
 </div>
 <@ } @>
 </script>
