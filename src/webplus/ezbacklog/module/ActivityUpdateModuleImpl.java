@@ -4,8 +4,10 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import static webplus.ezbacklog.values.ActivityType.Update;
 
 import java.util.Calendar;
+import java.util.List;
 
 import javax.jdo.PersistenceManager;
+import javax.jdo.Query;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.util.HtmlUtils;
@@ -60,5 +62,23 @@ public class ActivityUpdateModuleImpl implements ActivityUpdateModule {
 		} finally {
 			pm.close();
 		}
+	}
+
+	@Override
+	public List<Activity> getAuditTrails(Long itemId) {
+		if (itemId == null || itemId <= 0) {
+			return null;
+		}
+		String filter = String.format("itemId == %d", itemId);
+		return query(filter);
+	}
+
+	@SuppressWarnings("unchecked")
+	private List<Activity> query(String filter) {
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+		Query query = pm.newQuery(Activity.class);
+		query.setFilter(filter);
+		query.setOrdering("time desc");
+		return (List<Activity>) query.execute();
 	}
 }

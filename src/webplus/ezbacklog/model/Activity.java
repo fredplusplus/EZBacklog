@@ -27,6 +27,7 @@ public class Activity {
 	private String description;
 	@Persistent
 	private String activityType;
+	
 
 	public Long getId() {
 		return id;

@@ -101,6 +101,7 @@ img.bender {
 	border: none;
 	padding-right:10px;
 	background: #fcfcfc;
+	word-break: normal;
 }
 .container-fluid .comment {
 	width:99%;

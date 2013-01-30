@@ -1,5 +1,7 @@
 package webplus.ezbacklog.module.interfaces;
 
+import java.util.List;
+
 import webplus.ezbacklog.model.Activity;
 import webplus.ezbacklog.model.Item;
 
@@ -8,6 +10,15 @@ import webplus.ezbacklog.model.Item;
  * 
  */
 public interface ActivityUpdateModule {
+
+	/**
+	 * loads audit trail for an item.
+	 * 
+	 * @param itemId
+	 * @return
+	 */
+	List<Activity> getAuditTrails(Long itemId);
+
 	/**
 	 * Adds an activity to the audit table.
 	 * 
