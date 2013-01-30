@@ -204,6 +204,14 @@ ItemCollectionView = Backbone.View.extend({
 		} else {
 			model.relatedItemView.render();
 		}
+		// audit trails view
+		if (typeof (model.auditView) == 'undefined') {
+			model.auditView = new AuditView({
+				model : model
+			});
+		} else {
+			model.auditView.render();
+		}
 		// breadcrumb view
 		if (typeof (model.breadcrumbView) == 'undefined') {
 			model.breadcrumbView = new BreadCrumbView({

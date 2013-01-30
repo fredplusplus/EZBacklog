@@ -29,6 +29,7 @@
 <tab:progressTab />
 <tab:commentTab />
 <tab:relatedItemTab />
+<tab:auditTrailsTab />
 <script type="text/javascript">
 	var itemCollection = new ItemCollection(${Items});
 	var itemCollectionView = new ItemCollectionView({el : $("#itemCollectionContainer"), collection: itemCollection});
