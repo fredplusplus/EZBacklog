@@ -12,7 +12,7 @@
 <@ _.each(comments, function(comment) { @>
 	<div class="row-fluid comment">
 		<span class="commentUser"><@= comment.userEmail @><span><span class="notes">[<@ print(formatDateAccurate(comment.time)) @>]</span>
-		<pre class="offset1 span11"><@=comment.description@></pre>
+		<pre class="span11"><@=comment.description@></pre>
 	</div>
 <@ })@>
 </script>
