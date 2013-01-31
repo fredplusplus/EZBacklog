@@ -43,6 +43,7 @@ public class ActivityUpdateModuleImpl implements ActivityUpdateModule {
 		act.setItemId(newItem.getId());
 		checkNotNull(act.getItemId());
 		act.setResolvedPoint(newItem.getResolvedPoint());
+		act.setActivityType(Update);
 		if (oldItem.getStatus().equals(ItemStatus.Open) && newItem.getStatus().equals(ItemStatus.Resolved)) {
 			act.setActivityType(ActivityType.Resolve);
 		} else if (newItem.getStatus().equals(ItemStatus.Open) && oldItem.getStatus().equals(ItemStatus.Resolved)) {
@@ -51,8 +52,6 @@ public class ActivityUpdateModuleImpl implements ActivityUpdateModule {
 			if (oldItem.getResolvedPoint() != newItem.getResolvedPoint()) {
 				act.setActivityType(Burndown);
 			}
-		} else {
-			act.setActivityType(Update);
 		}
 		saveActivity(act);
 	}

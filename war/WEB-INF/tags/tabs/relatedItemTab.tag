@@ -9,10 +9,11 @@
 	<input class="span7 offset1" id="addALinkInput" type="text" >
 	<button class="btn" type="button" id="addALink"><spring:message code="tab.relatedItem.btn.add" /></button>
 </div>
-<ul class="offset2">
+<ul class="offset2 unstyled">
 <@ _.each(relatedItems, function(relatedItem) { @>
 	<li>
-		<a target="_blank" href="<@=relatedItem.relatedItem @>"><@=relatedItem.relatedItem @></a>
+		<span id="removeRelatedItem" class="icon-remove pointerMouse"></span>
+		<a class="offset1" target="_blank" href="<@=relatedItem.relatedItem @>"><@=relatedItem.relatedItem @></a>
 	</li>
 <@ })@>
 </ul>

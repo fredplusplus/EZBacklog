@@ -111,3 +111,7 @@ img.bender {
 .container-fluid .comment {
 	width:99%;
 }
+
+.pointerMouse {
+	cursor: pointer;
+}
