@@ -17,11 +17,15 @@ import webplus.ezbacklog.model.RelatedItem;
 import webplus.ezbacklog.module.interfaces.BackloggerModule;
 import webplus.ezbacklog.module.interfaces.RelatedItemModule;
 import webplus.ezbacklog.service.PMF;
+import webplus.ezbacklog.service.UrlNormalizer;
 
 public class RelatedItemModuleImpl implements RelatedItemModule {
 
 	@Autowired
 	private BackloggerModule backloggerModule;
+
+	@Autowired
+	private UrlNormalizer urlNormalizer;
 
 	@Override
 	public List<RelatedItem> fecthRelatedItems(Long itemId) {
@@ -38,6 +42,7 @@ public class RelatedItemModuleImpl implements RelatedItemModule {
 		relatedItem.setId(null);
 		relatedItem.setCreateDate(Calendar.getInstance().getTime());
 		relatedItem.setCreatorEmail(backloggerModule.getCurrencyBacklogger().getEmail());
+		relatedItem.setRelatedItem(urlNormalizer.normalize(relatedItem.getRelatedItem()));
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		try {
 			pm.makePersistent(relatedItem);
