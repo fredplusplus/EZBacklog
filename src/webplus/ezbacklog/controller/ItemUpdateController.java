@@ -58,11 +58,12 @@ public class ItemUpdateController {
 	 * @return
 	 */
 	@RequestMapping(value = "/f/itemUpdate/{id}", method = RequestMethod.PUT)
-	public String updateItem(@RequestBody String itemString, Model model) {
-		Item item = gson.fromJson(itemString, Item.class);
-		itemUpdateModule.saveItem(item);
-		activityUpdateModule.addUpdateActivity(item);
-		model.addAttribute(Constants.JSON_MODEL, gson.toJson(item));
+	public String updateItem(@PathVariable("id") Long id, @RequestBody String itemString, Model model) {
+		Item oldItem = itemDisplayModule.getItemById(id);
+		Item newItem = gson.fromJson(itemString, Item.class);
+		itemUpdateModule.saveItem(newItem);
+		activityUpdateModule.addUpdateActivity(oldItem, newItem);
+		model.addAttribute(Constants.JSON_MODEL, gson.toJson(newItem));
 		return "json";
 	}
 

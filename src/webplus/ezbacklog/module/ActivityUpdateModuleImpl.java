@@ -1,6 +1,7 @@
 package webplus.ezbacklog.module;
 
 import static com.google.common.base.Preconditions.checkNotNull;
+import static webplus.ezbacklog.values.ActivityType.Burndown;
 import static webplus.ezbacklog.values.ActivityType.Update;
 
 import java.util.Calendar;
@@ -19,6 +20,7 @@ import webplus.ezbacklog.module.interfaces.BackloggerModule;
 import webplus.ezbacklog.service.PMF;
 import webplus.ezbacklog.service.StringNormalizer;
 import webplus.ezbacklog.values.ActivityType;
+import webplus.ezbacklog.values.ItemStatus;
 
 public class ActivityUpdateModuleImpl implements ActivityUpdateModule {
 
@@ -36,12 +38,22 @@ public class ActivityUpdateModuleImpl implements ActivityUpdateModule {
 	}
 
 	@Override
-	public void addUpdateActivity(Item item) {
+	public void addUpdateActivity(Item oldItem, Item newItem) {
 		Activity act = new Activity();
-		act.setActivityType(Update);
-		act.setItemId(item.getId());
+		act.setItemId(newItem.getId());
 		checkNotNull(act.getItemId());
-		act.setResolvedPoint(item.getResolvedPoint());
+		act.setResolvedPoint(newItem.getResolvedPoint());
+		if (oldItem.getStatus().equals(ItemStatus.Open) && newItem.getStatus().equals(ItemStatus.Resolved)) {
+			act.setActivityType(ActivityType.Resolve);
+		} else if (newItem.getStatus().equals(ItemStatus.Open) && oldItem.getStatus().equals(ItemStatus.Resolved)) {
+			act.setActivityType(ActivityType.Reopen);
+		} else if (newItem.getStatus().equals(ItemStatus.Open) && oldItem.getStatus().equals(ItemStatus.Open)) {
+			if (oldItem.getResolvedPoint() != newItem.getResolvedPoint()) {
+				act.setActivityType(Burndown);
+			}
+		} else {
+			act.setActivityType(Update);
+		}
 		saveActivity(act);
 	}
 

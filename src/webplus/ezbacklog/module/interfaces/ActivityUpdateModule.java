@@ -21,18 +21,14 @@ public interface ActivityUpdateModule {
 
 	/**
 	 * Adds an activity to the audit table.
-	 * 
-	 * @param activity
-	 *            {@link Activity}
 	 */
 	void addCreationAcitivity(Item item);
 
 	/**
 	 * Adds a burndown actvity.
 	 * 
-	 * @param item
 	 */
-	void addUpdateActivity(Item item);
+	void addUpdateActivity(Item oldItem, Item newItem);
 
 	/**
 	 * Adds a delete activity.
