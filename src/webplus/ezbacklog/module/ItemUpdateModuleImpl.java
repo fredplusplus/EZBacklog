@@ -40,7 +40,7 @@ public class ItemUpdateModuleImpl implements ItemUpdateModule {
 			break;
 		}
 		item.setLongDescription(stringNormalizer.normalize(item.getLongDescription()));
-		item.setShortDescription(stringNormalizer.normalize(item.getShortDescription()));
+		item.setShortDescription(stringNormalizer.normalize(item.getShortDescription(), 40));
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		try {
 			pm.makePersistent(item);
@@ -78,6 +78,7 @@ public class ItemUpdateModuleImpl implements ItemUpdateModule {
 
 	private void validate(Item item) {
 		try {
+
 			String ownerEmail = backloggerModule.getCurrencyBacklogger().getEmail();
 			checkNotNull(item);
 			checkNotNull(item.getOwnerEmail());
