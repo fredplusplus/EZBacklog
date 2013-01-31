@@ -4,7 +4,7 @@
 <script type="text/template" id="auditTemplate">
 <@ _.each(audits, function(audit) { @>
 	<div class="row-fluid comment">
-		<span class="commentUser"><@ print(formatDateAccurate(audit.time) @><span>
+		<span class="commentUser"><@ print(formatDateAccurate(audit.time)) @><span>
 		<span class="offset1 span11 auditContent">
 			<@= audit.userEmail @>
 			<@ if (audit.activityType == 'Create') { @>
