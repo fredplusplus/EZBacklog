@@ -19,6 +19,7 @@
 	<bean id="itemUpdateModule" class="webplus.ezbacklog.module.ItemUpdateModuleImpl" />
 	<bean id="relatedItemModule" class="webplus.ezbacklog.module.RelatedItemModuleImpl" />
 	<bean id="commentModule" class="webplus.ezbacklog.module.CommentModuleImpl" />
+	<bean id="stringNormalizer" class="webplus.ezbacklog.service.StringNormalizer" />
 
 	<bean id="backloggerModule" class="webplus.ezbacklog.module.BackloggerModuleImpl"
 		scope="request">

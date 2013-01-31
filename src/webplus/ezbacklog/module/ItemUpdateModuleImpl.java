@@ -8,7 +8,6 @@ import java.util.Calendar;
 import javax.jdo.PersistenceManager;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.util.HtmlUtils;
 
 import webplus.ezbacklog.exceptions.DBException;
 import webplus.ezbacklog.exceptions.ValidationException;
@@ -17,6 +16,7 @@ import webplus.ezbacklog.module.interfaces.BackloggerModule;
 import webplus.ezbacklog.module.interfaces.ItemDisplayModule;
 import webplus.ezbacklog.module.interfaces.ItemUpdateModule;
 import webplus.ezbacklog.service.PMF;
+import webplus.ezbacklog.service.StringNormalizer;
 
 public class ItemUpdateModuleImpl implements ItemUpdateModule {
 
@@ -24,6 +24,8 @@ public class ItemUpdateModuleImpl implements ItemUpdateModule {
 	private BackloggerModule backloggerModule;
 	@Autowired
 	private ItemDisplayModule itemDisplayModule;
+	@Autowired
+	private StringNormalizer stringNormalizer;
 
 	@Override
 	public void saveItem(Item item) {
@@ -37,12 +39,8 @@ public class ItemUpdateModuleImpl implements ItemUpdateModule {
 			item.setResolveDate(null);
 			break;
 		}
-		item.setLongDescription(HtmlUtils.htmlUnescape(item.getLongDescription()));
-		item.setShortDescription(HtmlUtils.htmlUnescape(item.getShortDescription()));
-		
-		
-		item.setLongDescription(HtmlUtils.htmlEscape(item.getLongDescription()));
-		item.setShortDescription(HtmlUtils.htmlEscape(item.getShortDescription()));
+		item.setLongDescription(stringNormalizer.normalize(item.getLongDescription()));
+		item.setShortDescription(stringNormalizer.normalize(item.getShortDescription()));
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		try {
 			pm.makePersistent(item);

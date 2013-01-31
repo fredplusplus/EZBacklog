@@ -10,7 +10,11 @@ CommentModel = Backbone.Model.extend({
 });
 
 CommentCollection = Backbone.Collection.extend({
-	model : CommentModel
+	model : CommentModel,
+	comparator : function(comment) {
+		var d = new Date(comment.get("time"));
+		return -d.getTime();
+	}
 });
 
 /**
@@ -62,6 +66,7 @@ CommentView = Backbone.View.extend({
 		if (this.model.get("selected")) {
 			var description = $('#commentInput').val();
 			var localComment = new CommentModel({
+				"time" : new Date(),
 				"userEmail" : siteNavModel.get("userName"),
 				"description" : description.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"),
 				"itemId" : this.model.get("id")

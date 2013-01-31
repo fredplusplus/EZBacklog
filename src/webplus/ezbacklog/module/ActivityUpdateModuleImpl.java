@@ -10,7 +10,6 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.util.HtmlUtils;
 
 import webplus.ezbacklog.exceptions.DBException;
 import webplus.ezbacklog.model.Activity;
@@ -18,12 +17,15 @@ import webplus.ezbacklog.model.Item;
 import webplus.ezbacklog.module.interfaces.ActivityUpdateModule;
 import webplus.ezbacklog.module.interfaces.BackloggerModule;
 import webplus.ezbacklog.service.PMF;
+import webplus.ezbacklog.service.StringNormalizer;
 import webplus.ezbacklog.values.ActivityType;
 
 public class ActivityUpdateModuleImpl implements ActivityUpdateModule {
 
 	@Autowired
 	private BackloggerModule backloggerModule;
+	@Autowired
+	private StringNormalizer stringNormalizer;
 
 	@Override
 	public void addCreationAcitivity(Item item) {
@@ -46,14 +48,7 @@ public class ActivityUpdateModuleImpl implements ActivityUpdateModule {
 	public void saveActivity(Activity act) {
 		act.setUserEmail(backloggerModule.getCurrencyBacklogger().getEmail());
 		act.setTime(Calendar.getInstance().getTime());
-		if (act.getDescription() == null) {
-			act.setDescription("");
-		}
-		act.setDescription(HtmlUtils.htmlUnescape(act.getDescription()));
-		if (act.getDescription().length() >= 500) {
-			act.setDescription(act.getDescription().substring(0, 494) + "\n...");
-		}
-		act.setDescription(HtmlUtils.htmlEscape(act.getDescription()));
+		act.setDescription(stringNormalizer.normalize(act.getDescription()));
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		try {
 			pm.makePersistent(act);

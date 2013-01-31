@@ -27,7 +27,6 @@ public class Activity {
 	private String description;
 	@Persistent
 	private String activityType;
-	
 
 	public Long getId() {
 		return id;
@@ -84,5 +83,4 @@ public class Activity {
 	public void setActivityType(ActivityType activityType) {
 		this.activityType = activityType.name();
 	}
-
 }

@@ -55,6 +55,7 @@ public class CommentModuleImpl implements CommentModule {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		Query query = pm.newQuery(Activity.class);
 		query.setFilter(filter);
+		query.setOrdering("time desc");
 		return (List<Activity>) query.execute();
 	}
 }
