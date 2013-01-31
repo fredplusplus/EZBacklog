@@ -45,6 +45,16 @@ public class ActivityUpdateModuleImpl implements ActivityUpdateModule {
 		saveActivity(act);
 	}
 
+	@Override
+	public void addDeleteActivity(Item item) {
+		Activity act = new Activity();
+		act.setActivityType(ActivityType.Delete);
+		act.setItemId(item.getId());
+		checkNotNull(act.getItemId());
+		act.setResolvedPoint(item.getResolvedPoint());
+		saveActivity(act);
+	}
+
 	public void saveActivity(Activity act) {
 		act.setUserEmail(backloggerModule.getCurrencyBacklogger().getEmail());
 		act.setTime(Calendar.getInstance().getTime());

@@ -78,6 +78,7 @@ public class ItemUpdateController {
 		Item item = itemDisplayModule.getItemById(id);
 		item.setStatus(ItemStatus.Deleted);
 		itemUpdateModule.saveItem(item);
+		activityUpdateModule.addDeleteActivity(item);
 		model.addAttribute(Constants.JSON_MODEL, gson.toJson(item));
 		return "json";
 	}

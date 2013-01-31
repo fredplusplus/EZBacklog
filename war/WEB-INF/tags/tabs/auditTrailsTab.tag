@@ -8,11 +8,19 @@
 		<span class="offset1 span11 auditContent">
 			<@= audit.userEmail @>
 			<@ if (audit.activityType == 'Create') { @>
-				<spring:message code="tab.audit.verb.created" />
+				<spring:message code="tab.audit.verb.create" />
 			<@ } else if (audit.activityType == 'Update') { @>
-				<spring:message code="tab.audit.verb.updated" />
+				<spring:message code="tab.audit.verb.update" />
 			<@ } else if (audit.activityType == 'Comment') { @>
-				<spring:message code="tab.audit.verb.commented" />
+				<spring:message code="tab.audit.verb.comment" />
+			<@ } else if (audit.activityType == 'Delete') { @>
+				<spring:message code="tab.audit.verb.delete" />
+			<@ } else if (audit.activityType == 'Burndown') { @>
+				<spring:message code="tab.audit.verb.burndown" />
+			<@ } else if (audit.activityType == 'Reopen') { @>
+				<spring:message code="tab.audit.verb.reopen" />
+			<@ } else if (audit.activityType == 'Resolve') { @>
+				<spring:message code="tab.audit.verb.resolve" />
 			<@ } @>
 		</spans>
 	</div>

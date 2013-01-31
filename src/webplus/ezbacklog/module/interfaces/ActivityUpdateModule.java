@@ -35,6 +35,13 @@ public interface ActivityUpdateModule {
 	void addUpdateActivity(Item item);
 
 	/**
+	 * Adds a delete activity.
+	 * 
+	 * @param item
+	 */
+	void addDeleteActivity(Item item);
+
+	/**
 	 * Save an activity.
 	 * 
 	 * @param act
