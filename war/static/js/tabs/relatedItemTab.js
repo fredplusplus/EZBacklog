@@ -14,11 +14,12 @@ RelatedItemCollection = Backbone.Collection.extend({
  */
 RelatedItemView = Backbone.View.extend({
 	events : {
-		"click button#addALink" : "addALink",
+		"click button#addALink" : "submitAddALink",
 	},
 	initialize : function() {
 		this.$el = $("#relatedItemContainer");
 		_.bindAll(this, "renderContent");
+		_.bindAll(this, "displayAddALink");
 		this.collection = new RelatedItemCollection();
 		this.collection.url = "/f/relatedItems/" + this.model.get("id");
 		this.collection.bind('add', this.renderContent, this);
@@ -53,7 +54,7 @@ RelatedItemView = Backbone.View.extend({
 			success : this.renderContent
 		});
 	},
-	addALink : function() {
+	submitAddALink : function() {
 		if (this.model.get("selected")) {
 			var link = $('input#addALinkInput').val();
 			// TODO: validate
@@ -61,8 +62,13 @@ RelatedItemView = Backbone.View.extend({
 				"relatedItem" : link,
 				"itemId" : this.model.get("id")
 			});
-			this.collection.add(relatedItem);
-			relatedItem.save(relatedItem.toJSON());
+
+			relatedItem.save(relatedItem.toJSON(), {
+				success : this.displayAddALink
+			});
 		}
+	},
+	displayAddALink : function(model) {
+		this.collection.add(model);
 	}
 });

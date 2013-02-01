@@ -12,7 +12,7 @@
 <ul class="offset2 unstyled">
 <@ _.each(relatedItems, function(relatedItem) { @>
 	<li>
-		<span id="removeRelatedItem" class="icon-remove pointerMouse"></span>
+		<span id="removeRelatedItem" data-id="<@=relatedItem.id@>" class="icon-remove pointerMouse"></span>
 		<a class="offset1" target="_blank" href="<@=relatedItem.relatedItem @>"><@=relatedItem.relatedItem @></a>
 	</li>
 <@ })@>
