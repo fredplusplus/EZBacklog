@@ -42,6 +42,20 @@ public class RelatedItemController {
 	}
 
 	/**
+	 * Handler for delete a related item.
+	 * 
+	 * @param id
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value = "/f/relatedItems/{id}", method = RequestMethod.DELETE)
+	public String deleteRelatedItem(@PathVariable("id") Long id, Model model) {
+		RelatedItem relatedItem = relatedItemModule.deleteRelatedItem(id);
+		model.addAttribute(Constants.JSON_MODEL, gson.toJson(relatedItem));
+		return "json";
+	}
+
+	/**
 	 * Create a related item.
 	 * 
 	 * @param model

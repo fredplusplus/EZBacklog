@@ -23,4 +23,12 @@ public interface RelatedItemModule {
 	 * @param relatedItem
 	 */
 	void addRelatedItem(RelatedItem relatedItem);
+
+	/**
+	 * Deletes a related item by id.
+	 * 
+	 * @param id
+	 * @return deleted {@link RelatedItem}
+	 */
+	RelatedItem deleteRelatedItem(Long id);
 }

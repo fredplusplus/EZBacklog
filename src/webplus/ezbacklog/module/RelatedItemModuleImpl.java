@@ -6,6 +6,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.jdo.JDOObjectNotFoundException;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
@@ -69,5 +70,19 @@ public class RelatedItemModuleImpl implements RelatedItemModule {
 		Query query = pm.newQuery(RelatedItem.class);
 		query.setFilter(filter);
 		return (List<RelatedItem>) query.execute();
+	}
+
+	@Override
+	public RelatedItem deleteRelatedItem(Long id) {
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+		RelatedItem relatedItem = null;
+		try {
+			pm.deletePersistent(pm.getObjectById(RelatedItem.class, id));
+			return relatedItem;
+		} catch (JDOObjectNotFoundException e) {
+			return null;
+		} finally {
+			pm.close();
+		}
 	}
 }
