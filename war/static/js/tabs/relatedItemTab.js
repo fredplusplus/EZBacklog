@@ -15,14 +15,17 @@ RelatedItemCollection = Backbone.Collection.extend({
 RelatedItemView = Backbone.View.extend({
 	events : {
 		"click button#addALink" : "submitAddALink",
+		"click span#removeRelatedItem" : "deleteALink",
 	},
 	initialize : function() {
 		this.$el = $("#relatedItemContainer");
 		_.bindAll(this, "renderContent");
 		_.bindAll(this, "displayAddALink");
+		_.bindAll(this, "displayDeleteALink");
 		this.collection = new RelatedItemCollection();
 		this.collection.url = "/f/relatedItems/" + this.model.get("id");
 		this.collection.bind('add', this.renderContent, this);
+		this.collection.bind('remove', this.renderContent, this);
 		this.initialized = false;
 		this.render();
 	},
@@ -70,5 +73,18 @@ RelatedItemView = Backbone.View.extend({
 	},
 	displayAddALink : function(model) {
 		this.collection.add(model);
+	},
+	deleteALink : function(event) {
+		if (this.model.get("selected")) {
+			var currentTarget = $(event.currentTarget);
+			var id = $(event.currentTarget).data("id");
+			var model = this.collection.get(id);
+			model.destroy({
+				success : this.displayDeleteALink
+			});
+		}
+	},
+	displayDeleteALink : function(model) {
+		this.collection.remove(model);
 	}
 });
