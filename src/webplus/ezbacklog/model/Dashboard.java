@@ -1,5 +1,7 @@
 package webplus.ezbacklog.model;
 
+import java.util.List;
+
 /**
  * Model for displaying dash board.
  * 
@@ -9,6 +11,11 @@ public class Dashboard {
 
 	private Backlogger backlogger;
 	private ItemAggregation itemAggregation;
+	private List<List<Object>> milestones;
+
+	public List<List<Object>> getMilestones() {
+		return milestones;
+	}
 
 	public Backlogger getBacklogger() {
 		return backlogger;
@@ -24,5 +31,9 @@ public class Dashboard {
 
 	public void setItemAggregation(ItemAggregation itemAggregation) {
 		this.itemAggregation = itemAggregation;
+	}
+
+	public void setMilestones(List<List<Object>> milestones) {
+		this.milestones = milestones;
 	}
 }

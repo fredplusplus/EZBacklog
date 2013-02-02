@@ -1,6 +1,7 @@
 <%@ include file="/WEB-INF/jspf/taglibs.jspf"%>
 <%@page contentType="text/html" pageEncoding="utf-8"%>
 <script type="text/javascript" src="/static/js/dashboard.js"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 
 <div class="container-fluid" id="dashboardContainer"></div>
 <script id="dashboardTemplate" type="text/template">
@@ -45,6 +46,11 @@
 				</table>
 			</div>
 			<div class="row-fluid">
+				<h4><spring:message code="dashboard.milestone" /></h4>
+				<div class="span12" id="milestoneContainer">
+				</div>
+			</div>
+			<div class="row-fluid">
 				<div class="span4">
 					<a href="/f/items" class="btn btn-success"><spring:message code="dashboard.btn.gotoproject"/></a>
 				</div>
@@ -57,4 +63,5 @@
 	var bb_dashboard = new Dashboard({
 		el : $("#dashboardContainer")
 	});
+
 </script>

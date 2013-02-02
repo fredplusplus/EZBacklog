@@ -5,6 +5,7 @@ import static webplus.ezbacklog.values.ActivityType.Burndown;
 import static webplus.ezbacklog.values.ActivityType.Update;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.jdo.PersistenceManager;
@@ -87,6 +88,20 @@ public class ActivityUpdateModuleImpl implements ActivityUpdateModule {
 		}
 		String filter = String.format("itemId == %d", itemId);
 		return query(filter);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Activity> getActivty(ActivityType type, Date startDate, Date endDate) {
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+		Query query = pm.newQuery(Activity.class);
+		query.setOrdering("time asc");
+		String filter = String.format(
+				"activityType == '%s' && userEmail == '%s' && time > startDate && time < endDate", type.name(),
+				backloggerModule.getCurrencyBacklogger().getEmail());
+		query.declareParameters("java.util.Date startDate, java.util.Date endDate");
+		query.setFilter(filter);
+		return (List<Activity>) query.execute(startDate, endDate);
 	}
 
 	@SuppressWarnings("unchecked")
