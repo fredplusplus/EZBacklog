@@ -74,7 +74,7 @@ CommentView = Backbone.View.extend({
 			
 			var remoteComment = new CommentModel({
 				"userEmail" : siteNavModel.get("userName"),
-				"description" : description,
+				"description" : encodeURIComponent(description),
 				"itemId" : this.model.get("id")
 			});
 			remoteComment.save(remoteComment.toJSON());

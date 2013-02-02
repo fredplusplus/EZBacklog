@@ -34,6 +34,9 @@ Dashboard = Backbone.View
 						top : 20,
 						left : 20,
 						width : '80%'
+					},
+					tooltip : {
+						isHtml : true,
 					}
 				});
 			}

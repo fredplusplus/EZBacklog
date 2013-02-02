@@ -1,11 +1,12 @@
 <%@ include file="/WEB-INF/jspf/taglibs.jspf" %>
-<%@page contentType="text/html" pageEncoding="utf-8" %>
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta name="google-site-verification" content="V1v2h97tTZuMFBout2AgCEtcc5sR6FxZeJOQ-UgG8kw" />
 		<meta name="keywords" content="scrum, backlog, kanban, project management, sprint" />
 		<meta name="description" content="A easy tool to manage your project backlog." />
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 		<title>
 			<c:set var="titleKey">
 				<tiles:insertAttribute name="title" ignore="true" />

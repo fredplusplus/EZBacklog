@@ -52,10 +52,10 @@ UpdateItemModalView = Backbone.View.extend({
 	},
 	submitUpdate : function() {
 		if (this.model.get("selected")) {
-			this.model.set("shortDescription", this.$el.find(
-					"input#shortDescription").val());
-			this.model.set("longDescription", this.$el.find(
-					"textarea#longDescription").val());
+			this.model.set("shortDescription", encodeURIComponent(this.$el
+					.find("input#shortDescription").val()));
+			this.model.set("longDescription", encodeURIComponent(this.$el.find(
+					"textarea#longDescription").val()));
 			this.model.set("rank", this.$el.find("input#rank").val());
 			this.model.set("point", this.$el.find("input#point").val());
 			this.syncSaveItem();
