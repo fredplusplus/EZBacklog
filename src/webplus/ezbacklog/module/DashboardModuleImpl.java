@@ -68,7 +68,7 @@ public class DashboardModuleImpl implements DashboardModule {
 		}
 		List<Item> items = itemDisplayModule.getItemByParentId(parentId);
 
-		return makeItemAggregation(0L, parent, items);
+		return makeItemAggregation(ItemLevel.PROJECT, parent, items);
 	}
 
 	public ItemAggregation getItemAggregationByLevel(Long level) {
