@@ -35,17 +35,17 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr class="info">
+						<tr>
 							<th><spring:message code="dashboard.openproject" /></th>
 							<td><@= itemAggregation.statusMap.Open@></td>
 							<td><@= itemAggregation.pointMap.Open@></td>
 						</tr>
-						<tr class="success">
+						<tr>
 							<th><spring:message code="dashboard.resolvedproject" /></th>
 							<td><@= itemAggregation.statusMap.Resolved@></td>
 							<td><@= itemAggregation.pointMap.Resolved@></td>
 						</tr>
-						<tr class="error">
+						<tr>
 							<th><spring:message code="dashboard.deletedproject" /></th>
 							<td><@= itemAggregation.statusMap.Deleted@></td>
 							<td><@= itemAggregation.pointMap.Deleted@></td>
