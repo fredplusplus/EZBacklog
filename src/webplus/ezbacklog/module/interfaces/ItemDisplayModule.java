@@ -9,9 +9,19 @@ import webplus.ezbacklog.model.Item;
  * 
  */
 public interface ItemDisplayModule {
+
 	/**
-	 * Returns a list of item on a certain leve. All items are owned by the
-	 * current user.
+	 * Returns a list of item on a certain level. All items owned by the current
+	 * user.
+	 * 
+	 * @param level
+	 * @return
+	 */
+	List<Item> getItemByLevel(long level);
+
+	/**
+	 * Returns a list of item on under the same parent. All items are owned by
+	 * the current user.
 	 * 
 	 * @param parentId
 	 *            optional parent id.

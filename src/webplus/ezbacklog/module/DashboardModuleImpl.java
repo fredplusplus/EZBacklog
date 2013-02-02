@@ -44,7 +44,8 @@ public class DashboardModuleImpl implements DashboardModule {
 	public Dashboard getDashboard() {
 		Dashboard dashboard = new Dashboard();
 		dashboard.setBacklogger(backloggerModule.getCurrencyBacklogger());
-		dashboard.setItemAggregation(getItemAggregationByParentId(-1));
+		dashboard.setItemAggregation(getItemAggregationByLevel(backloggerModule.getCurrencyBacklogger()
+				.getOverviewlevel()));
 		Calendar startTime = Calendar.getInstance();
 		Calendar endTime = Calendar.getInstance();
 		startTime.add(Calendar.YEAR, -1);
@@ -62,16 +63,26 @@ public class DashboardModuleImpl implements DashboardModule {
 	@Override
 	public ItemAggregation getItemAggregationByParentId(long parentId) {
 		Item parent = null;
-		ItemAggregation aggregation = new ItemAggregation();
 		if (parentId > 0) {
 			parent = itemDisplayModule.getItemById(parentId);
 		}
 		List<Item> items = itemDisplayModule.getItemByParentId(parentId);
+
+		return makeItemAggregation(0L, parent, items);
+	}
+
+	public ItemAggregation getItemAggregationByLevel(Long level) {
+		List<Item> items = itemDisplayModule.getItemByLevel(level);
+		return makeItemAggregation(level, null, items);
+	}
+
+	private ItemAggregation makeItemAggregation(Long level, Item parent, List<Item> items) {
+		ItemAggregation aggregation = new ItemAggregation();
 		if (parent == null) {
-			aggregation.setItemLevel(ItemLevel.PROJECT);
+			aggregation.setItemLevel(level);
 		} else {
 			aggregation.setItemLevel(parent.getItemLevel() + 1L);
-			aggregation.setParentId(parentId);
+			aggregation.setParentId(parent.getId());
 			aggregation.setGrandParentId(parent.getParentId());
 			aggregation.setParentShortDescription(parent.getShortDescription());
 			aggregation.setParentStatus(parent.getStatus());
@@ -83,6 +94,7 @@ public class DashboardModuleImpl implements DashboardModule {
 			}
 		}
 		return aggregation;
+
 	}
 
 	private List<List<Object>> makeMilestoneHistory(List<Activity> creates, List<Activity> reopen,

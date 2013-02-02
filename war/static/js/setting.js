@@ -24,10 +24,21 @@ SettingView = Backbone.View.extend({
 		this.initToggle("showDeleted");
 		this.initToggle("showResolved");
 		this.initLanguages([ "en", "zh" ]);
+		this.initOverviewLevel([ 1, 2, 3 ]);
 	},
 	initToggle : function(id) {
 		if (this.model.get(id)) {
 			$('button#' + id).button("toggle");
+		}
+	},
+	initOverviewLevel : function(levels) {
+		this.overviewlevel = 1;
+		for ( var i in levels) {
+			if (this.model.get("overviewlevel") == levels[i]) {
+				$('button#overviewlevel' + levels[i]).button("toggle");
+				this.overviewlevel = levels[i];
+				return;
+			}
 		}
 	},
 	initLanguages : function(langs) {
@@ -46,6 +57,9 @@ SettingView = Backbone.View.extend({
 		"click button#showDeleted" : "toggleDeleted",
 		"click button#en" : "toggleEnglish",
 		"click button#zh" : "toggleChinese",
+		"click button#overviewlevel1" : "toggleOverviewlevel1",
+		"click button#overviewlevel2" : "toggleOverviewlevel2",
+		"click button#overviewlevel3" : "toggleOverviewlevel3",
 		"click button#saveSetting" : "saveSettings",
 	},
 	toggleActive : function() {
@@ -63,6 +77,15 @@ SettingView = Backbone.View.extend({
 	toggleChinese : function() {
 		this.displayLocale = 'zh';
 	},
+	toggleOverviewlevel1 : function() {
+		this.overviewlevel = 1;
+	},
+	toggleOverviewlevel2 : function() {
+		this.overviewlevel = 2;
+	},
+	toggleOverviewlevel3 : function() {
+		this.overviewlevel = 3;
+	},
 	toggleState : function(id) {
 		var $btn = $('button#' + id);
 		var state = $btn.data("value");
@@ -74,6 +97,7 @@ SettingView = Backbone.View.extend({
 		this.model.set("showResolved", $('button#showResolved').data("value"));
 		this.model.set("showDeleted", $('button#showDeleted').data("value"));
 		this.model.set("displayLocale", this.displayLocale);
+		this.model.set("overviewlevel", this.overviewlevel);
 		$("#waitModal").modal();
 		this.model.save(this.model.toJSON(), {
 			success : function(model, response) {

@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import webplus.ezbacklog.model.Backlogger;
 import webplus.ezbacklog.module.interfaces.BackloggerModule;
 import webplus.ezbacklog.service.PMF;
+import webplus.ezbacklog.values.ItemLevel;
 
 import com.google.appengine.api.users.UserService;
 
@@ -38,6 +39,9 @@ public class BackloggerModuleImpl implements BackloggerModule {
 			if (backlogger.getDisplayLocale() == null) {
 				backlogger.setDisplayLocale(Locale.ENGLISH);
 			}
+			if (backlogger.getOverviewlevel() == null) {
+				backlogger.setOverviewlevel(ItemLevel.PROJECT);
+			}
 		} catch (JDOObjectNotFoundException e) {
 			needCreateNewUser = true;
 		}
@@ -49,6 +53,7 @@ public class BackloggerModuleImpl implements BackloggerModule {
 			backlogger.setShowResolved(true);
 			backlogger.setShowDeleted(false);
 			backlogger.setDisplayLocale(Locale.ENGLISH);
+			backlogger.setOverviewlevel(1L);
 			saveBacklogger(backlogger);
 		}
 	}
@@ -60,6 +65,7 @@ public class BackloggerModuleImpl implements BackloggerModule {
 		backlogger.setShowResolved(prefs.getShowResolved());
 		backlogger.setShowDeleted(prefs.getShowDeleted());
 		backlogger.setDisplayLocale(prefs.getDisplayLocale());
+		backlogger.setOverviewlevel(prefs.getOverviewlevel());
 		saveBacklogger(backlogger);
 	}
 

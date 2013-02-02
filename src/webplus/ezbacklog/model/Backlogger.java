@@ -27,9 +27,19 @@ public class Backlogger {
 	private boolean showDeleted;
 	@Persistent
 	private String displayLocale;
+	@Persistent
+	private Long overviewlevel;
 
 	public String getEmail() {
 		return email;
+	}
+
+	public Long getOverviewlevel() {
+		return overviewlevel;
+	}
+
+	public void setOverviewlevel(Long overviewlevel) {
+		this.overviewlevel = overviewlevel;
 	}
 
 	public void setEmail(String email) {

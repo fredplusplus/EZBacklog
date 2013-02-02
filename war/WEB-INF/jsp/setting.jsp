@@ -8,7 +8,15 @@
 		</div>
 		<div id="settingContainer" class="span6 offset1 settingContainer"></div>
 		<script type="text/template" id="settingTemplate">
-			<div class="setting-content"> 
+			<div class="setting-content">
+				<h4>status tracking </h4>
+		 		<div class="btn-toolbar setting-group">
+					<div class="btn-group" data-toggle="buttons-radio">
+  						<button id="overviewlevel1" type="button" class="btn">overviewlevel 1</button>
+	  					<button id="overviewlevel2" type="button" class="btn">overviewlevel 2</button>
+						<button id="overviewlevel3" type="button" class="btn">overviewlevel 3</button>
+					</div>
+				</div>
 				<h4><spring:message code="setting.label.page.display" /></h4>
 				<div class="btn-toolbar setting-group">
 					<div class="btn-group" data-toggle="buttons-radio">

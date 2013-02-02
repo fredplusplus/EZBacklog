@@ -24,9 +24,24 @@ public class ItemDisplayModuleImpl implements ItemDisplayModule {
 	@Autowired
 	private BackloggerModule backloggerModule;
 	private Map<Long, List<Item>> getItemByParentIdResultCache;
+	private Map<Long, List<Item>> getItemByLevelResultCache;
 
 	public ItemDisplayModuleImpl() {
 		getItemByParentIdResultCache = new HashMap<Long, List<Item>>();
+		getItemByLevelResultCache = new HashMap<Long, List<Item>>();
+	}
+
+	@Override
+	public List<Item> getItemByLevel(long level) {
+		if (getItemByLevelResultCache.get(level) != null) {
+			return getItemByLevelResultCache.get(level);
+		} else {
+			String filter = "ownerEmail == '%s' && itemLevel == " + level;
+			filter = String.format(filter, backloggerModule.getCurrencyBacklogger().getEmail());
+			List<Item> items = query(filter);
+			getItemByLevelResultCache.put(level, items);
+			return items;
+		}
 	}
 
 	@Override
@@ -56,8 +71,7 @@ public class ItemDisplayModuleImpl implements ItemDisplayModule {
 			String statusFilter = constructStatusFilter();
 			if (statusFilter == null) {
 				return items;
-			}
-			else if (statusFilter.length() > 0) {
+			} else if (statusFilter.length() > 0) {
 				filter += " && " + statusFilter;
 			}
 			filter = String.format(filter, backloggerModule.getCurrencyBacklogger().getEmail(), parentId);

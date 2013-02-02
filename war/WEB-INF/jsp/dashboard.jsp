@@ -17,7 +17,15 @@
 				</dl>
 			</div>
 			<div class="row-fluid" id="projectContainer">
-				<h4><spring:message code="dashboard.projectoverview" /> </h4>
+				<h4>
+					<@ if (typeof (backlogger.overviewlevel) == 'undefined' || backlogger.overviewlevel == 1) { @>
+					<spring:message code="dashboard.overview.1" />
+					<@ } else if (backlogger.overviewlevel == 2) {@>
+					<spring:message code="dashboard.overview.2" />
+					<@ } else if (backlogger.overviewlevel == 3) {@>
+					<spring:message code="dashboard.overview.3" />
+					<@ } @>
+				</h4>
 				<table class="table table-striped table-bordered">
 					<thead>
 						<tr>
