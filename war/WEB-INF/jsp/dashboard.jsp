@@ -9,7 +9,7 @@
 			<div class="row-fluid">
 				<img src="/static/img/bot.png" class="img-rounded" />
 			</div>
-			<div class="row-fliud">
+			<div class="row-fliud dashboradAds">
 				<ads:square />
 			</div>
 		</div>
