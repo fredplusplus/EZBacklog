@@ -6,7 +6,10 @@
 	
 <div class="container-fluid">
 	<div class="row-fluid" >
-		<div class="span5" id="itemCollectionContainer"></div>
+		<div class="span5" >
+			<div class="row-fluid" id="itemCollectionContainer"></div>
+			<ads:itembanner />
+		</div>
 		<div class="span6">
 			<div class="row-fluid" id="breadCrumbContainer"></div>
 			<div class="row-fluid" id="itemDetailContainer"></div>
