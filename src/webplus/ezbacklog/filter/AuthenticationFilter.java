@@ -18,7 +18,10 @@ import com.google.appengine.api.users.UserServiceFactory;
 
 public class AuthenticationFilter extends OncePerRequestFilter {
 
-	@Autowired private BackloggerModule backloggerModule;
+	@Autowired
+	private BackloggerModule backloggerModule;
+
+	private static final String WelcomePage = "/f/about";
 
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
@@ -27,8 +30,13 @@ public class AuthenticationFilter extends OncePerRequestFilter {
 			UserService userService = UserServiceFactory.getUserService();
 			User user = userService.getCurrentUser();
 			if (user == null) {
-				((HttpServletResponse) response).sendRedirect(userService.createLoginURL(((HttpServletRequest) request)
-						.getRequestURI()));
+				if (request.getRequestURI().contains(WelcomePage)) {
+					chain.doFilter(request, response);
+				} else {
+					((HttpServletResponse) response).sendRedirect(userService
+							.createLoginURL(((HttpServletRequest) request).getRequestURI()));
+					return;
+				}
 			} else {
 				backloggerModule.registerBacklogger();
 			}

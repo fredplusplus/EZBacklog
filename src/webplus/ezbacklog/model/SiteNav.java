@@ -6,6 +6,8 @@ public class SiteNav {
 	private boolean isProject;
 	private boolean isAbout;
 	private boolean isSetting;
+	private boolean authenticated;
+	private String loginUrl;
 	private String userName;
 
 	public void setUserName(String username) {
@@ -46,5 +48,21 @@ public class SiteNav {
 
 	public void setSetting(boolean isSetting) {
 		this.isSetting = isSetting;
+	}
+
+	public boolean isAuthenticated() {
+		return authenticated;
+	}
+
+	public void setAuthenticated(boolean authenticated) {
+		this.authenticated = authenticated;
+	}
+
+	public String getLoginUrl() {
+		return loginUrl;
+	}
+
+	public void setLoginUrl(String loginUrl) {
+		this.loginUrl = loginUrl;
 	}
 }

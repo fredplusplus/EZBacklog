@@ -6,28 +6,28 @@
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
-	<bean id="authenticationFilterBean" class="webplus.ezbacklog.filter.AuthenticationFilter" />
+	<bean id="authenticationFilterBean" class="webplus.ezbacklog.filter.AuthenticationFilter" lazy-init="true" />
 
-	<bean id="activityUpdateModule" class="webplus.ezbacklog.module.ActivityUpdateModuleImpl" />
+	<bean id="activityUpdateModule" class="webplus.ezbacklog.module.ActivityUpdateModuleImpl" lazy-init="true"/>
 
-	<bean id="dashboardModule" class="webplus.ezbacklog.module.DashboardModuleImpl" />
-	<bean id="itemDisplayModule" class="webplus.ezbacklog.module.ItemDisplayModuleImpl"
+	<bean id="dashboardModule" class="webplus.ezbacklog.module.DashboardModuleImpl" lazy-init="true"/>
+	<bean id="itemDisplayModule" class="webplus.ezbacklog.module.ItemDisplayModuleImpl" lazy-init="true"
 		scope="request">
 		<aop:scoped-proxy />
 	</bean>
 
-	<bean id="itemUpdateModule" class="webplus.ezbacklog.module.ItemUpdateModuleImpl" />
-	<bean id="relatedItemModule" class="webplus.ezbacklog.module.RelatedItemModuleImpl" />
-	<bean id="commentModule" class="webplus.ezbacklog.module.CommentModuleImpl" />
-	<bean id="stringNormalizer" class="webplus.ezbacklog.service.StringNormalizer" />
-	<bean id="urlNormalizer" class="webplus.ezbacklog.service.UrlNormalizer" />
+	<bean id="itemUpdateModule" class="webplus.ezbacklog.module.ItemUpdateModuleImpl" lazy-init="true"/>
+	<bean id="relatedItemModule" class="webplus.ezbacklog.module.RelatedItemModuleImpl" lazy-init="true"/>
+	<bean id="commentModule" class="webplus.ezbacklog.module.CommentModuleImpl" lazy-init="true"/>
+	<bean id="stringNormalizer" class="webplus.ezbacklog.service.StringNormalizer" lazy-init="true"/>
+	<bean id="urlNormalizer" class="webplus.ezbacklog.service.UrlNormalizer" lazy-init="true"/>
 
-	<bean id="backloggerModule" class="webplus.ezbacklog.module.BackloggerModuleImpl"
+	<bean id="backloggerModule" class="webplus.ezbacklog.module.BackloggerModuleImpl" lazy-init="true"
 		scope="request">
 		<aop:scoped-proxy />
 	</bean>
 
-	<bean id="siteNavModule" class="webplus.ezbacklog.module.SiteNavModuleImpl"
+	<bean id="siteNavModule" class="webplus.ezbacklog.module.SiteNavModuleImpl" lazy-init="true"
 		scope="request" init-method="init">
 		<aop:scoped-proxy />
 	</bean>

@@ -13,10 +13,12 @@ import com.google.gson.Gson;
 @Controller
 public class AboutController {
 
-	@Autowired private Gson gson;
-	@Autowired private SiteNavModule sitenavModule;
+	@Autowired
+	private Gson gson;
+	@Autowired
+	private SiteNavModule sitenavModule;
 
-	@RequestMapping("/f/about")
+	@RequestMapping({ "/f/about" })
 	public String execute(Model model) {
 		SiteNav sitenav = sitenavModule.getSiteNav();
 		sitenav.setAbout(true);
