@@ -33,8 +33,12 @@ public class AuthenticationFilter extends OncePerRequestFilter {
 				if (request.getRequestURI().contains(WelcomePage)) {
 					chain.doFilter(request, response);
 				} else {
-					((HttpServletResponse) response).sendRedirect(userService
-							.createLoginURL(((HttpServletRequest) request).getRequestURI()));
+					if (request.getRequestURI().equals("/")) {
+						((HttpServletResponse) response).sendRedirect(WelcomePage);
+					} else {
+						((HttpServletResponse) response).sendRedirect(userService
+								.createLoginURL(((HttpServletRequest) request).getRequestURI()));
+					}
 					return;
 				}
 			} else {
