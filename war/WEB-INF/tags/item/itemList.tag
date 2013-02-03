@@ -20,11 +20,11 @@
 				</div>
 				<div class="span2 topPadding">
 					<@if (item.status == 'Open') {@>
-					<spring:message code="dashboard.openproject"/>
+						<small class="label label-warning"><spring:message code="dashboard.openproject"/></small>
 					<@} else if (item.status =='Resolved'){ @>
-						<spring:message code="dashboard.resolvedproject"/>
+						<small class="label label-success"><spring:message code="dashboard.resolvedproject"/></small>
 					<@} else if (item.status =='Deleted'){ @>
-						<spring:message code="dashboard.deletedproject"/>
+						<small class="label "><spring:message code="dashboard.deletedproject"/></small>
 					<@}@>
 				</div>
 			</div>

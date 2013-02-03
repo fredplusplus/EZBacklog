@@ -1,6 +1,5 @@
 package webplus.ezbacklog.service;
 
-import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 
 import org.springframework.web.util.HtmlUtils;
@@ -11,7 +10,7 @@ public class StringNormalizer {
 		if (str != null) {
 			try {
 				return URLDecoder.decode(str.replace("+", "%2B"), "UTF-8").replace("%2B", "+");
-			} catch (UnsupportedEncodingException e) {
+			} catch (Exception e) {
 			}
 		}
 		return str;
