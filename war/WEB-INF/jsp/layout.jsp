@@ -4,8 +4,8 @@
 <html>
 	<head>
 		<meta name="google-site-verification" content="V1v2h97tTZuMFBout2AgCEtcc5sR6FxZeJOQ-UgG8kw" />
-		<meta name="keywords" content="scrum, backlog, kanban, project management, sprint" />
-		<meta name="description" content="A easy tool to manage your project backlog." />
+		<meta name="keywords" content="scrum, backlog, kanban, project management, sprint, ezbacklog" />
+		<meta name="description" content="An free easy backlog tool to manage your personal projects." />
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 		<title>
 			<c:set var="titleKey">
