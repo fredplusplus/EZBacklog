@@ -2,13 +2,14 @@
 <%@page contentType="text/html" pageEncoding="utf-8"%>
 <link href="/static/css/impress.css" rel="stylesheet">
 <script type="text/javascript" src="/static/js/lib/impress/impress.js"></script>
-<div class="container impress-not-supported impressContainer">
+<div id="impressContainer" class="container impress-not-supported impressContainer">
 	<div id="impress">
 		<div class="step slide" data-x="0" data-y="0" data-rotate="0">
 			<div class="row-fluid">
 				<h4>It's an Easy Backlog</h4>
-				<div class="span4">
+				<div class="span4 center">
 					<img src="/static/img/bot.png" class="img-rounded" />
+					<a href="/f/dashboard"><spring:message code="about.login" /></a>
 				</div>
 				<div class="span7">
 					<ul>
@@ -22,8 +23,9 @@
 		<div class="step slide" data-x="1000" data-y="800" data-rotate="0">
 			<div class="row-fluid">
 				<h4>It's a Personal Backlog</h4>
-				<div class="span4">
+				<div class="span4 center">
 					<img src="/static/img/calculon.png" class="img-rounded" />
+					<a href="/f/dashboard"><spring:message code="about.login" /></a>
 				</div>
 				<div class="span7">
 					<ul>
@@ -36,9 +38,10 @@
 		</div>
 		<div class="step slide" data-x="0" data-y="1600" data-rotate="0">
 			<div class="row-fluid">
-				<h4>It's an Un-time-boxed Backlog</h4>
-				<div class="span4">
+				<h4>It's a Free Style Backlog</h4>
+				<div class="span4 center">
 					<img src="/static/img/bender-left.png" class="img-rounded" />
+					<a href="/f/dashboard"><spring:message code="about.login" /></a>
 				</div>
 				<div class="span7">
 					<ul>
@@ -54,8 +57,9 @@
 		<div class="step slide" data-x="-1000" data-y="800" data-rotate="0">
 			<div class="row-fluid">
 				<h4>It's a Free Backlog</h4>
-				<div class="span4">
+				<div class="span4 center">
 					<img src="/static/img/preacher.png" class="img-rounded" />
+					<a href="/f/dashboard"><spring:message code="about.login" /></a>
 				</div>
 				<div class="span7">
 					<ul>

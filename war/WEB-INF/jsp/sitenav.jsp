@@ -21,8 +21,6 @@
 				<p class="navbar-text pull-right">
 					<@ if (authenticated) { @>
 						<@= userName @>
-					<@ } else { @>
-						<a href="<@=loginUrl@>"><spring:message code="nav.login" /> 
 					<@ } @>
 				</p>
 			</div>

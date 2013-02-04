@@ -22,7 +22,6 @@ public class SiteNavModuleImpl implements SiteNavModule {
 			sitenav.setAuthenticated(true);
 		} else {
 			sitenav.setAuthenticated(false);
-			sitenav.setLoginUrl(userService.createLoginURL("/f/dashboard"));
 		}
 	}
 
