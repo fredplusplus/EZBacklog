@@ -12,10 +12,11 @@
 			</div>			
 			<div class="nav-collapse" id="sitenav">
 				<ul class="nav" >
-					<@if (authenticated) { @>
+					<@if (authenticated && !isAbout) { @>
 						<li <@ if (isDashboard) {@> class="active" <@}@>><a href="/f/dashboard"><spring:message code="nav.btn.dashboard" /></a></li>
 						<li <@ if (isProject) {@> class="active" <@}@>><a href="/f/items"><spring:message code="nav.btn.projects" /></a></li>
 						<li <@ if (isSetting) {@> class="active" <@}@>><a href="/f/setting"><spring:message code="nav.btn.setting" /></a></li>
+						<li><a href="/f/about"><spring:message code="nav.btn.about" /></a></li>
 					<@ } @>
 				</ul>
 				<p class="navbar-text pull-right">
