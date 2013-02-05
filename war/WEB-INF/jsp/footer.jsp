@@ -2,7 +2,8 @@
 <%@page contentType="text/html" pageEncoding="utf-8" %>
 
 <div class="stickyFooter">
-	<h5><a href="https://github.com/fredplusplus/EZBacklog/issues"><spring:message code="footer.sticky.issue"/></a></h5>	
+	<c:set var="issueUrl"><spring:message code="issueUrl" /></c:set>
+	<h5><a href="${issueUrl}"><spring:message code="footer.sticky.issue"/></a></h5>	
 </div>
 <footer class="footer">
 	<div class="container">
@@ -13,17 +14,15 @@
 </footer>
 
 <script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-37820703-2']);
+	_gaq.push(['_trackPageview']);
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
 
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-37820703-1']);
-  _gaq.push(['_setSiteSpeedSampleRate', 100]);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
   <!-- Place this tag after the last +1 button tag. -->
   (function() {
 	var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;

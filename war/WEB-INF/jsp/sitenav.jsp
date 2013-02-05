@@ -22,7 +22,7 @@
 				<div class="navbar-text pull-right span4">
 					<div class="row-fluid">	
 						<div class="share pull-left">
-							<div class="g-plusone pull-right" data-annotation="bubble" data-href="http://ezbacklog.appspot.com"></div>
+							<div class="g-plusone pull-right" data-annotation="bubble" data-href="<spring:message code="rootUrl" />"></div>
 						</div>
 						<div class="span6 text-right pull-right" >
 							<@ if (authenticated) { @>
