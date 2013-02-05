@@ -1,6 +1,11 @@
 <%@ include file="/WEB-INF/jspf/taglibs.jspf" %>
 <%@page contentType="text/html" pageEncoding="utf-8" %>
 
+<div class="stickyFooter">
+	<h5>
+	<a href="https://github.com/fredplusplus/EZBacklog/issues"><spring:message code="footer.sticky.issue"/></a>
+	</h5>
+</div>
 <footer class="footer">
 	<div class="container">
 		<p><spring:message code="footer.browser"/></p>
