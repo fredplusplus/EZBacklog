@@ -73,6 +73,10 @@ img.bender {
 	background: #fbfbfb;
 }
 
+.navbar .brand {
+	cursor: default;
+}
+
 .settingContainer .setting-content {
 	min-height: 400px;
 }
