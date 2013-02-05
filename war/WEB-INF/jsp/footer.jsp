@@ -4,7 +4,7 @@
 <div class="stickyFooter">
 	<!-- Place this tag where you want the +1 button to render. -->
 	<div style="margin-top: 10px">
-		<div class="g-plusone" data-annotation="none"></div>
+		<div class="g-plusone" data-annotation="none" data-href="http://ezbacklog.appspot.com"></div>
 	</div>	
 </div>
 <footer class="footer">
