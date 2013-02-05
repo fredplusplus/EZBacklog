@@ -77,6 +77,11 @@ img.bender {
 	cursor: default;
 }
 
+.navbar .navbar-text .share {
+	line-height: 20px;
+	padding-top: 7px;
+}
+
 .settingContainer .setting-content {
 	min-height: 400px;
 }
@@ -94,7 +99,7 @@ img.bender {
 	min-height: 40px;
 	position: fixed;
 	bottom: -5px;
-	right: 50px;
+	left: 10px;
 	border-radius: 4px;
 	-webkit-border-radius: 4px;
 	-moz-border-radius: 4px;
@@ -119,6 +124,10 @@ img.bender {
   	-webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
        -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
             box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
+}
+
+.text-right {
+	text-align: right;
 }
 
 .notes,.ez-breadcrumb {

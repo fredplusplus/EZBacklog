@@ -19,11 +19,18 @@
 						<li><a href="/f/about"><spring:message code="nav.btn.about" /></a></li>
 					<@ } @>
 				</ul>
-				<p class="navbar-text pull-right">
-					<@ if (authenticated) { @>
-						<@= userName @>
-					<@ } @>
-				</p>
+				<div class="navbar-text pull-right span4">
+					<div class="row-fluid">	
+						<div class="share pull-left">
+							<div class="g-plusone pull-right" data-annotation="bubble" data-href="http://ezbacklog.appspot.com"></div>
+						</div>
+						<div class="span6 text-right pull-right" >
+							<@ if (authenticated) { @>
+								<@= userName @>
+							<@ } @>
+						</div>
+					</div>
+				</div>
 			</div>
 			</script>
 		</div>

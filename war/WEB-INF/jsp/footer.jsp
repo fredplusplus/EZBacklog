@@ -2,10 +2,7 @@
 <%@page contentType="text/html" pageEncoding="utf-8" %>
 
 <div class="stickyFooter">
-	<!-- Place this tag where you want the +1 button to render. -->
-	<div style="margin-top: 10px">
-		<div class="g-plusone" data-annotation="none" data-href="http://ezbacklog.appspot.com"></div>
-	</div>	
+	<h5><a href="https://github.com/fredplusplus/EZBacklog/issues"><spring:message code="footer.sticky.issue"/></a></h5>	
 </div>
 <footer class="footer">
 	<div class="container">
