@@ -53,8 +53,7 @@ public class DashboardModuleImpl implements DashboardModule {
 		List<Activity> resolves = activityModule.getActivty(Resolve, startTime.getTime(), endTime.getTime());
 		List<Activity> reopens = activityModule.getActivty(Reopen, startTime.getTime(), endTime.getTime());
 		List<Activity> deletes = activityModule.getActivty(Delete, startTime.getTime(), endTime.getTime());
-		List<List<Object>> milestones = makeMilestoneHistory(creates, reopens, resolves, deletes, startTime.getTime(),
-				endTime.getTime());
+		List<List<Object>> milestones = makeMilestoneHistory(creates, reopens, resolves, deletes, endTime.getTime());
 
 		dashboard.setMilestones(milestones);
 		return dashboard;
@@ -98,12 +97,10 @@ public class DashboardModuleImpl implements DashboardModule {
 	}
 
 	private List<List<Object>> makeMilestoneHistory(List<Activity> creates, List<Activity> reopen,
-			List<Activity> resolve, List<Activity> delete, Date startTime, Date endTime) {
-		int startWeek = weekOfYear(startTime);
+			List<Activity> resolve, List<Activity> delete, Date endTime) {
 		int endWeek = weekOfYear(endTime);
-		if (endWeek < startWeek) {
-			endWeek += 52;
-		}
+		int startWeek = endWeek + 1;
+		endWeek += 52;
 		List<List<Object>> milestones = makeHeader(milestoneHeader);
 		Map<Integer, Integer> createData = makeData(creates);
 		Map<Integer, Integer> reopenData = makeData(reopen);
@@ -111,6 +108,7 @@ public class DashboardModuleImpl implements DashboardModule {
 		Map<Integer, Integer> deleteData = makeData(delete);
 		Locale displayLocale = backloggerModule.getCurrencyBacklogger().getDisplayLocale();
 		boolean haveAnything = false;
+		boolean foundTrueStart = false;
 		for (int i = startWeek; i <= endWeek; i++) {
 			List<Object> dataRow = new ArrayList<Object>();
 			int week = i % 52;
@@ -122,7 +120,12 @@ public class DashboardModuleImpl implements DashboardModule {
 			dataRow.add(resolveData.get(week));
 			dataRow.add(reopenData.get(week));
 			dataRow.add(deleteData.get(week));
+			if (!foundTrueStart && createData.get(week) == 0 && resolveData.get(week) == 0 && reopenData.get(week) == 0
+					&& deleteData.get(week) == 0) {
+				continue;
+			}
 			milestones.add(dataRow);
+			foundTrueStart = true;
 			haveAnything = true;
 		}
 		if (!haveAnything) {
