@@ -7,5 +7,9 @@ public interface BackloggerModule {
 
 	void registerBacklogger();
 
+	void registerBotBacklogger();
+	
 	void updatePreference(Backlogger prefs);
+	
+	
 }

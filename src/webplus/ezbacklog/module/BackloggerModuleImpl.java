@@ -84,4 +84,17 @@ public class BackloggerModuleImpl implements BackloggerModule {
 		}
 	}
 
+	@Override
+	public void registerBotBacklogger() {
+		backlogger = new Backlogger();
+		backlogger.setDisplayLocale(Locale.ENGLISH);
+		backlogger.setEmail("user@user.com");
+		backlogger.setJoinDate(Calendar.getInstance().getTime());
+		backlogger.setOverviewlevel(2L);
+		backlogger.setShowActive(true);
+		backlogger.setShowDeleted(true);
+		backlogger.setShowResolved(true);
+		backlogger.setUsePoint(true);
+	}
+
 }

@@ -26,26 +26,33 @@ public class AuthenticationFilter extends OncePerRequestFilter {
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
-		if (request instanceof HttpServletRequest) {
-			UserService userService = UserServiceFactory.getUserService();
-			User user = userService.getCurrentUser();
-			if (user == null) {
-				if (request.getRequestURI().contains(WelcomePage)) {
-					chain.doFilter(request, response);
-				} else {
-					if (request.getRequestURI().equals("/")) {
-						((HttpServletResponse) response).sendRedirect(WelcomePage);
-					} else {
-						((HttpServletResponse) response).sendRedirect(userService
-								.createLoginURL(((HttpServletRequest) request).getRequestURI()));
-					}
-					return;
-				}
+		UserService userService = UserServiceFactory.getUserService();
+		User user = userService.getCurrentUser();
+		if (user == null) {
+			if (request.getRequestURI().contains(WelcomePage)) {
+				chain.doFilter(request, response);
+			} else if (isBot(request)) {
+				backloggerModule.registerBotBacklogger();
+				chain.doFilter(request, response);
 			} else {
-				backloggerModule.registerBacklogger();
+				if (request.getRequestURI().equals("/")) {
+					response.sendRedirect(WelcomePage);
+				} else {
+					response.sendRedirect(userService.createLoginURL(((HttpServletRequest) request).getRequestURI()));
+				}
 			}
+		} else {
+			backloggerModule.registerBacklogger();
+			chain.doFilter(request, response);
 		}
-		chain.doFilter(request, response);
 	}
 
+	private boolean isBot(HttpServletRequest request) {
+		boolean isBot = false;
+		String agent = request.getHeader("User-Agent");
+		if ("Googlebot".equals(agent)) {
+			isBot = true;
+		}
+		return isBot;
+	}
 }
