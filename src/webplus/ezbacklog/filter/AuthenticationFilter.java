@@ -50,7 +50,15 @@ public class AuthenticationFilter extends OncePerRequestFilter {
 	private boolean isBot(HttpServletRequest request) {
 		boolean isBot = false;
 		String agent = request.getHeader("User-Agent");
-		if ("Googlebot".equals(agent)) {
+		if (agent == null || agent.isEmpty()) {
+			isBot = true;
+		} else if (agent.contains("Googlebot")) {
+			isBot = true;
+		} else if (agent.contains("Mediapartners-Google")) {
+			isBot = true;
+		} else if (agent.contains("AdsBot-Google")) {
+			isBot = true;
+		} else if (agent.contains("bingbot")) {
 			isBot = true;
 		}
 		return isBot;
