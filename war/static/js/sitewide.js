@@ -12,7 +12,18 @@ function formatDate(date) {
 
 function formatDateAccurate(date) {
 	var time = new Date(date + " UTC");
+	var hour = time.getHours();
+	var minute = time.getMinutes();
+	var second = time.getSeconds();
+	if (hour < 10) {
+		hour = "0" + hour;
+	}
+	if (minute < 10) {
+		minute = "0" + minute;
+	}
+	if (second < 10) {
+		second = "0" + second;
+	}
 	return (time.getMonth() + 1) + '/' + time.getDate() + '/'
-			+ time.getFullYear() + ' ' + time.getHours() + ":"
-			+ time.getMinutes() + ":" + time.getSeconds();
+			+ time.getFullYear() + ' ' + hour + ":" + minute + ":" + second;
 }
