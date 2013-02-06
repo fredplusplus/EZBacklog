@@ -40,9 +40,14 @@
   							<button id="showDeleted" type="button" class="btn" data-value="<@=showDeleted@>"><spring:message code="dashboard.deletedproject" /></button>
 						</div>
 					</div>
+					<h5><spring:message code="setting.label.use.point"/><h5>
+					<div class="btn-toolbar setting-group">
+						<div class="btn-group" data-toggle="buttons-radio">
+							<button id="usepointon" type="button" class="btn" data-value="true"><spring:message code="setting.radio.on" /></button>
+	  						<button id="usepointoff" type="button" class="btn" data-value="false"><spring:message code="setting.radio.off" /></button>
+						</div>
+					</div>
 				</div>
-				
-				
 			</div>
 			<div class="row-fluid">
 				<button class="btn btn-info" id="saveSetting"><spring:message code="setting.btn.ok" /></button>

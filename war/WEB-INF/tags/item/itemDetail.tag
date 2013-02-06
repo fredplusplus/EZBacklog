@@ -15,7 +15,9 @@
 			<@ if (status != 'Deleted') { @>
 				<a href="#" class="btn" id="edit"><spring:message code="itemDetail.action.edit"/></a>
 				<@if(status=='Open') { @>
-					<a href="#" class="btn" id="updateProgressBtn"><spring:message code="itemDetail.action.updateProgress"/></a>					
+					<@ if(backloggerModel.get("usePoint")) {@>
+						<a href="#" class="btn" id="updateProgressBtn"><spring:message code="itemDetail.action.updateProgress"/></a>
+					<@ } @>					
 					<a href="#" class="btn" id="resolveBtn"><spring:message code="itemDetail.action.resolve"/></a>
 				<@ } else if (status=='Resolved'){ @>
 					<a href="#" class="btn" id="reopenBtn"><spring:message code="itemDetail.action.reopen"/></a>
@@ -58,8 +60,10 @@
 			<dd><@=id@></dd>
 			<dt><spring:message code="itemDetail.modifieddate"/></dt>
 			<dd><@ if (typeof(modifyDate) != 'undefined') {print(formatDate(modifyDate));} @>&nbsp;</dd>
-			<dt><spring:message code="itemDetail.originalpoint"/></dt>
-			<dd><@= point @></dd>
+			<@ if(backloggerModel.get("usePoint")) {@>
+				<dt><spring:message code="itemDetail.originalpoint"/></dt>
+				<dd><@= point @></dd>
+			<@ } @>
 		</dl>
 	</div>
 	<div class="span4">
@@ -68,8 +72,10 @@
 			<dd><@ if (typeof(rank)!='undefined') {print(rank);} @></dd>
 			<dt><spring:message code="itemDetail.resolveddate"/></dt>
 			<dd><@ if (typeof(resolveDate) != 'undefined') {print(formatDate(resolveDate));} @>&nbsp;</dd>
-			<dt><spring:message code="itemDetail.resolvedpoint"/></dt>
-			<dd><@ if (typeof(resolvedPoint) != 'undefined') {print(resolvedPoint);} @></dd>
+			<@ if(backloggerModel.get("usePoint")) {@>
+				<dt><spring:message code="itemDetail.resolvedpoint"/></dt>
+				<dd><@ if (typeof(resolvedPoint) != 'undefined') {print(resolvedPoint);} @></dd>
+			<@ } @>
 		</dl>
 	</div>
 </div>

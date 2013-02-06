@@ -38,24 +38,32 @@
 				<tr>
 					<th></th>
 					<th><spring:message code="dashboard.projectcount" /></th>
-					<th><spring:message code="dashboard.projectpoint" /></th>
+					<@ if(backlogger.usePoint) { @>
+						<th><spring:message code="dashboard.projectpoint" /></th>
+					<@ } @>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
 					<th><spring:message code="dashboard.openproject" /></th>
 					<td><@= itemAggregation.statusMap.Open@></td>
-					<td><@= itemAggregation.pointMap.Open@></td>
+					<@ if(backlogger.usePoint) { @>
+						<td><@= itemAggregation.pointMap.Open@></td>
+					<@ } @>
 				</tr>
 				<tr>
 					<th><spring:message code="dashboard.resolvedproject" /></th>
 					<td><@= itemAggregation.statusMap.Resolved@></td>
-					<td><@= itemAggregation.pointMap.Resolved@></td>
+					<@ if(backlogger.usePoint) { @>
+						<td><@= itemAggregation.pointMap.Resolved@></td>
+					<@ } @>
 				</tr>
 				<tr>
 					<th><spring:message code="dashboard.deletedproject" /></th>
 					<td><@= itemAggregation.statusMap.Deleted@></td>
-					<td><@= itemAggregation.pointMap.Deleted@></td>
+					<@ if(backlogger.usePoint) { @>
+						<td><@= itemAggregation.pointMap.Deleted@></td>
+					<@ } @>
 				</tr>
 			</tbody>
 		</table>

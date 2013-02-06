@@ -71,7 +71,10 @@ UpdateItemModalView = Backbone.View.extend({
 			this.model.set("longDescription", encodeURIComponent(this.$el.find(
 					"textarea#longDescription").val()));
 			this.model.set("rank", this.$el.find("input#rank").val());
-			this.model.set("point", this.$el.find("input#point").val());
+			var point = this.$el.find("input#point").val();
+			if (typeof(point) != 'undefined' && point != '') {
+				this.model.set("point", this.$el.find("input#point").val());
+			}
 			this.syncSaveItem();
 		}
 		this.deactivate();

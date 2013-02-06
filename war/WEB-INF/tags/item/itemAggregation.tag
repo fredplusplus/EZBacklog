@@ -15,15 +15,15 @@
 		</h5>
 		<small>
 			<ul class="inline">
-				<c:if test="${Backlogger.showActive}">
+				<@ if (backloggerModel.get("showActive")) { @>
 					<li><spring:message code="itemAggregation.openOverview"/></li>
-				</c:if>
-				<c:if test="${Backlogger.showResolved}">
+				<@ } @>
+				<@ if (backloggerModel.get("showResolved")) { @>
 					<li><spring:message code="itemAggregation.resolvedOverview"/></li>
-				</c:if>
-				<c:if test="${Backlogger.showDeleted}">
+				<@ } @>
+				<@ if (backloggerModel.get("showDeleted")) { @>
 					<li><spring:message code="itemAggregation.deletedOverview"/></li>
-				</c:if>
+				<@ } @>
 			</ul>
 		</small>
 	</div>

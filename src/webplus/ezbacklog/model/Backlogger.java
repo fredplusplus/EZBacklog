@@ -8,7 +8,7 @@ import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
 /**
- * A user model of ezbacklog.
+ * A user model of lean backlog.
  * 
  */
 @PersistenceCapable
@@ -29,6 +29,8 @@ public class Backlogger {
 	private String displayLocale;
 	@Persistent
 	private Long overviewlevel;
+	@Persistent
+	private boolean usePoint;
 
 	public String getEmail() {
 		return email;
@@ -76,6 +78,14 @@ public class Backlogger {
 
 	public void setShowDeleted(boolean showDeleted) {
 		this.showDeleted = showDeleted;
+	}
+
+	public boolean isUsePoint() {
+		return usePoint;
+	}
+
+	public void setUsePoint(boolean usePoint) {
+		this.usePoint = usePoint;
 	}
 
 	public void setDisplayLocale(Locale displayLocale) {

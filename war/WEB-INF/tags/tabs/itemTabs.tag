@@ -8,7 +8,7 @@
 	<li>
 		<a href="#commentContainer" data-toggle="tab"><spring:message code="tab.label.comment" /></a>
 	</li>
-	<li>
+	<li id="progressTab">
 		<a href="#progressContainer" data-toggle="tab"><spring:message code="tab.label.progress" /></a>
 	</li>
 	<li>

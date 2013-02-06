@@ -181,12 +181,16 @@ ItemCollectionView = Backbone.View.extend({
 			model.descriptionView.render();
 		}
 		// progress view
-		if (typeof (model.progressView) == 'undefined') {
-			model.progressView = new ProgressView({
-				model : model
-			});
+		if (backloggerModel.get("usePoint")) {
+			if (typeof (model.progressView) == 'undefined') {
+				model.progressView = new ProgressView({
+					model : model
+				});
+			} else {
+				model.progressView.render();
+			}
 		} else {
-			model.progressView.render();
+			$("#progressTab").hide();
 		}
 		// comment view
 		if (typeof (model.commentView) == 'undefined') {

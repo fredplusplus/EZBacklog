@@ -25,6 +25,7 @@ SettingView = Backbone.View.extend({
 		this.initToggle("showResolved");
 		this.initLanguages([ "en", "zh" ]);
 		this.initOverviewLevel([ 1, 2, 3 ]);
+		this.initUsePoint();
 	},
 	initToggle : function(id) {
 		if (this.model.get(id)) {
@@ -39,6 +40,13 @@ SettingView = Backbone.View.extend({
 				this.overviewlevel = levels[i];
 				return;
 			}
+		}
+	},
+	initUsePoint : function() {
+		if (this.model.get("usePoint")) {
+			$("#usepointon").button("toggle");
+		}  else {
+			$("#usepointoff").button("toggle");
 		}
 	},
 	initLanguages : function(langs) {
@@ -61,6 +69,9 @@ SettingView = Backbone.View.extend({
 		"click button#overviewlevel2" : "toggleOverviewlevel2",
 		"click button#overviewlevel3" : "toggleOverviewlevel3",
 		"click button#saveSetting" : "saveSettings",
+		"click button#usepointon" : "toggleUsePoint",
+		"click button#usepointoff" : "toggleUsePoint"
+		
 	},
 	toggleActive : function() {
 		this.toggleState('showActive');
@@ -85,6 +96,11 @@ SettingView = Backbone.View.extend({
 	},
 	toggleOverviewlevel3 : function() {
 		this.overviewlevel = 3;
+	},
+	toggleUsePoint : function(event) {
+		var currentTarget = $(event.currentTarget);
+		var value = $(event.currentTarget).data("value");
+		this.model.set("usePoint", value);
 	},
 	toggleState : function(id) {
 		var $btn = $('button#' + id);

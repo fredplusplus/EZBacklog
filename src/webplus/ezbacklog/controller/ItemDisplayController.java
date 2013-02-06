@@ -47,7 +47,7 @@ public class ItemDisplayController {
 		model.addAttribute(SiteNav.BEAN_NAME, gson.toJson(sitenav));
 		ItemAggregation itemAggregation = dashboardModule.getItemAggregationByParentId(id);
 		model.addAttribute(ItemAggregation.MODEL, gson.toJson(itemAggregation));
-		model.addAttribute(Backlogger.MODEL, backloggerModule.getCurrencyBacklogger());
+		model.addAttribute(Backlogger.MODEL, gson.toJson(backloggerModule.getCurrencyBacklogger()));
 		List<Item> items = itemDisplayModule.getItemByParentId(id);
 		model.addAttribute("Items", gson.toJson(items));
 		model.addAttribute("DefaultSelectId", defaultSelectId);

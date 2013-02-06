@@ -59,7 +59,9 @@ public class ItemAggregation {
 	}
 
 	public void addPoint(ItemStatus status, Long point) {
-		pointMap.put(status, pointMap.get(status) + point);
+		if (point != null) {
+			pointMap.put(status, pointMap.get(status) + point);
+		}
 	}
 
 	public Long getGrandParentId() {

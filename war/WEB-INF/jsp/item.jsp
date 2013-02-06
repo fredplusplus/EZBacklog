@@ -1,7 +1,11 @@
 <%@ include file="/WEB-INF/jspf/taglibs.jspf"%>
 <%@page contentType="text/html" pageEncoding="utf-8"%>
 
+<script type="text/javascript" src="/static/js/Backlogger.js" ></script>
 <script type="text/javascript" src="/static/js/Item.js" ></script>
+<script type="text/javascript">
+	var backloggerModel = new BackloggerModel(${Backlogger});
+</script>
 <item:itemAggregation />
 	
 <div class="container-fluid">

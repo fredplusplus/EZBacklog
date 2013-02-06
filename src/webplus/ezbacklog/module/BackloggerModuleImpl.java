@@ -52,6 +52,7 @@ public class BackloggerModuleImpl implements BackloggerModule {
 			backlogger.setShowActive(true);
 			backlogger.setShowResolved(true);
 			backlogger.setShowDeleted(false);
+			backlogger.setUsePoint(false);
 			backlogger.setDisplayLocale(Locale.ENGLISH);
 			backlogger.setOverviewlevel(1L);
 			saveBacklogger(backlogger);
@@ -66,6 +67,7 @@ public class BackloggerModuleImpl implements BackloggerModule {
 		backlogger.setShowDeleted(prefs.getShowDeleted());
 		backlogger.setDisplayLocale(prefs.getDisplayLocale());
 		backlogger.setOverviewlevel(prefs.getOverviewlevel());
+		backlogger.setUsePoint(prefs.isUsePoint());
 		saveBacklogger(backlogger);
 	}
 
