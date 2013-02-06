@@ -31,10 +31,24 @@ UpdateItemModalView = Backbone.View.extend({
 		}
 	},
 	validateRank : function() {
-		this.validateNonNegative('rank');
+		this.validateNumeric('rank');
 	},
 	validatePoint : function() {
 		this.validateNonNegative('point');
+	},
+	validateNumeric : function(id) {
+		if (this.model.get("selected")) {
+			var $controlGroup = this.$el.find("#" + id + "Group");
+			var $helpText = $controlGroup.find(".help-block");
+			var value = $controlGroup.find("#" + id).val();
+			if (isNaN(parseInt(value))) {
+				$controlGroup.addClass("error");
+				$helpText.show();
+			} else {
+				$controlGroup.removeClass("error");
+				$helpText.hide();
+			}
+		}
 	},
 	validateNonNegative : function(id) {
 		if (this.model.get("selected")) {
