@@ -1,7 +1,7 @@
 BackloggerModel = Backbone.Model.extend({
-	defaults: {
+	defaults : {
 		"usePoint" : false,
-	}
+	},
 	initialize : function() {
 	}
 });
