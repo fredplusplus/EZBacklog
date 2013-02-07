@@ -15,13 +15,14 @@
 		scope="request">
 		<aop:scoped-proxy />
 	</bean>
-
+	
+	<bean id="teamModule" class="webplus.ezbacklog.module.TeamModuleImpl" lazy-init="true" />
 	<bean id="itemUpdateModule" class="webplus.ezbacklog.module.ItemUpdateModuleImpl" lazy-init="true"/>
 	<bean id="relatedItemModule" class="webplus.ezbacklog.module.RelatedItemModuleImpl" lazy-init="true"/>
 	<bean id="commentModule" class="webplus.ezbacklog.module.CommentModuleImpl" lazy-init="true"/>
 	<bean id="stringNormalizer" class="webplus.ezbacklog.service.StringNormalizer" lazy-init="true"/>
 	<bean id="urlNormalizer" class="webplus.ezbacklog.service.UrlNormalizer" lazy-init="true"/>
-
+	
 	<bean id="backloggerModule" class="webplus.ezbacklog.module.BackloggerModuleImpl" lazy-init="true"
 		scope="request">
 		<aop:scoped-proxy />

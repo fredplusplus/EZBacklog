@@ -10,5 +10,5 @@
 	<import resource="./google-beans.xml" />
 	<import resource="./tiles-beans.xml" />
 	<import resource="./strings-beans.xml" />
-	<import resource="./ezbacklog-beans.xml" />
+	<import resource="./leanbacklog-beans.xml" />
 </beans>
