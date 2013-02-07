@@ -1,5 +1,7 @@
 package webplus.ezbacklog.model;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.jdo.annotations.IdGeneratorStrategy;
@@ -19,8 +21,14 @@ public class Team {
 	private Long id;
 	@Persistent
 	private String name;
+	@Persistent
+	private Date createTime;
 
 	private List<TeamMember> members;
+
+	public Team() {
+		members = new ArrayList<TeamMember>();
+	}
 
 	public Long getId() {
 		return id;
@@ -28,6 +36,14 @@ public class Team {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public Date getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
 	}
 
 	public String getName() {
@@ -42,8 +58,10 @@ public class Team {
 		return members;
 	}
 
-	public void setMembers(List<TeamMember> members) {
-		this.members = members;
+	public void addMember(TeamMember member) {
+		if (member != null) {
+			members.add(member);
+		}
 	}
 
 }
