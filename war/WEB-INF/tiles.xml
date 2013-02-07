@@ -30,6 +30,11 @@
 		<put-attribute name="body" value="/WEB-INF/jsp/setting.jsp" />
 	</definition>
 	
+	<definition name="team" extends="base.definition">
+		<put-attribute name="title" value="nav.appName" />
+		<put-attribute name="body" value="/WEB-INF/jsp/team.jsp" />
+	</definition>
+	
 	<definition name="json" template="/WEB-INF/jsp/json.jsp">
 	</definition>
 

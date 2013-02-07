@@ -6,8 +6,8 @@ public class SiteNav {
 	private boolean isProject;
 	private boolean isAbout;
 	private boolean isSetting;
+	private boolean isTeam;
 	private boolean authenticated;
-
 	private String userName;
 
 	public void setUserName(String username) {
@@ -56,5 +56,13 @@ public class SiteNav {
 
 	public void setAuthenticated(boolean authenticated) {
 		this.authenticated = authenticated;
+	}
+
+	public boolean isTeam() {
+		return isTeam;
+	}
+
+	public void setTeam(boolean isTeam) {
+		this.isTeam = isTeam;
 	}
 }
