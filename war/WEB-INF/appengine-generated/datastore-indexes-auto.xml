@@ -1,4 +1,4 @@
-<!-- Indices written at Thu, 7 Feb 2013 21:42:20 PST -->
+<!-- Indices written at Thu, 7 Feb 2013 22:18:08 PST -->
 
 <datastore-indexes>
 
@@ -9,15 +9,15 @@
         <property name="time" direction="asc"/>
     </datastore-index>
 
-    <!-- Used 1 time in query history -->
+    <!-- Used 2 times in query history -->
     <datastore-index kind="Activity" ancestor="false" source="auto">
-        <property name="activityType" direction="asc"/>
         <property name="itemId" direction="asc"/>
         <property name="time" direction="desc"/>
     </datastore-index>
 
-    <!-- Used 1 time in query history -->
+    <!-- Used 2 times in query history -->
     <datastore-index kind="Activity" ancestor="false" source="auto">
+        <property name="activityType" direction="asc"/>
         <property name="itemId" direction="asc"/>
         <property name="time" direction="desc"/>
     </datastore-index>

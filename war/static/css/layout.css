@@ -28,7 +28,7 @@ img.bender {
 	color: #777;
 }
 
-#userContainer.row-fluid,.itemAggregation {
+#userContainer.row-fluid,.itemAggregation, .teamheader {
 	border-bottom: 1px solid #ccc;
 }
 
@@ -126,6 +126,9 @@ img.bender {
             box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
 }
 
+.teamheader {
+	margin-bottom: 20px;
+} 
 .text-right {
 	text-align: right;
 }

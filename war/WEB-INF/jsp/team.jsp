@@ -6,6 +6,18 @@
 <script type="text/javascript">
 	var backloggerModel = new BackloggerModel(${Backlogger});
 </script>
+<div class="container-fluid teamheader">
+	<div class="row-fluid ">
+		<h4 class="span5">
+			<spring:message code="team.title" />
+		</h4>
+		<div class="span5 offset1" style="text-align: right">
+			<a href="#" class="btn btn-info"id="createTeam" onclick="displayCreateTeamModal(); return false">
+				<spring:message code="team.btn.creatateam" />
+			</a>
+		</div>
+	</div>
+</div>
 <div class="container-fluid">
 	<div class="row-fluid">
 		<div class="span6" id="teamCollectionContainer">
@@ -17,9 +29,6 @@
 </div>
 
 <script type="text/template" id="teamListTemplate">
-	<h4>
-		<spring:message code="team.title" />
-	</h4>
 	<@ if (teams.length > 0) { @>
 	<div class="accordion">
 		<@ _.each(teams, function(team) { @>
