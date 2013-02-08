@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import webplus.ezbacklog.model.Backlogger;
 import webplus.ezbacklog.model.SiteNav;
 import webplus.ezbacklog.model.Team;
 import webplus.ezbacklog.module.interfaces.BackloggerModule;
@@ -35,6 +36,7 @@ public class TeamController {
 		SiteNav sitenav = sitenavModule.getSiteNav();
 		sitenav.setTeam(true);
 		model.addAttribute(SiteNav.BEAN_NAME, gson.toJson(sitenav));
+		model.addAttribute(Backlogger.MODEL, gson.toJson(backloggerModule.getCurrencyBacklogger()));
 		model.addAttribute(TEAMS, gson.toJson(teams));
 		return "team";
 	}
