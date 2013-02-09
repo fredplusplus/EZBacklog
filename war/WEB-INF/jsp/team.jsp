@@ -12,7 +12,7 @@
 			<spring:message code="team.title" />
 		</h4>
 		<div class="span5 offset1" style="text-align: right">
-			<a href="#" class="btn btn-info"id="createTeam" onclick="displayCreateTeamModal(); return false">
+			<a href="#" class="btn btn-info"id="createTeam" onclick="return displayCreateTeamModal();">
 				<spring:message code="team.btn.creatateam" />
 			</a>
 		</div>
@@ -27,7 +27,7 @@
 		</div>
 	</div>
 </div>
-
+<team:createTeamModal />
 <script type="text/template" id="teamListTemplate">
 	<@ if (teams.length > 0) { @>
 	<div class="accordion">
@@ -74,4 +74,8 @@
 <script type="text/javascript">
 var teams = new TeamCollection(${teams});
 var adminView = new TeamCollectionView({collection: teams, el : $("#teamCollectionContainer") });
+function displayCreateTeamModal() {
+	createTeamView.render();
+	  $("#createTeamModal").modal({keyboard:false});
+}
 </script>

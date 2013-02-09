@@ -9,3 +9,4 @@
 <%@taglib tagdir="/WEB-INF/tags/item" prefix="item"%>
 <%@taglib tagdir="/WEB-INF/tags/tabs" prefix="tab"%>
 <%@taglib tagdir="/WEB-INF/tags/ads" prefix="ads"%>
+<%@taglib tagdir="/WEB-INF/tags/team" prefix="team"%>
