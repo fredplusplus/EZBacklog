@@ -6,7 +6,7 @@
 		<meta name="google-site-verification" content="V1v2h97tTZuMFBout2AgCEtcc5sR6FxZeJOQ-UgG8kw" />
 		<meta name="msvalidate.01" content="7F71E3B1567D7FAFA3B08AC802700F87" />
 		<meta name="keywords" content="scrum, backlog, kanban, project management, sprint, leanbacklog, lean backlog, {Lean Backlog}, http://leanbacklog.appspot.com, leanbacklog.appspot.com" />
-		<meta name="description" content="An free easy backlog tool to manage your personal projects." />
+		<meta name="description" content="Trying to be the easiest backlog tool to manage your projects." />
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 		<title>
 			<c:set var="titleKey">
