@@ -1,5 +1,4 @@
 TeamModel = Backbone.Model.extend({
-	
 	initialize : function() {
 	}
 });

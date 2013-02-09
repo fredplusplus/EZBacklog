@@ -4,6 +4,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -58,6 +59,7 @@ public class TeamModuleImpl implements TeamModule {
 					// team not found, skip.
 				}
 			}
+			Collections.sort(teams);
 			return teams;
 		}
 		return null;

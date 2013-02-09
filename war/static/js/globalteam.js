@@ -1,5 +1,5 @@
 var CreateTeamModel = Backbone.Model.extend({
-
+	urlRoot : "/f/manageTeam",
 	defaults : {
 		name : '',
 	},
@@ -15,5 +15,25 @@ var CreateTeamView = Backbone.View.extend({
 	},
 	render : function() {
 		this.$el.html(this.template(this.model.toJSON()));
+	},
+	events : {
+		"click #createTeamModal #submitUpdate" : "submitCreateTeam"
+	},
+	submitCreateTeam : function() {
+		var $modal = $("#createTeamModal");
+		var teamName = $modal.find("#name").val();
+		this.model.set("name", teamName);
+		this.syncCreate();
+
+	},
+	syncCreate : function() {
+		$("#waitModal").modal();
+		return this.model.save(this.model.toJSON(), {
+			success : function(model, response) {
+				location.reload();
+			},
+			error : function(model, response) {
+			}
+		});
 	}
 });

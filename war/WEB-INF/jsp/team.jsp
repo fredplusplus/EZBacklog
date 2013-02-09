@@ -34,11 +34,11 @@
 		<@ _.each(teams, function(team) { @>
 		<div class="accordion-group">
 			<div class="accordion-heading">
-				<a href="#collapse<@=team.id@>" class="accordion-toggle" data-toggle="collapse">
+				<a href="#collapse<@=team.teamName.id@>" class="accordion-toggle" data-toggle="collapse">
 					<b><@=team.teamName.name @></b>
 				</a>
 			</div>
-			<div id="collapse<@=team.id@>" class="accordion-body in collapse" style="height: auto">
+			<div id="collapse<@=team.teamName.id@>" class="accordion-body in collapse" style="height: auto">
 				<div class="accordion-inner">
 					<dl class="dl-horizontal">
 					<@ var isAdmin = false @>

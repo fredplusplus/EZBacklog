@@ -2,7 +2,7 @@ package webplus.ezbacklog.model;
 
 import java.util.List;
 
-public class Team {
+public class Team implements Comparable<Team> {
 	private TeamName teamName;
 	private List<TeamMember> members;
 
@@ -20,6 +20,17 @@ public class Team {
 
 	public void setMembers(List<TeamMember> members) {
 		this.members = members;
+	}
+
+	@Override
+	public int compareTo(Team o) {
+		if (o == null || o.teamName == null || o.teamName.getName() == null) {
+			return 1;
+		} else if (teamName == null || teamName.getName() == null) {
+			return -1;
+		} else {
+			return teamName.getName().compareTo(o.teamName.getName());
+		}
 	}
 
 }
