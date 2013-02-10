@@ -55,6 +55,7 @@ public class TeamModuleImpl implements TeamModule {
 					team.setTeamName(name);
 					team.setMembers(membersFromTeam.getValue());
 					teams.add(team);
+					getAllMemberExceptMe(team);
 				} catch (Exception e) {
 					// team not found, skip.
 				}
@@ -76,7 +77,8 @@ public class TeamModuleImpl implements TeamModule {
 			TeamMember member = new TeamMember();
 			member.setRole(Role.Admin);
 			member.setUserEmail(backloggerModule.getCurrencyBacklogger().getEmail());
-			addMember(name.getId(), member);
+			member.setTeamId(name.getId());
+			addMember(member);
 		} catch (Exception e) {
 			throw new DBException(e);
 		} finally {
@@ -85,8 +87,7 @@ public class TeamModuleImpl implements TeamModule {
 	}
 
 	@Override
-	public void addMember(Long teamId, TeamMember member) {
-		member.setTeamId(teamId);
+	public void addMember(TeamMember member) {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		try {
 			pm.makePersistent(member);
@@ -95,6 +96,16 @@ public class TeamModuleImpl implements TeamModule {
 		} finally {
 			pm.close();
 		}
+	}
+
+	private void getAllMemberExceptMe(Team team) {
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+		Query query = pm.newQuery(TeamMember.class);
+		String filter = String.format("teamId == %s && userEmail != '%s'", team.getId(), backloggerModule
+				.getCurrencyBacklogger().getEmail());
+		query.setFilter(filter);
+		List<TeamMember> members = (List<TeamMember>) query.execute();
+		team.getMembers().addAll(members);
 	}
 
 	private void validateTeam(TeamName team) {

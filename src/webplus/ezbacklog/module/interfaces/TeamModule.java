@@ -18,5 +18,5 @@ public interface TeamModule {
 
 	void createTeam(TeamName teamName);
 
-	void addMember(Long teamId, TeamMember member);
+	void addMember(TeamMember member);
 }

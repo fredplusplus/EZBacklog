@@ -3,6 +3,7 @@ package webplus.ezbacklog.model;
 import java.util.List;
 
 public class Team implements Comparable<Team> {
+	private Long id;
 	private TeamName teamName;
 	private List<TeamMember> members;
 
@@ -12,6 +13,11 @@ public class Team implements Comparable<Team> {
 
 	public void setTeamName(TeamName teamName) {
 		this.teamName = teamName;
+		this.id = teamName.getId();
+	}
+
+	public Long getId() {
+		return this.id;
 	}
 
 	public List<TeamMember> getMembers() {

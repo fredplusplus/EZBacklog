@@ -12,11 +12,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import webplus.ezbacklog.model.Backlogger;
 import webplus.ezbacklog.model.SiteNav;
 import webplus.ezbacklog.model.Team;
+import webplus.ezbacklog.model.TeamMember;
 import webplus.ezbacklog.model.TeamName;
 import webplus.ezbacklog.module.interfaces.BackloggerModule;
 import webplus.ezbacklog.module.interfaces.SiteNavModule;
 import webplus.ezbacklog.module.interfaces.TeamModule;
 import webplus.ezbacklog.values.Constants;
+import webplus.ezbacklog.values.Role;
 
 import com.google.gson.Gson;
 
@@ -52,6 +54,20 @@ public class TeamController {
 		TeamName team = gson.fromJson(teamNameString, TeamName.class);
 		teamModule.createTeam(team);
 		model.addAttribute(Constants.JSON_MODEL, gson.toJson(team));
+		return "json";
+	}
+
+	/**
+	 * Create a new team member.
+	 */
+	@RequestMapping(value = "/f/manageMember", method = RequestMethod.POST)
+	public String addTeamMember(@RequestBody String memberString, Model model) {
+		TeamMember member = gson.fromJson(memberString, TeamMember.class);
+		if (member.getRole() == null) {
+			member.setRole(Role.Operator);
+		}
+		teamModule.addMember(member);
+		model.addAttribute(Constants.JSON_MODEL, gson.toJson(member));
 		return "json";
 	}
 }

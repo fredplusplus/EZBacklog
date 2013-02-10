@@ -27,18 +27,18 @@
 		</div>
 	</div>
 </div>
-<team:createTeamModal />
+<team:TeamModal />
 <script type="text/template" id="teamListTemplate">
 	<@ if (teams.length > 0) { @>
 	<div class="accordion">
 		<@ _.each(teams, function(team) { @>
-		<div class="accordion-group">
+		<div class="accordion-group" id="teamContainer">
 			<div class="accordion-heading">
-				<a href="#collapse<@=team.teamName.id@>" class="accordion-toggle" data-toggle="collapse">
+				<a href="#collapse<@=team.id@>" class="accordion-toggle" data-toggle="collapse">
 					<b><@=team.teamName.name @></b>
 				</a>
 			</div>
-			<div id="collapse<@=team.teamName.id@>" class="accordion-body in collapse" style="height: auto">
+			<div id="collapse<@=team.id@>" class="accordion-body in collapse" style="height: auto">
 				<div class="accordion-inner">
 					<dl class="dl-horizontal">
 					<@ var isAdmin = false @>
@@ -58,7 +58,7 @@
 				<div class="accordion-inner">
 					<div class="btn-toolbar">
 						<div class="btn-group">
-							<a href="#" class="btn" data-teamId="<@= team.teamName.id @>"><spring:message code="team.btn.addmember" /></a>
+							<a href="#" id="addMemberBtn" class="btn" data-teamid="<@= team.teamName.id @>"><spring:message code="team.btn.addmember" /></a>
 						</div>
 					</div>
 				</div>
