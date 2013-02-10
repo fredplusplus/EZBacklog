@@ -10,12 +10,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import javax.jdo.JDOObjectNotFoundException;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import webplus.ezbacklog.exceptions.DBException;
+import webplus.ezbacklog.model.RelatedItem;
 import webplus.ezbacklog.model.Team;
 import webplus.ezbacklog.model.TeamMember;
 import webplus.ezbacklog.model.TeamName;
@@ -30,7 +32,7 @@ public class TeamModuleImpl implements TeamModule {
 	private BackloggerModule backloggerModule;
 
 	@Override
-	public List<Team> getAllTeamsForCurrentUser() {
+	public List<Team> getAllTeamsForCurrentUser(boolean fullInfo) {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		Query query = pm.newQuery(TeamMember.class);
 		query.setFilter(String.format("userEmail == '%s'", backloggerModule.getCurrencyBacklogger().getEmail()));
@@ -55,7 +57,9 @@ public class TeamModuleImpl implements TeamModule {
 					team.setTeamName(name);
 					team.setMembers(membersFromTeam.getValue());
 					teams.add(team);
-					getAllMemberExceptMe(team);
+					if (fullInfo) {
+						getAllMemberExceptMe(team);
+					}
 				} catch (Exception e) {
 					// team not found, skip.
 				}
@@ -98,6 +102,18 @@ public class TeamModuleImpl implements TeamModule {
 		}
 	}
 
+	@Override
+	public void removeMember(Long id) {
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+		try {
+			pm.deletePersistent(pm.getObjectById(TeamMember.class, id));
+		} catch (JDOObjectNotFoundException e) {
+		} finally {
+			pm.close();
+		}
+		return;
+	}
+
 	private void getAllMemberExceptMe(Team team) {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		Query query = pm.newQuery(TeamMember.class);
@@ -113,4 +129,5 @@ public class TeamModuleImpl implements TeamModule {
 		checkNotNull(team.getName());
 		team.setId(null);
 	}
+
 }

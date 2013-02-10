@@ -34,11 +34,11 @@
 		<@ _.each(teams, function(team) { @>
 		<div class="accordion-group" id="teamContainer">
 			<div class="accordion-heading">
-				<a href="#collapse<@=team.id@>" class="accordion-toggle" data-toggle="collapse">
+				<a href="#collapse<@=team.id@>" class="accordion-toggle collapsed" data-toggle="collapse">
 					<b><@=team.teamName.name @></b>
 				</a>
 			</div>
-			<div id="collapse<@=team.id@>" class="accordion-body in collapse" style="height: auto">
+			<div id="collapse<@=team.id@>" class="accordion-body collapse" style="height: 0px">
 				<div class="accordion-inner">
 					<dl class="dl-horizontal">
 					<@ var isAdmin = false @>
@@ -48,7 +48,10 @@
 						<@ if (member.userEmail == backloggerModel.get('email')) { isAdmin = true  }@>
 						<dd><spring:message code="team.role.Admin" /></dd>
 						<@ } else if (member.role == 'Operator') {@>
-						<dd><spring:message code="team.role.Operator" /></dd>
+						<dd>
+							<spring:message code="team.role.Operator" />
+							<span id="removeMemberBtn" data-memberid="<@=member.id@>" class="icon-remove pointerMouse"></span>
+						</dd>
 						<@ } @>
 						
 					<@ }) @>

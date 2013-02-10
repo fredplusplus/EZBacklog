@@ -1,7 +1,6 @@
 <%@include file="/WEB-INF/jspf/taglibs.jspf"%>
 <%@tag pageEncoding="utf-8"
 	description="modal box for creating new team"%>
-<script type="text/javascript" src="/static/js/globalteam.js"></script>
 
 <div id="createTeamModalContainer"></div>
 <div id="addMemberModalContainer"></div>

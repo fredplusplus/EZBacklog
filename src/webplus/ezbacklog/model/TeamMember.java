@@ -35,6 +35,14 @@ public class TeamMember {
 		return teamId;
 	}
 
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	public void setTeamId(Long teamId) {
 		this.teamId = teamId;
 	}
