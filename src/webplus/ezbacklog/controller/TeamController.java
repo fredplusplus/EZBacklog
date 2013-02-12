@@ -34,8 +34,6 @@ public class TeamController {
 	@Autowired
 	private TeamModule teamModule;
 
-	private static final String TEAMS = "teams";
-
 	@RequestMapping(value = { "/f/team" }, method = RequestMethod.GET)
 	public String displayTeamPage(Model model) {
 		List<Team> teams = teamModule.getAllTeamsForCurrentUser(true);
@@ -43,7 +41,7 @@ public class TeamController {
 		sitenav.setTeam(true);
 		model.addAttribute(SiteNav.BEAN_NAME, gson.toJson(sitenav));
 		model.addAttribute(Backlogger.MODEL, gson.toJson(backloggerModule.getCurrencyBacklogger()));
-		model.addAttribute(TEAMS, gson.toJson(teams));
+		model.addAttribute(Constants.TEAMS_MODEL, gson.toJson(teams));
 		return "team";
 	}
 

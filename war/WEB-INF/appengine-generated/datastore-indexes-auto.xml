@@ -1,31 +1,31 @@
-<!-- Indices written at Sat, 9 Feb 2013 21:42:23 PST -->
+<!-- Indices written at Mon, 11 Feb 2013 22:30:56 PST -->
 
 <datastore-indexes>
 
-    <!-- Used 192 times in query history -->
-    <datastore-index kind="TeamMember" ancestor="false" source="auto">
-        <property name="teamId" direction="asc"/>
-        <property name="userEmail" direction="asc"/>
-    </datastore-index>
-
-    <!-- Used 3 times in query history -->
-    <datastore-index kind="Activity" ancestor="false" source="auto">
-        <property name="itemId" direction="asc"/>
-        <property name="time" direction="desc"/>
-    </datastore-index>
-
-    <!-- Used 3 times in query history -->
+    <!-- Used 2 times in query history -->
     <datastore-index kind="Activity" ancestor="false" source="auto">
         <property name="activityType" direction="asc"/>
         <property name="itemId" direction="asc"/>
         <property name="time" direction="desc"/>
     </datastore-index>
 
-    <!-- Used 8 times in query history -->
+    <!-- Used 2 times in query history -->
+    <datastore-index kind="Activity" ancestor="false" source="auto">
+        <property name="itemId" direction="asc"/>
+        <property name="time" direction="desc"/>
+    </datastore-index>
+
+    <!-- Used 4 times in query history -->
     <datastore-index kind="Activity" ancestor="false" source="auto">
         <property name="activityType" direction="asc"/>
         <property name="userEmail" direction="asc"/>
         <property name="time" direction="asc"/>
+    </datastore-index>
+
+    <!-- Used 12 times in query history -->
+    <datastore-index kind="TeamMember" ancestor="false" source="auto">
+        <property name="teamId" direction="asc"/>
+        <property name="userEmail" direction="asc"/>
     </datastore-index>
 
 </datastore-indexes>

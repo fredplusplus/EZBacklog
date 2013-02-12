@@ -17,7 +17,6 @@ import javax.jdo.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import webplus.ezbacklog.exceptions.DBException;
-import webplus.ezbacklog.model.RelatedItem;
 import webplus.ezbacklog.model.Team;
 import webplus.ezbacklog.model.TeamMember;
 import webplus.ezbacklog.model.TeamName;

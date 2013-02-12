@@ -12,10 +12,13 @@ import webplus.ezbacklog.model.Backlogger;
 import webplus.ezbacklog.model.Item;
 import webplus.ezbacklog.model.ItemAggregation;
 import webplus.ezbacklog.model.SiteNav;
+import webplus.ezbacklog.model.Team;
 import webplus.ezbacklog.module.interfaces.BackloggerModule;
 import webplus.ezbacklog.module.interfaces.DashboardModule;
 import webplus.ezbacklog.module.interfaces.ItemDisplayModule;
 import webplus.ezbacklog.module.interfaces.SiteNavModule;
+import webplus.ezbacklog.module.interfaces.TeamModule;
+import webplus.ezbacklog.values.Constants;
 
 import com.google.gson.Gson;
 
@@ -34,6 +37,8 @@ public class ItemDisplayController {
 	private DashboardModule dashboardModule;
 	@Autowired
 	private BackloggerModule backloggerModule;
+	@Autowired
+	private TeamModule teamModule;
 
 	@RequestMapping("/f/items")
 	public String loadPrject(Model model) {
@@ -56,6 +61,8 @@ public class ItemDisplayController {
 
 	@RequestMapping("/f/items/{id}")
 	public String load(@PathVariable("id") Long id, Model model) {
+		List<Team> teams = teamModule.getAllTeamsForCurrentUser(false);
+		model.addAttribute(Constants.TEAMS_MODEL, gson.toJson(teams));
 		return load(id, null, model);
 	}
 }
