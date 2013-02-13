@@ -1,25 +1,18 @@
-<!-- Indices written at Mon, 11 Feb 2013 22:30:56 PST -->
+<!-- Indices written at Tue, 12 Feb 2013 21:44:13 PST -->
 
 <datastore-indexes>
 
     <!-- Used 2 times in query history -->
     <datastore-index kind="Activity" ancestor="false" source="auto">
-        <property name="activityType" direction="asc"/>
         <property name="itemId" direction="asc"/>
         <property name="time" direction="desc"/>
     </datastore-index>
 
     <!-- Used 2 times in query history -->
     <datastore-index kind="Activity" ancestor="false" source="auto">
+        <property name="activityType" direction="asc"/>
         <property name="itemId" direction="asc"/>
         <property name="time" direction="desc"/>
-    </datastore-index>
-
-    <!-- Used 4 times in query history -->
-    <datastore-index kind="Activity" ancestor="false" source="auto">
-        <property name="activityType" direction="asc"/>
-        <property name="userEmail" direction="asc"/>
-        <property name="time" direction="asc"/>
     </datastore-index>
 
     <!-- Used 12 times in query history -->

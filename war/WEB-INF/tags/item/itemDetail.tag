@@ -60,10 +60,8 @@
 			<dd><@=id@></dd>
 			<dt><spring:message code="itemDetail.modifieddate"/></dt>
 			<dd><@ if (typeof(modifyDate) != 'undefined') {print(formatDate(modifyDate));} @>&nbsp;</dd>
-			<@ if(backloggerModel.get("usePoint")) {@>
-				<dt><spring:message code="itemDetail.originalpoint"/></dt>
-				<dd><@= point @></dd>
-			<@ } @>
+			<dt><spring:message code="itemDetail.type"/></dt>
+			<dd></dd>
 		</dl>
 	</div>
 	<div class="span4">
@@ -73,8 +71,8 @@
 			<dt><spring:message code="itemDetail.resolveddate"/></dt>
 			<dd><@ if (typeof(resolveDate) != 'undefined') {print(formatDate(resolveDate));} @>&nbsp;</dd>
 			<@ if(backloggerModel.get("usePoint")) {@>
-				<dt><spring:message code="itemDetail.resolvedpoint"/></dt>
-				<dd><@ if (typeof(resolvedPoint) != 'undefined') {print(resolvedPoint);} @></dd>
+				<dt><spring:message code="itemDetail.point"/></dt>
+				<dd><@ if (typeof(resolvedPoint) != 'undefined') {print(resolvedPoint);} @>/<@= point @></dd>
 			<@ } @>
 		</dl>
 	</div>
