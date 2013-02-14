@@ -31,6 +31,7 @@
 					<spring:message code="modal.input.field.none" />
 				<@ } @>
 			</dd>
+			<fc:teamDropdown />
 		</dl>
 		<div class="form-horizontal">
 			<fc:textfieldControl labelKey="modal.input.label.title" id="shortDescription" validationKey="modal.validation.maxLength.40" />
@@ -47,3 +48,4 @@
 	</div>
 </div>
 </script>
+<fc:teamDropdownTemplate />

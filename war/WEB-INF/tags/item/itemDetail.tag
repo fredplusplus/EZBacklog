@@ -60,8 +60,8 @@
 			<dd><@=id@></dd>
 			<dt><spring:message code="itemDetail.modifieddate"/></dt>
 			<dd><@ if (typeof(modifyDate) != 'undefined') {print(formatDate(modifyDate));} @>&nbsp;</dd>
-			<dt><spring:message code="itemDetail.type"/></dt>
-			<dd></dd>
+			<dt><spring:message code="itemDetail.team"/></dt>
+			<item:itemTeamRO />
 		</dl>
 	</div>
 	<div class="span4">

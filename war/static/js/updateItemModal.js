@@ -1,3 +1,30 @@
+TeamDropdownView = Backbone.View.extend({
+	initialize : function() {
+		this.template = _.template($("#teamDropdownTemplate").html());
+		if (this.$el.length) {
+			this.render();
+		}
+	},
+	render : function() {
+		this.$el.html(this.template({
+			teams : this.collection.toJSON()
+		}))
+	},
+	events : {
+		"click #teamoption" : "updateSelector"
+	},
+	updateSelector : function(event) {
+		event.preventDefault();
+		var currentTarget = $(event.currentTarget);
+		var teamid = currentTarget.data("teamid");
+		var teamName = currentTarget.data("teamname");
+		var $selector = $("#teamSelector");
+		$selector.data("teamid", teamid);
+		$selector.html(teamName);
+		console.log(teamid);
+	}
+});
+
 UpdateItemModalView = Backbone.View.extend({
 	initialize : function() {
 		this.$el = $("#updateItemModalContainer");
@@ -14,6 +41,10 @@ UpdateItemModalView = Backbone.View.extend({
 	render : function() {
 		this.model.set("selected", true);
 		this.$el.html(this.template(this.model.toJSON()));
+		this.teamDropdownView = new TeamDropdownView({
+			collection : teams,
+			el : this.$el.find("#teamDropdownContainer")
+		});
 		return this;
 	},
 	validateShortDescription : function() {
@@ -72,7 +103,7 @@ UpdateItemModalView = Backbone.View.extend({
 					"textarea#longDescription").val()));
 			this.model.set("rank", this.$el.find("input#rank").val());
 			var point = this.$el.find("input#point").val();
-			if (typeof(point) != 'undefined' && point != '') {
+			if (typeof (point) != 'undefined' && point != '') {
 				this.model.set("point", this.$el.find("input#point").val());
 			}
 			this.syncSaveItem();
