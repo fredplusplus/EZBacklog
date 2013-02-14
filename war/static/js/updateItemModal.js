@@ -104,6 +104,9 @@ UpdateItemModalView = Backbone.View.extend({
 					"textarea#longDescription").val()));
 			this.model.set("rank", this.$el.find("input#rank").val());
 			var teamId = this.$el.find("#teamSelector").data("teamid");
+			if (typeof(teamId) == 'undefined' || teamId == '' || teamId == null) {
+				teamId = undefined;
+			}
 			if (!isNaN(teamId)) {
 				this.model.set("teamId", teamId);
 				console.log(teamId)
