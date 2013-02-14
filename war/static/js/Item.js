@@ -66,7 +66,10 @@ ItemDetailView = Backbone.View.extend({
 				var child = new ItemModel({
 					ownerEmail : this.model.get("ownerEmail"),
 					parentId : this.model.get("id"),
-					itemLevel : this.model.get("itemLevel") + 1
+					itemLevel : this.model.get("itemLevel") + 1,
+					teamId : this.model.get("teamId"),
+					teamName : this.model.get("teamName")
+
 				});
 				this.model.createView = new UpdateItemModalView({
 					model : child

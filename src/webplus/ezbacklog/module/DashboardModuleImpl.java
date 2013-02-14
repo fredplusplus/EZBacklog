@@ -82,6 +82,8 @@ public class DashboardModuleImpl implements DashboardModule {
 		} else {
 			aggregation.setItemLevel(parent.getItemLevel() + 1L);
 			aggregation.setParentId(parent.getId());
+			aggregation.setTeamId(parent.getTeamId());
+			aggregation.setTeamName(parent.getTeamName());
 			aggregation.setGrandParentId(parent.getParentId());
 			aggregation.setParentShortDescription(parent.getShortDescription());
 			aggregation.setParentStatus(parent.getStatus());

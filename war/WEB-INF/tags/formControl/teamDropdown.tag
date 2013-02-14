@@ -4,7 +4,7 @@
 <dt>
 	<spring:message code="itemDetail.team" />
 </dt>
-<@ if (typeof(id) == 'undefined' && typeof(parentId) == 'undefined') {@>
+<@ if (typeof(id) == 'undefined' && typeof(parentId) == 'undefined' && typeof(teamId) =='undefined' && typeof(teamName) == 'undefined') {@>
 <dd>
 	<div class="dropdown" id="teamDropdown">
 		<a class="dropdown-toggle" data-toggle="dropdown" href="#" id="teamSelector"><spring:message code="itemDetail.team.private" /></a>
