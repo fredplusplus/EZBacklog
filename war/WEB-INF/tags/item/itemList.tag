@@ -15,7 +15,7 @@
 				<@= item.shortDescription @>
 			</div>
 			<div class="notes row-fluid">
-				<div class="span2 topPadding">
+				<div class="span1 topPadding">
 					<small class="label label-info"><@=item.rank@></small>
 				</div>
 				<div class="span2 topPadding">
@@ -26,6 +26,15 @@
 					<@} else if (item.status =='Deleted'){ @>
 						<small class="label "><spring:message code="dashboard.deletedproject"/></small>
 					<@}@>
+				</div>
+				<div class="span3 topPadding">
+					<small class="label">
+					<@ if(typeof(item.teamName) != 'undefined') { @>
+						<@=item.teamName@>
+					<@ } else {@>
+						<spring:message code="itemDetail.team.private" />
+					<@ } @>
+					</small>
 				</div>
 			</div>
 		</div>

@@ -20,6 +20,7 @@ TeamDropdownView = Backbone.View.extend({
 		var teamName = currentTarget.data("teamname");
 		var $selector = $("#teamSelector");
 		$selector.data("teamid", teamid);
+		$selector.data("teamname", teamName);
 		$selector.html(teamName);
 		console.log(teamid);
 	}
@@ -102,6 +103,13 @@ UpdateItemModalView = Backbone.View.extend({
 			this.model.set("longDescription", encodeURIComponent(this.$el.find(
 					"textarea#longDescription").val()));
 			this.model.set("rank", this.$el.find("input#rank").val());
+			var teamId = this.$el.find("#teamSelector").data("teamid");
+			if (!isNaN(teamId)) {
+				this.model.set("teamId", teamId);
+				console.log(teamId)
+			}
+			this.model.set("teamName", this.$el.find("#teamSelector").data(
+					"teamname"));
 			var point = this.$el.find("input#point").val();
 			if (typeof (point) != 'undefined' && point != '') {
 				this.model.set("point", this.$el.find("input#point").val());
