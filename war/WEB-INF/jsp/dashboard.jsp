@@ -72,11 +72,6 @@
 		<h4><spring:message code="dashboard.milestone" /></h4>
 		<div class="span12" id="milestoneContainer"></div>
 	</div>
-	<div class="row-fluid">
-		<div class="span4">
-			<a href="/f/items" class="btn btn-success"><spring:message code="dashboard.btn.gotoproject"/></a>
-		</div>
-	</div>
 </script>
 <script type="text/javascript">
 	var dashboardData = ${Dashboard};
