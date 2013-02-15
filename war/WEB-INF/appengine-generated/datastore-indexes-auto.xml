@@ -1,4 +1,4 @@
-<!-- Indices written at Thu, 14 Feb 2013 22:38:27 PST -->
+<!-- Indices written at Thu, 14 Feb 2013 22:48:48 PST -->
 
 <datastore-indexes>
 
@@ -29,7 +29,7 @@
         <property name="time" direction="desc"/>
     </datastore-index>
 
-    <!-- Used 16 times in query history -->
+    <!-- Used 20 times in query history -->
     <datastore-index kind="Activity" ancestor="false" source="auto">
         <property name="activityType" direction="asc"/>
         <property name="userEmail" direction="asc"/>
