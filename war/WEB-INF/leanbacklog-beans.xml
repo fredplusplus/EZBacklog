@@ -22,6 +22,7 @@
 	<bean id="commentModule" class="webplus.ezbacklog.module.CommentModuleImpl" lazy-init="true"/>
 	<bean id="stringNormalizer" class="webplus.ezbacklog.service.StringNormalizer" lazy-init="true"/>
 	<bean id="urlNormalizer" class="webplus.ezbacklog.service.UrlNormalizer" lazy-init="true"/>
+	<bean id="notificationService" class="webplus.ezbacklog.service.NotificationService" lazy-init="true"/>
 	
 	<bean id="backloggerModule" class="webplus.ezbacklog.module.BackloggerModuleImpl" lazy-init="true"
 		scope="request">

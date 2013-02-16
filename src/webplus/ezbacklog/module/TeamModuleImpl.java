@@ -22,6 +22,7 @@ import webplus.ezbacklog.model.TeamMember;
 import webplus.ezbacklog.model.TeamName;
 import webplus.ezbacklog.module.interfaces.BackloggerModule;
 import webplus.ezbacklog.module.interfaces.TeamModule;
+import webplus.ezbacklog.service.NotificationService;
 import webplus.ezbacklog.service.PMF;
 import webplus.ezbacklog.values.Role;
 
@@ -29,6 +30,8 @@ public class TeamModuleImpl implements TeamModule {
 
 	@Autowired
 	private BackloggerModule backloggerModule;
+	@Autowired
+	private NotificationService notificationService;
 
 	@Override
 	public List<Team> getAllTeamsForCurrentUser(boolean fullInfo) {
@@ -93,7 +96,9 @@ public class TeamModuleImpl implements TeamModule {
 	public void addMember(TeamMember member) {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		try {
+			TeamName name = pm.detachCopy(pm.getObjectById(TeamName.class, member.getTeamId()));
 			pm.makePersistent(member);
+			notificationService.sendAddMemberNotification(member.getUserEmail(), name.getName());
 		} catch (Exception e) {
 			throw new DBException(e);
 		} finally {
@@ -105,7 +110,10 @@ public class TeamModuleImpl implements TeamModule {
 	public void removeMember(Long id) {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		try {
-			pm.deletePersistent(pm.getObjectById(TeamMember.class, id));
+			TeamMember member = pm.getObjectById(TeamMember.class, id);
+			TeamName name = pm.detachCopy(pm.getObjectById(TeamName.class, member.getTeamId()));
+			notificationService.sendRemoveMemberNotification(member.getUserEmail(), name.getName());
+			pm.deletePersistent(member);
 		} catch (JDOObjectNotFoundException e) {
 		} finally {
 			pm.close();
