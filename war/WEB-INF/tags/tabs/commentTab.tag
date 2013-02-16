@@ -12,7 +12,10 @@
 <@ _.each(comments, function(comment) { @>
 	<div class="row-fluid comment">
 		<span class="commentUser"><@= comment.userEmail @><span><span class="notes">[<@ print(formatDateAccurate(comment.time)) @>]</span>
-		<pre class="span11"><@=comment.description@></pre>
+		<div class="row-fluid">
+			<img src="<@ print(gravatar(comment.userEmail, 60))@>" class="span2 avatarBox"/>
+			<pre class="span10"><@=comment.description@></pre>
+		</div>
 	</div>
 <@ })@>
 </script>
