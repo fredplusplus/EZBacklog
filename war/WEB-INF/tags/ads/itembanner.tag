@@ -1,5 +1,6 @@
 <%@ include file="/WEB-INF/jspf/taglibs.jspf"%>
 <%@tag pageEncoding="utf-8" description="A banner ad-sense placeholder"%>
+<%--
 <div class="row-fluid itembannerAds">
 <script type="text/javascript"><!--
 google_ad_client = "ca-pub-1367143209408464";
@@ -13,3 +14,4 @@ google_ad_height = 60;
 src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </script>
 </div>
+ --%>

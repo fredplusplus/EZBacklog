@@ -1,5 +1,6 @@
 <%@ include file="/WEB-INF/jspf/taglibs.jspf"%>
 <%@tag pageEncoding="utf-8" description="A square ad-sense placeholder"%>
+<%--
 <script type="text/javascript"><!--
 google_ad_client = "ca-pub-1367143209408464";
 /* frontpage */
@@ -11,3 +12,4 @@ google_ad_height = 250;
 <script type="text/javascript"
 src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </script>
+ --%>
