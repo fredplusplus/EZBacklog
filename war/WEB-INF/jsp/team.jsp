@@ -50,7 +50,9 @@
 						<@ } else if (member.role == 'Operator') {@>
 						<dd>
 							<spring:message code="team.role.Operator" />
+							<@ if (member.userEmail == backloggerModel.get("email") || isAdmin) {@>
 							<span id="removeMemberBtn" data-memberid="<@=member.id@>" class="icon-remove pointerMouse"></span>
+							<@ } @>
 						</dd>
 						<@ } @>
 						
