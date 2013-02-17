@@ -13,7 +13,7 @@
 	<div class="row-fluid comment">
 		<span class="commentUser"><@= comment.userEmail @><span><span class="notes">[<@ print(formatDateAccurate(comment.time)) @>]</span>
 		<div class="row-fluid">
-			<img src="<@ print(gravatar(comment.userEmail, 60))@>" class="span2 avatarBox"/>
+			<img src="<@ print(gravatar(comment.userEmail, 60))@>" class="span2 avatarBox img-rounded"/>
 			<pre class="span10"><@=comment.description@></pre>
 		</div>
 	</div>

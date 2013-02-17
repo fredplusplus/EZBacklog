@@ -11,11 +11,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import webplus.ezbacklog.model.Backlogger;
+import webplus.ezbacklog.model.Item;
 import webplus.ezbacklog.model.SiteNav;
 import webplus.ezbacklog.model.Team;
 import webplus.ezbacklog.model.TeamMember;
 import webplus.ezbacklog.model.TeamName;
 import webplus.ezbacklog.module.interfaces.BackloggerModule;
+import webplus.ezbacklog.module.interfaces.ItemDisplayModule;
+import webplus.ezbacklog.module.interfaces.ItemUpdateModule;
 import webplus.ezbacklog.module.interfaces.SiteNavModule;
 import webplus.ezbacklog.module.interfaces.TeamModule;
 import webplus.ezbacklog.values.Constants;
@@ -33,6 +36,10 @@ public class TeamController {
 	private BackloggerModule backloggerModule;
 	@Autowired
 	private TeamModule teamModule;
+	@Autowired
+	private ItemDisplayModule itemDisplayModule;
+	@Autowired
+	private ItemUpdateModule itemUpdateModule;
 
 	@RequestMapping(value = { "/f/team" }, method = RequestMethod.GET)
 	public String displayTeamPage(Model model) {
@@ -53,6 +60,20 @@ public class TeamController {
 		TeamName team = gson.fromJson(teamNameString, TeamName.class);
 		teamModule.createTeam(team);
 		model.addAttribute(Constants.JSON_MODEL, gson.toJson(team));
+		return "json";
+	}
+
+	/**
+	 * Delete a team and all member relations. Move all team tasks ownership to
+	 * private under the team admin.
+	 * 
+	 */
+	@RequestMapping(value = "/f/manageTeam/{id}", method = RequestMethod.DELETE)
+	public String deleteTeam(@PathVariable("id") Long id, Model model) {
+		String adminEmail = teamModule.deleteTeam(id);
+		List<Item> items = itemDisplayModule.getItemByTeam(id);
+		itemUpdateModule.clearTeamAndReassignOwner(adminEmail, items);
+		model.addAttribute(Constants.JSON_MODEL, gson.toJson(null));
 		return "json";
 	}
 

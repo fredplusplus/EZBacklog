@@ -1,5 +1,7 @@
 package webplus.ezbacklog.module.interfaces;
 
+import java.util.List;
+
 import webplus.ezbacklog.model.Item;
 
 /**
@@ -24,4 +26,9 @@ public interface ItemUpdateModule {
 	 *            {@link Item}
 	 */
 	void createItem(Item item);
+
+	/**
+	 * Clears the team id and assigns ownerEmail for all team items.
+	 */
+	void clearTeamAndReassignOwner(String email, List<Item> items);
 }

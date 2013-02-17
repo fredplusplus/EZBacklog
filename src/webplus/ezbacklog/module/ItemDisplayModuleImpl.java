@@ -68,6 +68,11 @@ public class ItemDisplayModuleImpl implements ItemDisplayModule {
 	}
 
 	@Override
+	public List<Item> getItemByTeam(long teamId) {
+		return query("teamId == " + teamId);
+	}
+
+	@Override
 	public List<Item> getItemByParentId(long parentId) {
 		if (getItemByParentIdResultCache.get(parentId) != null) {
 			return getItemByParentIdResultCache.get(parentId);
@@ -134,7 +139,9 @@ public class ItemDisplayModuleImpl implements ItemDisplayModule {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		Query query = pm.newQuery(Item.class);
 		query.setFilter(filter);
-		return (List<Item>) query.execute();
+		List<Item> items = (List<Item>) query.execute();
+		pm.close();
+		return items;
 	}
 
 	private String constructTeamFilter() {

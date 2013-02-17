@@ -64,7 +64,21 @@
 					<div class="btn-toolbar">
 						<div class="btn-group">
 							<a href="#" id="addMemberBtn" class="btn" data-teamid="<@= team.teamName.id @>"><spring:message code="team.btn.addmember" /></a>
+							<a href="#" data-toggle="modal" data-target="#deleteTeamModal<@=team.teamName.id@>" class="btn btn-danger" data-teamid="<@= team.teamName.id @>"><spring:message code="team.btn.delete" /></a>
 						</div>
+					</div>
+				</div>
+				<div id="deleteTeamModal<@=team.teamName.id@>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="deleteTeamModal<@=team.teamName.id@>Label" aria-hidden="true">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+						<h3 id="deleteTeamModal<@=team.teamName.id@>Label"><spring:message code="modal.title.confirm" /></h3>
+					</div>
+					<div class="modal-body">
+						<p><spring:message code="modal.text.deleteTeam" /></p>
+					</div>
+					<div class="modal-footer">
+						<button class="btn" data-dismiss="modal" aria-hidden="true"><spring:message code="modal.btn.close" /></button>
+						<button id="confirmDeleteTeam" data-teamid="<@= team.teamName.id @>" class="btn btn-primary" data-dismiss="modal" aria-hidden="true"><spring:message code="modal.btn.ok" /></button>
 					</div>
 				</div>
 				<@ } @>

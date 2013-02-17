@@ -1,4 +1,5 @@
 var TeamModel = Backbone.Model.extend({
+	urlRoot : "/f/manageTeam",
 	defaults : {},
 	initialize : function() {
 	}
@@ -41,6 +42,20 @@ var TeamCollectionView = Backbone.View.extend({
 	events : {
 		"click #teamContainer #addMemberBtn" : "displayAddMember",
 		"click #teamContainer #removeMemberBtn" : "removeMember",
+		"click #confirmDeleteTeam" : "deleteTeam"
+	},
+	deleteTeam : function(event) {
+		var teamId = $(event.currentTarget).data("teamid");
+		var team = this.collection.get(teamId);
+		$("#waitModal").modal();
+		team.destroy({
+			success : function() {
+				location.reload();
+			},
+			error : function() {
+				console.log("Failed to delete team");
+			}
+		});
 	},
 	removeMember : function(event) {
 		event.preventDefault();

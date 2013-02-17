@@ -19,6 +19,14 @@ public interface TeamModule {
 	void createTeam(TeamName teamName);
 
 	void addMember(TeamMember member);
-	
+
 	void removeMember(Long id);
+
+	/**
+	 * Delete a team and all members.
+	 * 
+	 * @param id
+	 * @return the admin member email address
+	 */
+	String deleteTeam(Long id);
 }

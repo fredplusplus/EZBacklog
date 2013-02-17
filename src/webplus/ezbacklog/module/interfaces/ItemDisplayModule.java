@@ -30,6 +30,11 @@ public interface ItemDisplayModule {
 	List<Item> getItemByParentId(long parentId);
 
 	/**
+	 * Returns all item from the same team.
+	 */
+	List<Item> getItemByTeam(long teamId);
+
+	/**
 	 * Gets an item with specific Id. It must be owned by the current user.
 	 * 
 	 * @param id

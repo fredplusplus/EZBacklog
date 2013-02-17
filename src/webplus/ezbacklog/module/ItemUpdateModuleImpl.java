@@ -4,6 +4,7 @@ import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.util.Calendar;
+import java.util.List;
 
 import javax.jdo.PersistenceManager;
 
@@ -87,6 +88,18 @@ public class ItemUpdateModuleImpl implements ItemUpdateModule {
 					item.getOwnerEmail());
 		} catch (Exception e) {
 			throw new ValidationException(e);
+		}
+	}
+
+	@Override
+	public void clearTeamAndReassignOwner(String email, List<Item> items) {
+		if (items != null && email != null) {
+			for (Item item : items) {
+				item.setTeamId(null);
+				item.setTeamName(null);
+				item.setOwnerEmail(email);
+				saveItem(item);
+			}
 		}
 	}
 

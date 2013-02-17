@@ -32,9 +32,8 @@ public class Item {
 	@Persistent private Date deleteDate;
 	@Persistent private String shortDescription;
 	@Persistent private String longDescription;
-
-	private Long teamId;
-	private String teamName;
+	@Persistent private Long teamId;
+	@Persistent private String teamName;
 	
 	public Long getTeamId() {
 		return teamId;

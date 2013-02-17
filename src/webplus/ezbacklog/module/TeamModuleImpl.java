@@ -107,6 +107,27 @@ public class TeamModuleImpl implements TeamModule {
 	}
 
 	@Override
+	public String deleteTeam(Long id) {
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+		TeamName teamName = pm.getObjectById(TeamName.class, id);
+		pm.deletePersistent(teamName);
+
+		Query teamMemberQuery = pm.newQuery(TeamMember.class);
+		teamMemberQuery.setFilter("teamId == " + id);
+		List<TeamMember> members = (List<TeamMember>) teamMemberQuery.execute();
+		String adminEmail = null;
+		if (members != null) {
+			for (TeamMember member : members) {
+				if (member.getRole() == Role.Admin) {
+					adminEmail = member.getUserEmail();
+				}
+				pm.deletePersistent(member);
+			}
+		}
+		return adminEmail;
+	}
+
+	@Override
 	public void removeMember(Long id) {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		try {
@@ -136,5 +157,4 @@ public class TeamModuleImpl implements TeamModule {
 		checkNotNull(team.getName());
 		team.setId(null);
 	}
-
 }
